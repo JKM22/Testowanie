@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2024 at 07:40 PM
+-- Generation Time: Mar 18, 2024 at 04:07 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,31 +61,6 @@ INSERT INTO `gatunek` (`id_gatunek`, `nazwa`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `klient`
---
-
-CREATE TABLE `klient` (
-  `id_klient` int(11) NOT NULL,
-  `k_imie` varchar(70) NOT NULL,
-  `k_nazwisko` varchar(150) NOT NULL,
-  `k_email` varchar(100) NOT NULL,
-  `k_login` varchar(100) NOT NULL,
-  `k_haslo` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
-
---
--- Dumping data for table `klient`
---
-
-INSERT INTO `klient` (`id_klient`, `k_imie`, `k_nazwisko`, `k_email`, `k_login`, `k_haslo`) VALUES
-(1, 'Dorian', 'Wielki', 'dorian@mail.com', 'dorian43', 'qwertyxd'),
-(2, 'Kuba', 'Mały', 'kubamaly.22@mail.com', 'JAKUB321', 'haslo123'),
-(3, 'Bonifacy', 'Bombastyczny', 'bonifacy.bomba@gmail.com', 'boniek4329', 'drowssap'),
-(4, 'Kuba', 'Kowalski', 'kowallawok@mail.com', 'kubaabuk', '12345678');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `ksiazka`
 --
 
@@ -96,6 +71,39 @@ CREATE TABLE `ksiazka` (
   `gatunek` int(11) NOT NULL,
   `opis` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uzytkownik`
+--
+
+CREATE TABLE `uzytkownik` (
+  `id_uzytkownik` int(11) NOT NULL,
+  `u_imie` varchar(70) NOT NULL,
+  `u_nazwisko` varchar(150) NOT NULL,
+  `u_email` varchar(255) NOT NULL,
+  `u_telefon` int(9) NOT NULL,
+  `u_miejscowosc` varchar(200) NOT NULL,
+  `u_kod` varchar(10) NOT NULL,
+  `u_ulica` varchar(200) DEFAULT NULL,
+  `u_nr_posesji` varchar(200) NOT NULL,
+  `u_nr_lokalu` varchar(200) DEFAULT NULL,
+  `u_pesel` varchar(11) NOT NULL,
+  `u_data_ur` date NOT NULL,
+  `u_plec` varchar(10) NOT NULL,
+  `u_login` varchar(100) NOT NULL,
+  `u_haslo` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `uzytkownik`
+--
+
+INSERT INTO `uzytkownik` (`id_uzytkownik`, `u_imie`, `u_nazwisko`, `u_email`, `u_telefon`, `u_miejscowosc`, `u_kod`, `u_ulica`, `u_nr_posesji`, `u_nr_lokalu`, `u_pesel`, `u_data_ur`, `u_plec`, `u_login`, `u_haslo`) VALUES
+(1, 'Jakub', 'Kowalski', 'mail@mail.com', 123456789, 'Rogów', '00-001', 'ul. Wielka', '33', NULL, '73110743682', '1994-03-09', 'Mezczyzna', 'kubakowal123', 'db3fc40e6439d4d972870252ccc72f62'),
+(2, 'Joanna', 'Wilk', 'mail123@mail.com', 987654321, 'Warszawa', '00-002', 'ul. Łódzka', '14', '21', '00220879196', '2004-08-20', 'Kobieta', 'asiaaisa', '241190129fd7bab5b857c600dac6e2c5'),
+(3, 'Mariusz', 'Pudzianowski', 'pudzian@mail.com', 123123123, 'Poznań', '00-003', 'ul. Mała', '12', NULL, '87080361313', '1997-02-07', 'Mężczyzna', 'pudzianator', '7c8a7c5f8338b02d82840d64e23e47e6');
 
 --
 -- Indexes for dumped tables
@@ -114,12 +122,6 @@ ALTER TABLE `gatunek`
   ADD PRIMARY KEY (`id_gatunek`);
 
 --
--- Indexes for table `klient`
---
-ALTER TABLE `klient`
-  ADD PRIMARY KEY (`id_klient`);
-
---
 -- Indexes for table `ksiazka`
 --
 ALTER TABLE `ksiazka`
@@ -128,6 +130,12 @@ ALTER TABLE `ksiazka`
   ADD UNIQUE KEY `gatunek_2` (`gatunek`),
   ADD KEY `gatunek_3` (`gatunek`),
   ADD KEY `autor` (`autor`);
+
+--
+-- Indexes for table `uzytkownik`
+--
+ALTER TABLE `uzytkownik`
+  ADD PRIMARY KEY (`id_uzytkownik`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -146,16 +154,16 @@ ALTER TABLE `gatunek`
   MODIFY `id_gatunek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `klient`
---
-ALTER TABLE `klient`
-  MODIFY `id_klient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `ksiazka`
 --
 ALTER TABLE `ksiazka`
   MODIFY `id_ksiazka` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `uzytkownik`
+--
+ALTER TABLE `uzytkownik`
+  MODIFY `id_uzytkownik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
