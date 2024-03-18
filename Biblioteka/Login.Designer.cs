@@ -34,6 +34,7 @@
             this.textBoxLoginPass = new System.Windows.Forms.TextBox();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.buttonGoToRegistration = new System.Windows.Forms.Button();
+            this.button_wroc = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -70,29 +71,40 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(97, 140);
+            this.buttonLogin.Location = new System.Drawing.Point(72, 138);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(75, 23);
+            this.buttonLogin.Size = new System.Drawing.Size(89, 23);
             this.buttonLogin.TabIndex = 4;
             this.buttonLogin.Text = "Zaloguj";
             this.buttonLogin.UseVisualStyleBackColor = true;
             // 
             // buttonGoToRegistration
             // 
-            this.buttonGoToRegistration.Location = new System.Drawing.Point(106, 234);
+            this.buttonGoToRegistration.Location = new System.Drawing.Point(72, 167);
             this.buttonGoToRegistration.Name = "buttonGoToRegistration";
-            this.buttonGoToRegistration.Size = new System.Drawing.Size(89, 23);
+            this.buttonGoToRegistration.Size = new System.Drawing.Size(89, 34);
             this.buttonGoToRegistration.TabIndex = 5;
             this.buttonGoToRegistration.Text = "Zarejestruj się";
             this.buttonGoToRegistration.UseVisualStyleBackColor = true;
             this.buttonGoToRegistration.Click += new System.EventHandler(this.buttonGoToRegistration_Click);
+            // 
+            // button_wroc
+            // 
+            this.button_wroc.Location = new System.Drawing.Point(12, 265);
+            this.button_wroc.Name = "button_wroc";
+            this.button_wroc.Size = new System.Drawing.Size(75, 23);
+            this.button_wroc.TabIndex = 6;
+            this.button_wroc.Text = "WRÓĆ";
+            this.button_wroc.UseVisualStyleBackColor = true;
+            this.button_wroc.Click += new System.EventHandler(this.button_wroc_Click);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Plum;
-            this.ClientSize = new System.Drawing.Size(207, 269);
+            this.ClientSize = new System.Drawing.Size(246, 349);
+            this.Controls.Add(this.button_wroc);
             this.Controls.Add(this.buttonGoToRegistration);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.textBoxLoginPass);
@@ -101,6 +113,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,5 +127,6 @@
         private System.Windows.Forms.TextBox textBoxLoginPass;
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.Button buttonGoToRegistration;
+        private System.Windows.Forms.Button button_wroc;
     }
 }

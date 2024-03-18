@@ -42,6 +42,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.buttonRegistrate = new System.Windows.Forms.Button();
             this.buttonGoToLogin = new System.Windows.Forms.Button();
+            this.button_wroc = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -159,12 +160,23 @@
             this.buttonGoToLogin.UseVisualStyleBackColor = true;
             this.buttonGoToLogin.Click += new System.EventHandler(this.buttonGoToLogin_Click);
             // 
+            // button_wroc
+            // 
+            this.button_wroc.Location = new System.Drawing.Point(13, 306);
+            this.button_wroc.Name = "button_wroc";
+            this.button_wroc.Size = new System.Drawing.Size(75, 23);
+            this.button_wroc.TabIndex = 15;
+            this.button_wroc.Text = "WRÓĆ";
+            this.button_wroc.UseVisualStyleBackColor = true;
+            this.button_wroc.Click += new System.EventHandler(this.button_wroc_Click);
+            // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Plum;
             this.ClientSize = new System.Drawing.Size(252, 341);
+            this.Controls.Add(this.button_wroc);
             this.Controls.Add(this.buttonGoToLogin);
             this.Controls.Add(this.buttonRegistrate);
             this.Controls.Add(this.label6);
@@ -202,5 +214,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button buttonRegistrate;
         private System.Windows.Forms.Button buttonGoToLogin;
+        private System.Windows.Forms.Button button_wroc;
     }
 }

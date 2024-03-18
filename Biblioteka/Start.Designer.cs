@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonStartToMenu = new System.Windows.Forms.Button();
+            this.button_logowanie = new System.Windows.Forms.Button();
+            this.button_zamknij = new System.Windows.Forms.Button();
+            this.button_przegladaj = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -37,35 +40,64 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label1.Location = new System.Drawing.Point(244, 9);
+            this.label1.Location = new System.Drawing.Point(336, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(318, 86);
             this.label1.TabIndex = 0;
             this.label1.Text = "Biblioteka";
             // 
-            // buttonStartToMenu
+            // button_logowanie
             // 
-            this.buttonStartToMenu.BackColor = System.Drawing.Color.Transparent;
-            this.buttonStartToMenu.ForeColor = System.Drawing.Color.BlueViolet;
-            this.buttonStartToMenu.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.buttonStartToMenu.Location = new System.Drawing.Point(12, 203);
-            this.buttonStartToMenu.Name = "buttonStartToMenu";
-            this.buttonStartToMenu.Size = new System.Drawing.Size(82, 35);
-            this.buttonStartToMenu.TabIndex = 1;
-            this.buttonStartToMenu.Text = "Start";
-            this.buttonStartToMenu.UseVisualStyleBackColor = false;
-            this.buttonStartToMenu.Click += new System.EventHandler(this.buttonStartToMenu_Click);
+            this.button_logowanie.Location = new System.Drawing.Point(786, 106);
+            this.button_logowanie.Name = "button_logowanie";
+            this.button_logowanie.Size = new System.Drawing.Size(159, 48);
+            this.button_logowanie.TabIndex = 2;
+            this.button_logowanie.Text = "ZALOGUJ SIĘ";
+            this.button_logowanie.UseVisualStyleBackColor = true;
+            this.button_logowanie.Click += new System.EventHandler(this.button_logowanie_Click);
             // 
-            // Form1
+            // button_zamknij
+            // 
+            this.button_zamknij.Location = new System.Drawing.Point(12, 423);
+            this.button_zamknij.Name = "button_zamknij";
+            this.button_zamknij.Size = new System.Drawing.Size(159, 50);
+            this.button_zamknij.TabIndex = 3;
+            this.button_zamknij.Text = "ZAMKNIJ APLIKACJE";
+            this.button_zamknij.UseVisualStyleBackColor = true;
+            // 
+            // button_przegladaj
+            // 
+            this.button_przegladaj.Location = new System.Drawing.Point(12, 172);
+            this.button_przegladaj.Name = "button_przegladaj";
+            this.button_przegladaj.Size = new System.Drawing.Size(159, 52);
+            this.button_przegladaj.TabIndex = 4;
+            this.button_przegladaj.Text = "PRZEGLĄDAJ KSIĄŻKI";
+            this.button_przegladaj.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 106);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(159, 51);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "ROBOCZY";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Plum;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.buttonStartToMenu);
+            this.ClientSize = new System.Drawing.Size(957, 485);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button_przegladaj);
+            this.Controls.Add(this.button_zamknij);
+            this.Controls.Add(this.button_logowanie);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "Start";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Start_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -74,7 +106,10 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonStartToMenu;
+        private System.Windows.Forms.Button button_logowanie;
+        private System.Windows.Forms.Button button_zamknij;
+        private System.Windows.Forms.Button button_przegladaj;
+        private System.Windows.Forms.Button button2;
     }
 }
 

@@ -22,5 +22,12 @@ namespace Biblioteka
             Login loginForm = new Login();
             loginForm.Show();
         }
+
+        private void button_wroc_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
     }
 }
