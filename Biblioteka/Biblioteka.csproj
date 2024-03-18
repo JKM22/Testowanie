@@ -98,11 +98,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ListaUser.cs">
+    <Compile Include="DodajUsunWyszukajKlasa.cs" />
+    <Compile Include="DodajUzytkownika.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListaUser.Designer.cs">
-      <DependentUpon>ListaUser.cs</DependentUpon>
+    <Compile Include="DodajUzytkownika.Designer.cs">
+      <DependentUpon>DodajUzytkownika.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -110,12 +111,14 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs">
+    <Compile Include="ModyfikacjaUzytkownika.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <Compile Include="ModyfikacjaUzytkownika.Designer.cs">
+      <DependentUpon>ModyfikacjaUzytkownika.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModyfikacjaUzytkownikaKlasa.cs" />
+    <Compile Include="PolaczenieBazyKlasa.cs" />
     <Compile Include="Registration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,14 +139,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ListaUser.resx">
-      <DependentUpon>ListaUser.cs</DependentUpon>
+    <EmbeddedResource Include="DodajUzytkownika.resx">
+      <DependentUpon>DodajUzytkownika.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <EmbeddedResource Include="ModyfikacjaUzytkownika.resx">
+      <DependentUpon>ModyfikacjaUzytkownika.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>

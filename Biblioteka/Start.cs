@@ -17,12 +17,25 @@ namespace Biblioteka
             InitializeComponent();
         }
 
-        private void buttonStartToMenu_Click(object sender, EventArgs e)
+       
+        private void Start_Load(object sender, EventArgs e)
         {
-            Menu menuForm = new Menu();
-            menuForm.Show();
-            this.Hide();
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Roboczy roboczy = new Roboczy();
+            roboczy.Show();
+            this.Hide();
+        }
+
+        private void button_logowanie_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
     }
+    
 }

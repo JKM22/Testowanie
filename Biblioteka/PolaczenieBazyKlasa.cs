@@ -1,46 +1,16 @@
-﻿using System;
-using System.Data;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Biblioteka
 {
-    public partial class ListaUser : Form
+    internal class PolaczenieBazyKlasa
     {
         private const string ConnectionString = "Server=localhost;Database=biblioteka;Uid=root;Pwd=;";
 
-        public ListaUser()
+        public void PopulateListView(ListView listView)
         {
-            InitializeComponent();
-            SetupListView();
-            PopulateListView();
-        }
-
-        private void SetupListView()
-        {
-            listView1.View = View.Details;
-
-            // Dodaj kolumny dla każdego pola z bazy danych
-            listView1.Columns.Add("ID", 50);
-            listView1.Columns.Add("Imię", 100);
-            listView1.Columns.Add("Nazwisko", 150);
-            listView1.Columns.Add("Email", 200);
-            listView1.Columns.Add("Telefon", 100);
-            listView1.Columns.Add("Miejscowość", 100);
-            listView1.Columns.Add("Kod pocztowy", 80);
-            listView1.Columns.Add("Ulica", 150);
-            listView1.Columns.Add("Numer posesji", 100);
-            listView1.Columns.Add("Numer lokalu", 100);
-            listView1.Columns.Add("PESEL", 100);
-            listView1.Columns.Add("Data urodzenia", 100);
-            listView1.Columns.Add("Płeć", 80);
-            listView1.Columns.Add("Login", 100);
-            listView1.Columns.Add("Hasło", 150);
-        }
-
-        private void PopulateListView()
-        {
-            listView1.Items.Clear();
+            listView.Items.Clear();
 
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
@@ -68,12 +38,12 @@ namespace Biblioteka
                                 item.SubItems.Add(reader["u_nr_posesji"].ToString());
                                 item.SubItems.Add(reader["u_nr_lokalu"].ToString());
                                 item.SubItems.Add(reader["u_pesel"].ToString());
-                                item.SubItems.Add(reader["u_data_ur"].ToString());
+                                item.SubItems.Add(((DateTime)reader["u_data_ur"]).ToString("yyyy-MM-dd"));
                                 item.SubItems.Add(reader["u_plec"].ToString());
                                 item.SubItems.Add(reader["u_login"].ToString());
                                 item.SubItems.Add(reader["u_haslo"].ToString());
 
-                                listView1.Items.Add(item);
+                                listView.Items.Add(item);
                             }
                         }
                     }
@@ -85,5 +55,7 @@ namespace Biblioteka
             }
         }
 
+
     }
 }
+
