@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +17,21 @@ namespace Biblioteka
         public DodajUzytkownika()
         {
             InitializeComponent();
+        }
+        private string CalculateMD5Hash(string input)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] inputBytes = Encoding.ASCII.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("x2"));
+                }
+                return sb.ToString();
+            }
         }
 
         private void button_dodaj_Click(object sender, EventArgs e)
@@ -32,7 +48,7 @@ namespace Biblioteka
             string pesel = textBox_dodajpesel.Text;
             string dataUrodzenia = dateTimePicker_dodajdata.Value.ToString("yyyy-MM-dd");
             string login = textBox_dodajlogin.Text;
-            string haslo = textBox_dodajhaslo.Text;
+            string haslo = CalculateMD5Hash(textBox_dodajhaslo.Text); // Haszowanie hasła
 
 
             string plec = "";
