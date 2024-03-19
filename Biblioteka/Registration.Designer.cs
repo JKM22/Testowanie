@@ -231,9 +231,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxRegistrationLog);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "Registration";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registration";
             this.Load += new System.EventHandler(this.Registration_Load);
             this.ResumeLayout(false);

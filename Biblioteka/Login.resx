@@ -124,7 +124,7 @@
   <data name="kryptonPalette1.ButtonSpecs.FormClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAAd0SU1FB9gFFwoQMFYbc58AAAE9SURBVChTbZFLS8NQEIXzN93Uf+BG8bEQ3Fho
+        DQAACw0B7QfALAAAAAd0SU1FB9gFFwoQMFYbc58AAAE9SURBVChTbZFLS8NQEIXzN93Uf+BG8bEQ3Fho
         KYiYhYZisbU+avFVUQyJxkKK2mi1iihV8TeI5NV7c8ydNHqLHjgkTL4ZzkwUWdlY8QOyB7V/RcDLxhq+
         rh2yeE/rApAFVVXhWedwV6bhFjJkT5uBf2HRN8EQmcbwLR1ebgRBcRyslgerFxCUpuDlR+GbOjWk8dDb
         rNDkUJsAO1ATNzSw0zKCyjzc4hwxgqUGkVdM57sLYMca+EkJzNgCM+vg1h785UlihhrcXCaB9SpBUaeJ
@@ -136,7 +136,7 @@
   <data name="kryptonPalette1.ButtonSpecs.FormMax.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAAd0SU1FB9gFFwoMOye+90oAAAE8SURBVChTbZHrSsNAEIXzmv7RN/BCxQsiiLRB
+        DQAACw0B7QfALAAAAAd0SU1FB9gFFwoMOye+90oAAAE8SURBVChTbZHrSsNAEIXzmv7RN/BCxQsiiLRB
         RVAxIBbx0jaSqthS8U/x1kJiLIqFttIqvoRINkk3Oe6ORrfqgUOWyXeGmV1NlS4kPlD9VftXBByYPTRa
         72R5TuoSUAXDMHB9y5Ce8ZAa/nRmluHG9emfZIhMxqhe+RgbYtBTAbZWOLZXOZanA0yMMFRrPgWS8ZC3
         XqhzejLEvsHJ+SzHUY5jPRNgacEjRrIUkPPK7jtrEQ4FaO1FOLU4yiccZ6UIi1M+MQOBcTGzhI/NiCC7
@@ -159,7 +159,7 @@
   <data name="kryptonPalette1.ButtonSpecs.FormRestore.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAAd0SU1FB9gFFwoMOye+90oAAAE8SURBVChTbZHrSsNAEIXzmv7RN/BCxQsiiLRB
+        DQAACw0B7QfALAAAAAd0SU1FB9gFFwoMOye+90oAAAE8SURBVChTbZHrSsNAEIXzmv7RN/BCxQsiiLRB
         RVAxIBbx0jaSqthS8U/x1kJiLIqFttIqvoRINkk3Oe6ORrfqgUOWyXeGmV1NlS4kPlD9VftXBByYPTRa
         72R5TuoSUAXDMHB9y5Ce8ZAa/nRmluHG9emfZIhMxqhe+RgbYtBTAbZWOLZXOZanA0yMMFRrPgWS8ZC3
         XqhzejLEvsHJ+SzHUY5jPRNgacEjRrIUkPPK7jtrEQ4FaO1FOLU4yiccZ6UIi1M+MQOBcTGzhI/NiCC7

@@ -191,9 +191,11 @@
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.button_wroc);
             this.Controls.Add(this.listView1);
+            this.MinimizeBox = false;
             this.Name = "Roboczy";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Roboczy";
             this.Load += new System.EventHandler(this.Roboczy_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
