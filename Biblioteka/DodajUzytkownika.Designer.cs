@@ -463,9 +463,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_dodaj);
+            this.MaximizeBox = false;
             this.Name = "DodajUzytkownika";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj Użytkownika";
             this.Load += new System.EventHandler(this.DodajUzytkownika_Load);
             this.ResumeLayout(false);

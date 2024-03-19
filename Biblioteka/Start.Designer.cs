@@ -71,6 +71,7 @@
             this.button_zamknij.TabIndex = 3;
             this.button_zamknij.Text = "ZAMKNIJ APLIKACJE";
             this.button_zamknij.UseVisualStyleBackColor = true;
+            this.button_zamknij.Click += new System.EventHandler(this.button_zamknij_Click);
             // 
             // button_przegladaj
             // 
@@ -141,6 +142,7 @@
             this.Controls.Add(this.button_zamknij);
             this.Controls.Add(this.button_logowanie);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "Start";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;

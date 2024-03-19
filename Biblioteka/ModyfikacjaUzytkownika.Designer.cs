@@ -447,9 +447,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label16);
+            this.MaximizeBox = false;
             this.Name = "ModyfikacjaUzytkownika";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modyfikacja Użytkownika";
             this.Load += new System.EventHandler(this.ModyfikacjaUzytkownika_Load);
             this.ResumeLayout(false);

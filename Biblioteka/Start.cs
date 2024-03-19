@@ -37,6 +37,11 @@ namespace Biblioteka
             login.Show();
             this.Hide();
         }
+
+        private void button_zamknij_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
     
 }
