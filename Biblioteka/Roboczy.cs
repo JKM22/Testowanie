@@ -2,10 +2,11 @@
 using System;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace Biblioteka
 {
-    public partial class Roboczy : Form
+    public partial class Roboczy : KryptonForm
     {
         private PolaczenieBazyKlasa polaczenieBazy = new PolaczenieBazyKlasa();
         private DodajUsunWyszukajKlasa dodajUzytkownika = new DodajUsunWyszukajKlasa();

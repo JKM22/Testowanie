@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace Biblioteka
 {
-    public partial class Login : Form
+    public partial class Login : KryptonForm
     {
         public Login()
         {
@@ -35,6 +36,11 @@ namespace Biblioteka
                 start.Show();
                 this.Hide();
             
+        }
+
+        private void textBoxLoginLog_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

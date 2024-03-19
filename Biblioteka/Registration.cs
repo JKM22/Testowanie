@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace Biblioteka
 {
-    public partial class Registration : Form
+    public partial class Registration : KryptonForm
     {
         public Registration()
         {
@@ -28,6 +29,11 @@ namespace Biblioteka
             Login login = new Login();
             login.Show();
             this.Hide();
+        }
+
+        private void Registration_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

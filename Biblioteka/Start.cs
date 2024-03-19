@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace Biblioteka
 {
-    public partial class Start : Form
+    public partial class Start : KryptonForm
     {
         public Start()
         {
