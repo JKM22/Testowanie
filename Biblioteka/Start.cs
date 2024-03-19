@@ -40,7 +40,7 @@ namespace Biblioteka
 
         private void button_zamknij_Click(object sender, EventArgs e)
         {
-            this.Close();
+            System.Windows.Forms.Application.Exit();
         }
     }
     
