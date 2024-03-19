@@ -18,6 +18,12 @@ namespace Biblioteka
                 try
                 {
                     connection.Open();
+                    // Sprawdzenie czy PESEL lub login już istnieje
+                    if (SprawdzCzyPeselIstnieje(pesel) || SprawdzCzyLoginIstnieje(login))
+                    {
+                        throw new Exception("Podany PESEL lub login już istnieje. Wprowadź inne dane.");
+                    }
+
                     string query = "INSERT INTO uzytkownik (u_imie, u_nazwisko, u_email, u_telefon, u_miejscowosc, u_kod, u_ulica, u_nr_posesji, u_nr_lokalu, u_pesel, u_data_ur, u_plec, u_login, u_haslo) VALUES (@imie, @nazwisko, @email, @telefon, @miejscowosc, @kod, @ulica, @nr_posesji, @nr_lokalu, @pesel, @data_ur, @plec, @login, @haslo)";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
@@ -43,6 +49,37 @@ namespace Biblioteka
                 catch (Exception ex)
                 {
                     // Obsługa błędów
+                    MessageBox.Show("Błąd: " + ex.Message);
+                }
+            }
+        }
+
+        private bool SprawdzCzyPeselIstnieje(string pesel)
+        {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                connection.Open();
+                string query = "SELECT COUNT(*) FROM uzytkownik WHERE u_pesel = @pesel";
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@pesel", pesel);
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    return count > 0;
+                }
+            }
+        }
+
+        private bool SprawdzCzyLoginIstnieje(string login)
+        {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                connection.Open();
+                string query = "SELECT COUNT(*) FROM uzytkownik WHERE u_login = @login";
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@login", login);
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    return count > 0;
                 }
             }
         }
