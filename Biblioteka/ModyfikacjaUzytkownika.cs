@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace Biblioteka
 {
-    public partial class ModyfikacjaUzytkownika : Form
+    public partial class ModyfikacjaUzytkownika : KryptonForm
     {
         private const string ConnectionString = "Server=localhost;Database=biblioteka;Uid=root;Pwd=;";
         private DodajUsunWyszukajKlasa dodajUzytkownikaKlasa;

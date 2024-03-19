@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace Biblioteka
 {
-    public partial class DodajUzytkownika : Form
+    public partial class DodajUzytkownika : KryptonForm
     {
         public DodajUzytkownika()
         {

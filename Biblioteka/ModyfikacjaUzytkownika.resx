@@ -117,4 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="kryptonPalette1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="kryptonPalette1.ButtonSpecs.FormClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EAAACxABrSO9dQAAAAd0SU1FB9gFFwoQMFYbc58AAAE9SURBVChTbZFLS8NQEIXzN93Uf+BG8bEQ3Fho
+        KYiYhYZisbU+avFVUQyJxkKK2mi1iihV8TeI5NV7c8ydNHqLHjgkTL4ZzkwUWdlY8QOyB7V/RcDLxhq+
+        rh2yeE/rApAFVVXhWedwV6bhFjJkT5uBf2HRN8EQmcbwLR1ebgRBcRyslgerFxCUpuDlR+GbOjWk8dDb
+        rNDkUJsAO1ATNzSw0zKCyjzc4hwxgqUGkVdM57sLYMca+EkJzNgCM+vg1h785UlihhrcXCaB9SpBUaeJ
+        qHsZu4VgZwmfravfhrdaNV5wFuF6Fqy5D35vI3p9RPTxDN61EZ4dEkMNP0vHi7mLYwiPVpPJ70+Ienfg
+        jgl/ECddWig5qx1Pa5TRN7bB2gb6NzZ853b4rJKoKH6W13kgS5f5A5PSeLLlGIqiKN9T8TcBLFQDSQAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="kryptonPalette1.ButtonSpecs.FormMax.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EAAACxABrSO9dQAAAAd0SU1FB9gFFwoMOye+90oAAAE8SURBVChTbZHrSsNAEIXzmv7RN/BCxQsiiLRB
+        RVAxIBbx0jaSqthS8U/x1kJiLIqFttIqvoRINkk3Oe6ORrfqgUOWyXeGmV1NlS4kPlD9VftXBByYPTRa
+        72R5TuoSUAXDMHB9y5Ce8ZAa/nRmluHG9emfZIhMxqhe+RgbYtBTAbZWOLZXOZanA0yMMFRrPgWS8ZC3
+        XqhzejLEvsHJ+SzHUY5jPRNgacEjRrIUkPPK7jtrEQ4FaO1FOLU4yiccZ6UIi1M+MQOBcTGzhI/NiCC7
+        HuPOFXZiZDcDOM23n4BZfIU+z7Chhzgvc7h2hE47xnNXBMS5UgmJocD30mKxuVEPhd2QOnefYrSaMeqX
+        ERrtwaWl6OrsB4ZCLkSp2EftgsN2+rjv/LpWRVSUj/XYY2TlZv7ApGQ81eoYmqZpH3u8NB5+JGrsAAAA
+        AElFTkSuQmCC
+</value>
+  </data>
+  <data name="kryptonPalette1.ButtonSpecs.FormMin.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAATJJREFUKFNt
+        kUFLw0AQhfPTPZT+AAmiVRAvCnqQelDQalEQpaIVa20wTaPV2KJU2lpjdzeT5+7U6FZ98EiYfG+YmTi2
+        8lr6AdtftX/FQCmI4MdjtnnP6gawBdd1URtJLDYEcmcTL3kC17pmvhmGyWyM6kBipiIwV1NYDwgb2oW6
+        Qv5CoDqUHMjGw0HrCQXdeV4DxZCwdUfYeSCUIsJqU2GlKZgxLAfMvKb7Zouw3SbsafCwSzh+Jpy8EBY8
+        ycxUIHcuGC53JlC9n+J2mMIbpCjeK3ij+CdQDjtY9gXWAoVTDd9oqP2eIop1oE+o9BQzHPheWi82WxfY
+        jRLu/KgD4VuKq1eC/zG9tBGfrhFL7HcVjroJLnuExjBBMP51VktcND+rJSTbuswfmJWNZ9sew3Ec5xNV
+        H02cI+ZPtgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="kryptonPalette1.ButtonSpecs.FormRestore.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EAAACxABrSO9dQAAAAd0SU1FB9gFFwoMOye+90oAAAE8SURBVChTbZHrSsNAEIXzmv7RN/BCxQsiiLRB
+        RVAxIBbx0jaSqthS8U/x1kJiLIqFttIqvoRINkk3Oe6ORrfqgUOWyXeGmV1NlS4kPlD9VftXBByYPTRa
+        72R5TuoSUAXDMHB9y5Ce8ZAa/nRmluHG9emfZIhMxqhe+RgbYtBTAbZWOLZXOZanA0yMMFRrPgWS8ZC3
+        XqhzejLEvsHJ+SzHUY5jPRNgacEjRrIUkPPK7jtrEQ4FaO1FOLU4yiccZ6UIi1M+MQOBcTGzhI/NiCC7
+        HuPOFXZiZDcDOM23n4BZfIU+z7Chhzgvc7h2hE47xnNXBMS5UgmJocD30mKxuVEPhd2QOnefYrSaMeqX
+        ERrtwaWl6OrsB4ZCLkSp2EftgsN2+rjv/LpWRVSUj/XYY2TlZv7ApGQ81eoYmqZpH3u8NB5+JGrsAAAA
+        AElFTkSuQmCC
+</value>
+  </data>
 </root>
