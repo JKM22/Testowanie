@@ -75,7 +75,7 @@
             this.button_dodaj.Location = new System.Drawing.Point(639, 320);
             this.button_dodaj.Name = "button_dodaj";
             this.button_dodaj.Size = new System.Drawing.Size(104, 23);
-            this.button_dodaj.TabIndex = 0;
+            this.button_dodaj.TabIndex = 30;
             this.button_dodaj.Text = "DODAJ";
             this.button_dodaj.UseVisualStyleBackColor = true;
             this.button_dodaj.Click += new System.EventHandler(this.button_dodaj_Click);
@@ -247,7 +247,7 @@
             this.checkBox_kobieta.Location = new System.Drawing.Point(170, 238);
             this.checkBox_kobieta.Name = "checkBox_kobieta";
             this.checkBox_kobieta.Size = new System.Drawing.Size(62, 17);
-            this.checkBox_kobieta.TabIndex = 19;
+            this.checkBox_kobieta.TabIndex = 21;
             this.checkBox_kobieta.Text = "Kobieta";
             this.checkBox_kobieta.UseVisualStyleBackColor = true;
             this.checkBox_kobieta.CheckedChanged += new System.EventHandler(this.checkBox_kobieta_CheckedChanged);
@@ -258,7 +258,7 @@
             this.checkBox_mezczyzna.Location = new System.Drawing.Point(298, 238);
             this.checkBox_mezczyzna.Name = "checkBox_mezczyzna";
             this.checkBox_mezczyzna.Size = new System.Drawing.Size(79, 17);
-            this.checkBox_mezczyzna.TabIndex = 20;
+            this.checkBox_mezczyzna.TabIndex = 22;
             this.checkBox_mezczyzna.Text = "Mężczyzna";
             this.checkBox_mezczyzna.UseVisualStyleBackColor = true;
             this.checkBox_mezczyzna.CheckedChanged += new System.EventHandler(this.checkBox_mezczyzna_CheckedChanged);
@@ -268,14 +268,14 @@
             this.textBox_dodajtelefon.Location = new System.Drawing.Point(170, 180);
             this.textBox_dodajtelefon.Name = "textBox_dodajtelefon";
             this.textBox_dodajtelefon.Size = new System.Drawing.Size(207, 20);
-            this.textBox_dodajtelefon.TabIndex = 21;
+            this.textBox_dodajtelefon.TabIndex = 19;
             // 
             // textBox_dodajemail
             // 
             this.textBox_dodajemail.Location = new System.Drawing.Point(170, 207);
             this.textBox_dodajemail.Name = "textBox_dodajemail";
             this.textBox_dodajemail.Size = new System.Drawing.Size(207, 20);
-            this.textBox_dodajemail.TabIndex = 22;
+            this.textBox_dodajemail.TabIndex = 20;
             // 
             // textBox_miejscowosc
             // 
@@ -289,14 +289,14 @@
             this.textBox_dodajkod.Location = new System.Drawing.Point(536, 126);
             this.textBox_dodajkod.Name = "textBox_dodajkod";
             this.textBox_dodajkod.Size = new System.Drawing.Size(207, 20);
-            this.textBox_dodajkod.TabIndex = 24;
+            this.textBox_dodajkod.TabIndex = 25;
             // 
             // textBox_dodajulice
             // 
             this.textBox_dodajulice.Location = new System.Drawing.Point(536, 98);
             this.textBox_dodajulice.Name = "textBox_dodajulice";
             this.textBox_dodajulice.Size = new System.Drawing.Size(207, 20);
-            this.textBox_dodajulice.TabIndex = 25;
+            this.textBox_dodajulice.TabIndex = 24;
             // 
             // textBox_dodajnumerlokalu
             // 
@@ -373,7 +373,7 @@
             this.dateTimePicker_dodajdata.Location = new System.Drawing.Point(170, 126);
             this.dateTimePicker_dodajdata.Name = "dateTimePicker_dodajdata";
             this.dateTimePicker_dodajdata.Size = new System.Drawing.Size(207, 20);
-            this.dateTimePicker_dodajdata.TabIndex = 35;
+            this.dateTimePicker_dodajdata.TabIndex = 17;
             // 
             // button_anuluj
             // 
