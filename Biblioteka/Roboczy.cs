@@ -26,22 +26,23 @@ namespace Biblioteka
 
             // Dodaj kolumny dla każdego pola z bazy danych
             listView1.Columns.Add("ID", 0);
-            listView1.Columns.Add("Imię", 100);
-            listView1.Columns.Add("Nazwisko", 150);
-            listView1.Columns.Add("Email", 200);
-            listView1.Columns.Add("Telefon", 100);
-            listView1.Columns.Add("Miejscowość", 100);
+            listView1.Columns.Add("Imię", 80);
+            listView1.Columns.Add("Nazwisko", 90);
+            listView1.Columns.Add("Email", 170);
+            listView1.Columns.Add("Telefon", 80);
+            listView1.Columns.Add("Miejscowość", 90);
             listView1.Columns.Add("Kod pocztowy", 80);
-            listView1.Columns.Add("Ulica", 150);
-            listView1.Columns.Add("Numer posesji", 100);
-            listView1.Columns.Add("Numer lokalu", 100);
-            listView1.Columns.Add("PESEL", 100);
-            listView1.Columns.Add("Data urodzenia", 100);
+            listView1.Columns.Add("Ulica", 80);
+            listView1.Columns.Add("Numer posesji", 80);
+            listView1.Columns.Add("Numer lokalu", 80);
+            listView1.Columns.Add("PESEL", 80);
+            listView1.Columns.Add("Data urodzenia", 90);
             listView1.Columns.Add("Płeć", 80);
             listView1.Columns.Add("Login", 100);
             listView1.Columns.Add("Hasło", 0);
 
             //listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            
 
         }
 
@@ -65,7 +66,7 @@ namespace Biblioteka
         private void Roboczy_Load(object sender, EventArgs e)
         {
             polaczenieBazy.PopulateListView(listView1);
-            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            //listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         private void buttonGoToModUser_Click(object sender, EventArgs e)
