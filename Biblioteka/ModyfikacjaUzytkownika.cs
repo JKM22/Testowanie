@@ -31,6 +31,7 @@ namespace Biblioteka
             textBox_dodajlogin.Text = login;
             textBox_dodajhaslo.Text = haslo;
 
+
             // Inicjalizacja obiektów
             dodajUzytkownikaKlasa = new DodajUsunWyszukajKlasa();
             modyfikacjaUzytkownikaKlasa = new ModyfikacjaUzytkownikaKlasa();
@@ -59,6 +60,9 @@ namespace Biblioteka
             // Walidacja PESEL
             if (!IsValidPesel(pesel, plec))
                 errors.Add("Nieprawidłowy numer PESEL.");
+
+            if (!IsValidPhoneNumber(telefon))
+                errors.Add("Nieprawidłowy numer telefonu.");
 
             // Walidacja e-mail
             if (!IsValidEmail(email))
@@ -152,6 +156,23 @@ namespace Biblioteka
 
             int maxDay = DateTime.DaysInMonth(year, month);
             return day >= 1 && day <= maxDay;
+        }
+
+        private bool IsValidPhoneNumber(string phoneNumber)
+        {
+            // Sprawdzenie czy numer telefonu ma dokładnie 9 cyfr
+            if (phoneNumber.Length != 9)
+                return false;
+
+            // Sprawdzenie czy numer telefonu składa się tylko z cyfr
+            foreach (char c in phoneNumber)
+            {
+                if (!char.IsDigit(c))
+                    return false;
+            }
+
+            // Numer telefonu jest poprawny
+            return true;
         }
 
         private bool IsValidEmail(string email)
