@@ -41,6 +41,8 @@ namespace Biblioteka
                                 item.SubItems.Add(reader["u_pesel"].ToString());
                                 item.SubItems.Add(((DateTime)reader["u_data_ur"]).ToString("yyyy-MM-dd"));
                                 item.SubItems.Add(reader["u_plec"].ToString());
+                                item.SubItems.Add(reader["id_uzytkownik"].ToString());
+                                item.SubItems.Add(reader["u_haslo"].ToString());
 
                                 listView.Items.Add(item);
                             }
