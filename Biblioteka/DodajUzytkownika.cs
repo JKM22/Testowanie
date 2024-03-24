@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
+using Mysqlx;
 
 namespace Biblioteka
 {
@@ -64,12 +65,17 @@ namespace Biblioteka
             
 
             DodajUsunWyszukajKlasa dodajUzytkownikaKlasa = new DodajUsunWyszukajKlasa();
-
+            //List<string> errors = new List<string>();
             if (!IsValidPesel(pesel, plec))
             {
                 MessageBox.Show("Nieprawidłowy numer PESEL.");
                 return;
             }
+
+            if (!IsValidPhoneNumber(telefon))
+            { 
+                MessageBox.Show("Nieprawidłowy numer telefonu.");
+            return;}
 
             // Walidacja e-mail
             if (!IsValidEmail(email))
@@ -102,7 +108,22 @@ namespace Biblioteka
                 MessageBox.Show("Nie udało się dodać użytkownika do bazy danych. Błąd: " + ex.Message);
             }
         }
+        private bool IsValidPhoneNumber(string phoneNumber)
+        {
+            // Sprawdzenie czy numer telefonu ma dokładnie 9 cyfr
+            if (phoneNumber.Length != 9)
+                return false;
 
+            // Sprawdzenie czy numer telefonu składa się tylko z cyfr
+            foreach (char c in phoneNumber)
+            {
+                if (!char.IsDigit(c))
+                    return false;
+            }
+
+            // Numer telefonu jest poprawny
+            return true;
+        }
         private bool IsValidPesel(string pesel, string plec)
         {
             // Sprawdzenie długości
