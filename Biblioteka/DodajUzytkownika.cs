@@ -144,7 +144,9 @@ namespace Biblioteka
 
             int genderDigit = int.Parse(pesel[9].ToString());
             bool isFemale = genderDigit % 2 == 0;
-            bool isMale = !isFemale;
+            bool isMale = genderDigit % 2 != 0;
+            Console.WriteLine(isMale);
+            Console.WriteLine(isFemale);
             if ((isMale && plec != "Mężczyzna") || (isFemale && plec != "Kobieta"))
                 return false; // Niezgodność płci
 
