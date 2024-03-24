@@ -122,6 +122,8 @@ namespace Biblioteka
             return true;
         }
 
+
+
         public bool UsunUzytkownikaZBazy(string id_uzytkownik)
         {
             try
@@ -213,5 +215,27 @@ namespace Biblioteka
             }
         }
 
+        internal bool WalidujDane(string imie, string nazwisko, string email, string telefon, string miejscowosc, string kodPocztowy, string nrPosesji, string pesel, string dataUrodzenia, string login, string haslo)
+        {
+            if (string.IsNullOrWhiteSpace(imie) || string.IsNullOrWhiteSpace(nazwisko) || string.IsNullOrWhiteSpace(email) ||
+        string.IsNullOrWhiteSpace(telefon) || string.IsNullOrWhiteSpace(miejscowosc) || string.IsNullOrWhiteSpace(kodPocztowy) ||
+        string.IsNullOrWhiteSpace(nrPosesji) || string.IsNullOrWhiteSpace(pesel) || string.IsNullOrWhiteSpace(dataUrodzenia) ||
+        string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(haslo))
+            {
+                return false;
+            }
+
+            if (telefon.Length != 9)
+            {
+                return false;
+            }
+
+            if (kodPocztowy.Length < 5 || kodPocztowy.Length > 10)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

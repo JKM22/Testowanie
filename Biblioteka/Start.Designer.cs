@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
             this.label1 = new System.Windows.Forms.Label();
-            this.button_logowanie = new System.Windows.Forms.Button();
-            this.button_zamknij = new System.Windows.Forms.Button();
-            this.button_przegladaj = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
+            this.zaloguj = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.uzytkownicy = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.uprawnienia = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.zamknij = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.SuspendLayout();
             // 
             // label1
@@ -49,59 +49,19 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Biblioteka";
             // 
-            // button_logowanie
-            // 
-            this.button_logowanie.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_logowanie.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button_logowanie.Location = new System.Drawing.Point(663, 108);
-            this.button_logowanie.Name = "button_logowanie";
-            this.button_logowanie.Size = new System.Drawing.Size(159, 48);
-            this.button_logowanie.TabIndex = 2;
-            this.button_logowanie.Text = "ZALOGUJ SIĘ";
-            this.button_logowanie.UseVisualStyleBackColor = true;
-            this.button_logowanie.Click += new System.EventHandler(this.button_logowanie_Click);
-            // 
-            // button_zamknij
-            // 
-            this.button_zamknij.Font = new System.Drawing.Font("Roboto Slab Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_zamknij.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button_zamknij.Location = new System.Drawing.Point(663, 393);
-            this.button_zamknij.Name = "button_zamknij";
-            this.button_zamknij.Size = new System.Drawing.Size(159, 56);
-            this.button_zamknij.TabIndex = 3;
-            this.button_zamknij.Text = "ZAMKNIJ APLIKACJE";
-            this.button_zamknij.UseVisualStyleBackColor = true;
-            this.button_zamknij.Click += new System.EventHandler(this.button_zamknij_Click);
-            // 
-            // button_przegladaj
-            // 
-            this.button_przegladaj.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_przegladaj.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button_przegladaj.Location = new System.Drawing.Point(663, 174);
-            this.button_przegladaj.Name = "button_przegladaj";
-            this.button_przegladaj.Size = new System.Drawing.Size(159, 48);
-            this.button_przegladaj.TabIndex = 4;
-            this.button_przegladaj.Text = "PRZEGLĄDAJ KSIĄŻKI";
-            this.button_przegladaj.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button2.Location = new System.Drawing.Point(663, 239);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 51);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "ROBOCZY";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // kryptonPalette1
             // 
             this.kryptonPalette1.ButtonSpecs.FormClose.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormClose.Image")));
             this.kryptonPalette1.ButtonSpecs.FormMax.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormMax.Image")));
             this.kryptonPalette1.ButtonSpecs.FormMin.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormMin.Image")));
             this.kryptonPalette1.ButtonSpecs.FormRestore.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormRestore.Image")));
+            this.kryptonPalette1.ButtonStyles.ButtonCommand.StateCommon.Back.Color1 = System.Drawing.Color.Gray;
+            this.kryptonPalette1.ButtonStyles.ButtonCommand.StateCommon.Back.Color2 = System.Drawing.Color.Silver;
+            this.kryptonPalette1.ButtonStyles.ButtonCommon.StateCommon.Back.Color1 = System.Drawing.Color.Silver;
+            this.kryptonPalette1.ButtonStyles.ButtonCommon.StateCommon.Back.Color2 = System.Drawing.Color.Silver;
+            this.kryptonPalette1.ButtonStyles.ButtonCommon.StateCommon.Back.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.None;
+            this.kryptonPalette1.ButtonStyles.ButtonCommon.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.Black;
+            this.kryptonPalette1.ButtonStyles.ButtonCommon.StateCommon.Content.ShortText.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -131,16 +91,59 @@
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.ButtonEdgeInset = 10;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             // 
+            // zaloguj
+            // 
+            this.zaloguj.Location = new System.Drawing.Point(663, 108);
+            this.zaloguj.Name = "zaloguj";
+            this.zaloguj.Palette = this.kryptonPalette1;
+            this.zaloguj.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.zaloguj.Size = new System.Drawing.Size(159, 48);
+            this.zaloguj.TabIndex = 6;
+            this.zaloguj.Values.Text = "ZALOGUJ SIĘ";
+            this.zaloguj.Click += new System.EventHandler(this.zaloguj_Click);
+            // 
+            // uzytkownicy
+            // 
+            this.uzytkownicy.Location = new System.Drawing.Point(663, 171);
+            this.uzytkownicy.Name = "uzytkownicy";
+            this.uzytkownicy.Palette = this.kryptonPalette1;
+            this.uzytkownicy.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.uzytkownicy.Size = new System.Drawing.Size(159, 48);
+            this.uzytkownicy.TabIndex = 7;
+            this.uzytkownicy.Values.Text = "UŻYTKOWNICY";
+            this.uzytkownicy.Click += new System.EventHandler(this.uzytkownicy_Click);
+            // 
+            // uprawnienia
+            // 
+            this.uprawnienia.Location = new System.Drawing.Point(663, 234);
+            this.uprawnienia.Name = "uprawnienia";
+            this.uprawnienia.Palette = this.kryptonPalette1;
+            this.uprawnienia.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.uprawnienia.Size = new System.Drawing.Size(159, 48);
+            this.uprawnienia.TabIndex = 8;
+            this.uprawnienia.Values.Text = "UPRAWNIENIA";
+            // 
+            // zamknij
+            // 
+            this.zamknij.Location = new System.Drawing.Point(663, 401);
+            this.zamknij.Name = "zamknij";
+            this.zamknij.Palette = this.kryptonPalette1;
+            this.zamknij.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.zamknij.Size = new System.Drawing.Size(159, 48);
+            this.zamknij.TabIndex = 9;
+            this.zamknij.Values.Text = "ZAMKNIJ APLIKACJĘ";
+            this.zamknij.Click += new System.EventHandler(this.zamknij_Click);
+            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(834, 461);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button_przegladaj);
-            this.Controls.Add(this.button_zamknij);
-            this.Controls.Add(this.button_logowanie);
+            this.Controls.Add(this.zamknij);
+            this.Controls.Add(this.uprawnienia);
+            this.Controls.Add(this.uzytkownicy);
+            this.Controls.Add(this.zaloguj);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.Name = "Start";
@@ -157,11 +160,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button_logowanie;
-        private System.Windows.Forms.Button button_zamknij;
-        private System.Windows.Forms.Button button_przegladaj;
-        private System.Windows.Forms.Button button2;
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton zaloguj;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton uzytkownicy;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton uprawnienia;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton zamknij;
     }
 }
 
