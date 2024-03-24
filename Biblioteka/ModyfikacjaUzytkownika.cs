@@ -51,7 +51,7 @@ namespace Biblioteka
             dodajUzytkownikaKlasa = new DodajUsunWyszukajKlasa();
             modyfikacjaUzytkownikaKlasa = new ModyfikacjaUzytkownikaKlasa();
 
-
+            /*
             if (!IsValidPesel(pesel, plec))
             {
                 MessageBox.Show("Nieprawidłowy numer PESEL.");
@@ -89,8 +89,9 @@ namespace Biblioteka
             {
                 MessageBox.Show("Nie udało się zaktualizować danych użytkownika. Błąd: " + ex.Message);
             }
+            */
         }
-
+        /*
         private bool IsValidPesel(string pesel, string plec)
         {
             // Sprawdzenie długości
@@ -142,7 +143,8 @@ namespace Biblioteka
 
             return true;
         }
-
+        */
+        /*
         private bool IsValidDate(int year, int month, int day)
         {
             if (year < 1800 || year > 2299 || month < 1 || month > 12)
@@ -205,6 +207,7 @@ namespace Biblioteka
             // Jeśli login jest unikalny, zwróć true, w przeciwnym razie false
             return true;
         }
+        */
 
         private void button_zapisz_Click(object sender, EventArgs e)
         {

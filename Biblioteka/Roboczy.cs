@@ -25,7 +25,7 @@ namespace Biblioteka
             listView1.MultiSelect = false;
 
             // Dodaj kolumny dla każdego pola z bazy danych
-            listView1.Columns.Add("login", 50);
+            listView1.Columns.Add("ID", 0);
             listView1.Columns.Add("Imię", 100);
             listView1.Columns.Add("Nazwisko", 150);
             listView1.Columns.Add("Email", 200);
@@ -38,8 +38,10 @@ namespace Biblioteka
             listView1.Columns.Add("PESEL", 100);
             listView1.Columns.Add("Data urodzenia", 100);
             listView1.Columns.Add("Płeć", 80);
+            listView1.Columns.Add("Login", 100);
+            listView1.Columns.Add("Hasło", 0);
 
-            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            //listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
 
         }
 

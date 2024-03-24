@@ -28,7 +28,7 @@ namespace Biblioteka
                                
 
                                 // Dodaj wartości dla każdego pola z bazy danych
-                                ListViewItem item = new ListViewItem(reader["u_login"].ToString());
+                                ListViewItem item = new ListViewItem(reader["id_uzytkownik"].ToString());
                                 item.SubItems.Add(reader["u_imie"].ToString());
                                 item.SubItems.Add(reader["u_nazwisko"].ToString());
                                 item.SubItems.Add(reader["u_email"].ToString());
@@ -41,7 +41,7 @@ namespace Biblioteka
                                 item.SubItems.Add(reader["u_pesel"].ToString());
                                 item.SubItems.Add(((DateTime)reader["u_data_ur"]).ToString("yyyy-MM-dd"));
                                 item.SubItems.Add(reader["u_plec"].ToString());
-                                item.SubItems.Add(reader["id_uzytkownik"].ToString());
+                                item.SubItems.Add(reader["u_login"].ToString());
                                 item.SubItems.Add(reader["u_haslo"].ToString());
 
                                 listView.Items.Add(item);
