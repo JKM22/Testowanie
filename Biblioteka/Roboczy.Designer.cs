@@ -70,7 +70,7 @@
             // button_wyszukaj
             // 
             this.button_wyszukaj.Font = new System.Drawing.Font("Roboto Medium", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_wyszukaj.Location = new System.Drawing.Point(755, 18);
+            this.button_wyszukaj.Location = new System.Drawing.Point(1020, 19);
             this.button_wyszukaj.Name = "button_wyszukaj";
             this.button_wyszukaj.Size = new System.Drawing.Size(85, 20);
             this.button_wyszukaj.TabIndex = 2;
@@ -95,14 +95,14 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(0, 61);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(947, 462);
+            this.listView1.Size = new System.Drawing.Size(1196, 462);
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // button_wroc
             // 
             this.button_wroc.Font = new System.Drawing.Font("Roboto Medium", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_wroc.Location = new System.Drawing.Point(869, 529);
+            this.button_wroc.Location = new System.Drawing.Point(1118, 529);
             this.button_wroc.Name = "button_wroc";
             this.button_wroc.Size = new System.Drawing.Size(78, 22);
             this.button_wroc.TabIndex = 5;
@@ -112,7 +112,7 @@
             // 
             // textBox_wyszukaj
             // 
-            this.textBox_wyszukaj.Location = new System.Drawing.Point(568, 18);
+            this.textBox_wyszukaj.Location = new System.Drawing.Point(833, 19);
             this.textBox_wyszukaj.Name = "textBox_wyszukaj";
             this.textBox_wyszukaj.Size = new System.Drawing.Size(181, 20);
             this.textBox_wyszukaj.TabIndex = 6;
@@ -120,7 +120,7 @@
             // button_odwiez
             // 
             this.button_odwiez.Font = new System.Drawing.Font("Roboto Medium", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_odwiez.Location = new System.Drawing.Point(846, 18);
+            this.button_odwiez.Location = new System.Drawing.Point(1111, 19);
             this.button_odwiez.Name = "button_odwiez";
             this.button_odwiez.Size = new System.Drawing.Size(85, 19);
             this.button_odwiez.TabIndex = 7;
@@ -179,7 +179,7 @@
             this.kryptonPanel1.Palette = this.kryptonPalette1;
             this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.PanelCustom1;
-            this.kryptonPanel1.Size = new System.Drawing.Size(947, 55);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1208, 55);
             this.kryptonPanel1.TabIndex = 8;
             // 
             // Roboczy
@@ -187,7 +187,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.ClientSize = new System.Drawing.Size(947, 552);
+            this.ClientSize = new System.Drawing.Size(1208, 557);
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.button_wroc);
             this.Controls.Add(this.listView1);

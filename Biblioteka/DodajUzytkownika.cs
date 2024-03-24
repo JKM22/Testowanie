@@ -131,6 +131,7 @@ namespace Biblioteka
             checkBox_mezczyzna.Checked = false;
 
         }
+
     }
     }
 
