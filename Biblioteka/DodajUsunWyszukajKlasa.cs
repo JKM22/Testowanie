@@ -19,9 +19,14 @@ namespace Biblioteka
                 {
                     connection.Open();
                     // Sprawdzenie czy PESEL lub login już istnieje
-                    if (SprawdzCzyPeselIstnieje(pesel) || SprawdzCzyLoginIstnieje(login))
+                    if (SprawdzCzyPeselIstnieje(pesel))
                     {
-                        throw new Exception("Podany PESEL lub login już istnieje. Wprowadź inne dane.");
+                        throw new Exception("Podany PESEL już istnieje. Wprowadź inne dane.");
+                    }
+
+                    if (SprawdzCzyLoginIstnieje(login))
+                    {
+                        throw new Exception("Podany login już istnieje. Wprowadź inne dane.");
                     }
 
                     string query = "INSERT INTO uzytkownik (u_imie, u_nazwisko, u_email, u_telefon, u_miejscowosc, u_kod, u_ulica, u_nr_posesji, u_nr_lokalu, u_pesel, u_data_ur, u_plec, u_login, u_haslo) VALUES (@imie, @nazwisko, @email, @telefon, @miejscowosc, @kod, @ulica, @nr_posesji, @nr_lokalu, @pesel, @data_ur, @plec, @login, @haslo)";
@@ -49,7 +54,7 @@ namespace Biblioteka
                 catch (Exception ex)
                 {
                     // Obsługa błędów
-                    MessageBox.Show("Błąd: " + ex.Message);
+                    throw ex; // Rzucenie wyjątku dalej, aby można było go obsłużyć w innym miejscu
                 }
             }
         }
