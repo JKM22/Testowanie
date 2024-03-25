@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2024 at 10:34 AM
+-- Generation Time: Mar 25, 2024 at 05:50 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.0.30
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bilbioteka`
+-- Database: `biblioteka`
 --
 
 -- --------------------------------------------------------
@@ -121,10 +121,10 @@ CREATE TABLE `uzytkownik` (
 -- Dumping data for table `uzytkownik`
 --
 
-INSERT INTO `uzytkownik` (`id_uzytkownik`, `u_imie`, `u_nazwisko`, `u_email`, `u_telefon`, `u_miejscowosc`, `u_kod`, `u_ulica`, `u_nr_posesji`, `u_nr_lokalu`, `u_pesel`, `u_data_ur`, `u_plec`, `u_login`, `u_haslo`, `id_uprawnienia`) VALUES
-(1, 'Jakub', 'Kowalski', 'mail@mail.com', 123456789, 'Rogów', '00-001', 'ul. Wielka', '33', NULL, '73110743682', '1994-03-09', 'Mezczyzna', 'kubakowal123', 'db3fc40e6439d4d972870252ccc72f62', NULL),
-(2, 'Joanna', 'Wilk', 'mail123@mail.com', 987654321, 'Warszawa', '00-002', 'ul. Łódzka', '14', '21', '00220879196', '2004-08-20', 'Kobieta', 'asiaaisa', '241190129fd7bab5b857c600dac6e2c5', NULL),
-(3, 'Mariusz', 'Pudzianowski', 'pudzian@mail.com', 123123123, 'Poznań', '00-003', 'ul. Mała', '12', NULL, '87080361313', '1997-02-07', 'Mężczyzna', 'pudzianator', '7c8a7c5f8338b02d82840d64e23e47e6', NULL);
+INSERT INTO `uzytkownik` (`id_uzytkownik`, `u_imie`, `u_nazwisko`, `u_email`, `u_telefon`, `u_miejscowosc`, `u_kod`, `u_ulica`, `u_nr_posesji`, `u_nr_lokalu`, `u_pesel`, `u_data_ur`, `u_plec`, `u_login`, `u_haslo`, `id_uzytkownik_uprawnienia`) VALUES
+(1, 'Jakub', 'Kowalski', 'mail@mail.com', 123456789, 'Rogów', '00-001', 'ul. Wielka', '33', '', '73110743682', '1994-03-09', 'Kobieta', 'kubakowal123', 'db3fc40e6439d4d972870252ccc72f62', 1),
+(2, 'Joanna', 'Wilk', 'mail123@mail.com', 987654321, 'Warszawa', '00-002', 'ul. Łódzka', '14', '21', '00220879196', '2004-08-20', 'Kobieta', 'asiaaisa', '241190129fd7bab5b857c600dac6e2c5', 2),
+(3, 'Mariusz', 'Pudzianowski', 'pudzian@mail.com', 123123123, 'Poznań', '00-003', 'ul. Mała', '12', NULL, '87080361313', '1997-02-07', 'Mężczyzna', 'pudzianator', '7c8a7c5f8338b02d82840d64e23e47e6', 1);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -163,7 +163,7 @@ ALTER TABLE `uprawnienia`
 --
 ALTER TABLE `uzytkownik`
   ADD PRIMARY KEY (`id_uzytkownik`),
-  ADD KEY `id_uprawnienia` (`id_uprawnienia`);
+  ADD KEY `id_uprawnienia` (`id_uzytkownik_uprawnienia`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -208,7 +208,7 @@ ALTER TABLE `ksiazka`
 -- Constraints for table `uzytkownik`
 --
 ALTER TABLE `uzytkownik`
-  ADD CONSTRAINT `uzytkownik_ibfk_1` FOREIGN KEY (`id_uprawnienia`) REFERENCES `uprawnienia` (`id_uprawnienia`);
+  ADD CONSTRAINT `uzytkownik_ibfk_1` FOREIGN KEY (`id_uzytkownik_uprawnienia`) REFERENCES `uprawnienia` (`id_uprawnienia`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
