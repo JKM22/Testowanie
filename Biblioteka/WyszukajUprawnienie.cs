@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Biblioteka
 {
@@ -19,9 +20,9 @@ namespace Biblioteka
         public WyszukajUprawnienie()
         {
             InitializeComponent();
-           
+
         }
-        
+
         private void button_Wroc_Click(object sender, EventArgs e)
         {
             Uprawnienia uprawnienia = new Uprawnienia();
@@ -43,19 +44,20 @@ namespace Biblioteka
             wybraneUprawnienia.Clear(); // Usunięcie poprzednich wybranych opcji
             wybraneUprawnienia.Add(selectedPermission);
 
-           
-
             WyswietlWynikiWListView();
         }
 
         private void WyswietlWynikiWListView()
         {
             listView1.Items.Clear();
+            listView1.Columns.Add("Login", 100);
+            listView1.Columns.Add("Email", 200);
+
 
             foreach (string uprawnienia in wybraneUprawnienia)
             {
                 string queryUsers = $@"
-            SELECT u.u_login, u.u_email 
+            SELECT u.u_email, u.u_login
             FROM uzytkownik u
             JOIN uprawnienia up ON u.id_uzytkownik_uprawnienia = up.id_uprawnienia
             WHERE up.uprawnienia = '{uprawnienia}'
@@ -75,8 +77,11 @@ namespace Biblioteka
                             {
                                 while (reader.Read())
                                 {
+                                    // Tworzenie pojedynczego elementu ListViewItem z dwoma podelementami
                                     ListViewItem item = new ListViewItem(reader["u_login"].ToString());
-                                    item.SubItems.Add(reader["u_email"].ToString()); // Dodaj drugi podpunkt z adresem e-mail
+                                    item.SubItems.Add(reader["u_email"].ToString());
+
+                                    // Dodanie pojedynczego elementu do ListView
                                     listView1.Items.Add(item);
                                     isAnyResultFound = true; // Ustaw flagę na true, gdy znajdzie wyniki
                                 }
