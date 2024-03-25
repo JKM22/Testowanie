@@ -114,7 +114,7 @@ CREATE TABLE `uzytkownik` (
   `u_plec` varchar(10) NOT NULL,
   `u_login` varchar(100) NOT NULL,
   `u_haslo` varchar(100) NOT NULL,
-  `id_uprawnienia` int(11) DEFAULT NULL
+  `id_uzytkownik_uprawnienia` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
