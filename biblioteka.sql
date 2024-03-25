@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2024 at 04:07 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Mar 25, 2024 at 10:34 AM
+-- Wersja serwera: 10.4.32-MariaDB
+-- Wersja PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `biblioteka`
+-- Database: `bilbioteka`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `autor`
+-- Struktura tabeli dla tabeli `autor`
 --
 
 CREATE TABLE `autor` (
@@ -36,7 +36,7 @@ CREATE TABLE `autor` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gatunek`
+-- Struktura tabeli dla tabeli `gatunek`
 --
 
 CREATE TABLE `gatunek` (
@@ -61,7 +61,7 @@ INSERT INTO `gatunek` (`id_gatunek`, `nazwa`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ksiazka`
+-- Struktura tabeli dla tabeli `ksiazka`
 --
 
 CREATE TABLE `ksiazka` (
@@ -75,7 +75,27 @@ CREATE TABLE `ksiazka` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `uzytkownik`
+-- Struktura tabeli dla tabeli `uprawnienia`
+--
+
+CREATE TABLE `uprawnienia` (
+  `id_uprawnienia` int(11) NOT NULL,
+  `uprawnienia` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `uprawnienia`
+--
+
+INSERT INTO `uprawnienia` (`id_uprawnienia`, `uprawnienia`) VALUES
+(1, 'Administrator'),
+(2, 'Użytkownik zalogowany'),
+(3, 'Użytkownik niezalogowany');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `uzytkownik`
 --
 
 CREATE TABLE `uzytkownik` (
@@ -93,36 +113,37 @@ CREATE TABLE `uzytkownik` (
   `u_data_ur` date NOT NULL,
   `u_plec` varchar(10) NOT NULL,
   `u_login` varchar(100) NOT NULL,
-  `u_haslo` varchar(100) NOT NULL
+  `u_haslo` varchar(100) NOT NULL,
+  `id_uprawnienia` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Dumping data for table `uzytkownik`
 --
 
-INSERT INTO `uzytkownik` (`id_uzytkownik`, `u_imie`, `u_nazwisko`, `u_email`, `u_telefon`, `u_miejscowosc`, `u_kod`, `u_ulica`, `u_nr_posesji`, `u_nr_lokalu`, `u_pesel`, `u_data_ur`, `u_plec`, `u_login`, `u_haslo`) VALUES
-(1, 'Jakub', 'Kowalski', 'mail@mail.com', 123456789, 'Rogów', '00-001', 'ul. Wielka', '33', NULL, '73110743682', '1994-03-09', 'Mezczyzna', 'kubakowal123', 'db3fc40e6439d4d972870252ccc72f62'),
-(2, 'Joanna', 'Wilk', 'mail123@mail.com', 987654321, 'Warszawa', '00-002', 'ul. Łódzka', '14', '21', '00220879196', '2004-08-20', 'Kobieta', 'asiaaisa', '241190129fd7bab5b857c600dac6e2c5'),
-(3, 'Mariusz', 'Pudzianowski', 'pudzian@mail.com', 123123123, 'Poznań', '00-003', 'ul. Mała', '12', NULL, '87080361313', '1997-02-07', 'Mężczyzna', 'pudzianator', '7c8a7c5f8338b02d82840d64e23e47e6');
+INSERT INTO `uzytkownik` (`id_uzytkownik`, `u_imie`, `u_nazwisko`, `u_email`, `u_telefon`, `u_miejscowosc`, `u_kod`, `u_ulica`, `u_nr_posesji`, `u_nr_lokalu`, `u_pesel`, `u_data_ur`, `u_plec`, `u_login`, `u_haslo`, `id_uprawnienia`) VALUES
+(1, 'Jakub', 'Kowalski', 'mail@mail.com', 123456789, 'Rogów', '00-001', 'ul. Wielka', '33', NULL, '73110743682', '1994-03-09', 'Mezczyzna', 'kubakowal123', 'db3fc40e6439d4d972870252ccc72f62', NULL),
+(2, 'Joanna', 'Wilk', 'mail123@mail.com', 987654321, 'Warszawa', '00-002', 'ul. Łódzka', '14', '21', '00220879196', '2004-08-20', 'Kobieta', 'asiaaisa', '241190129fd7bab5b857c600dac6e2c5', NULL),
+(3, 'Mariusz', 'Pudzianowski', 'pudzian@mail.com', 123123123, 'Poznań', '00-003', 'ul. Mała', '12', NULL, '87080361313', '1997-02-07', 'Mężczyzna', 'pudzianator', '7c8a7c5f8338b02d82840d64e23e47e6', NULL);
 
 --
--- Indexes for dumped tables
+-- Indeksy dla zrzutów tabel
 --
 
 --
--- Indexes for table `autor`
+-- Indeksy dla tabeli `autor`
 --
 ALTER TABLE `autor`
   ADD PRIMARY KEY (`id_autor`);
 
 --
--- Indexes for table `gatunek`
+-- Indeksy dla tabeli `gatunek`
 --
 ALTER TABLE `gatunek`
   ADD PRIMARY KEY (`id_gatunek`);
 
 --
--- Indexes for table `ksiazka`
+-- Indeksy dla tabeli `ksiazka`
 --
 ALTER TABLE `ksiazka`
   ADD PRIMARY KEY (`id_ksiazka`),
@@ -132,10 +153,17 @@ ALTER TABLE `ksiazka`
   ADD KEY `autor` (`autor`);
 
 --
--- Indexes for table `uzytkownik`
+-- Indeksy dla tabeli `uprawnienia`
+--
+ALTER TABLE `uprawnienia`
+  ADD PRIMARY KEY (`id_uprawnienia`);
+
+--
+-- Indeksy dla tabeli `uzytkownik`
 --
 ALTER TABLE `uzytkownik`
-  ADD PRIMARY KEY (`id_uzytkownik`);
+  ADD PRIMARY KEY (`id_uzytkownik`),
+  ADD KEY `id_uprawnienia` (`id_uprawnienia`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -175,6 +203,12 @@ ALTER TABLE `uzytkownik`
 ALTER TABLE `ksiazka`
   ADD CONSTRAINT `ksiazka_ibfk_1` FOREIGN KEY (`gatunek`) REFERENCES `gatunek` (`id_gatunek`),
   ADD CONSTRAINT `ksiazka_ibfk_2` FOREIGN KEY (`autor`) REFERENCES `autor` (`id_autor`);
+
+--
+-- Constraints for table `uzytkownik`
+--
+ALTER TABLE `uzytkownik`
+  ADD CONSTRAINT `uzytkownik_ibfk_1` FOREIGN KEY (`id_uprawnienia`) REFERENCES `uprawnienia` (`id_uprawnienia`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
