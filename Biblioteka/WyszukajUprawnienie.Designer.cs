@@ -75,7 +75,7 @@
             this.listView1.Size = new System.Drawing.Size(491, 173);
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
+            this.listView1.View = System.Windows.Forms.View.Tile;
             // 
             // WyszukajUprawnienie
             // 
