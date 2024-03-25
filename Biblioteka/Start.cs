@@ -44,6 +44,13 @@ namespace Biblioteka
         {
             System.Windows.Forms.Application.Exit();
         }
+
+        private void uprawnienia_Click(object sender, EventArgs e)
+        {
+            Uprawnienia uprawnienia=new Uprawnienia();
+            uprawnienia.Show();
+            this.Hide();
+        }
     }
     
 }
