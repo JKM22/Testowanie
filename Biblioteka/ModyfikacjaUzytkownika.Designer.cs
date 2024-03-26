@@ -65,6 +65,8 @@
             this.button_zapisz = new System.Windows.Forms.Button();
             this.button_wroc = new System.Windows.Forms.Button();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label16
@@ -407,12 +409,32 @@
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.ButtonEdgeInset = 10;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(772, 106);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(63, 13);
+            this.label18.TabIndex = 68;
+            this.label18.Text = "*opcjonalne";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(772, 164);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(63, 13);
+            this.label19.TabIndex = 69;
+            this.label19.Text = "*opcjonalne";
+            // 
             // ModyfikacjaUzytkownika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(898, 450);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.button_wroc);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label15);
@@ -496,5 +518,7 @@
         private System.Windows.Forms.Button button_zapisz;
         private System.Windows.Forms.Button button_wroc;
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
     }
 }
