@@ -16,6 +16,8 @@ namespace Biblioteka
 
         public void WyswietlUprawnienia(ListView listView)
         {
+
+
             listView.Items.Clear();
             // Tworzymy połączenie z bazą danych
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
@@ -54,7 +56,9 @@ namespace Biblioteka
 
             }
         }
+
     }
+
 }
 
 

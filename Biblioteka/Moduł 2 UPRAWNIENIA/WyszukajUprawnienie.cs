@@ -21,7 +21,13 @@ namespace Biblioteka
         {
             InitializeComponent();
 
+            // Dodaj nazwy kolumn do ListView podczas inicjalizacji formularza
+            listView1.Columns.Add("Login", 100);
+            listView1.Columns.Add("Email", 200);
         }
+
+
+
 
         private void button_Wroc_Click(object sender, EventArgs e)
         {
@@ -40,7 +46,10 @@ namespace Biblioteka
                 return;
             }
 
+
+
             string selectedPermission = comboBox1.SelectedItem.ToString();
+
             wybraneUprawnienia.Clear(); // Usunięcie poprzednich wybranych opcji
             wybraneUprawnienia.Add(selectedPermission);
 
@@ -50,18 +59,21 @@ namespace Biblioteka
         private void WyswietlWynikiWListView()
         {
             listView1.Items.Clear();
+            listView1.Columns.Clear(); // Wyczyść wszystkie kolumny przed dodaniem nowych
+
+            // Dodaj kolumny "Login" i "Email" do ListView
             listView1.Columns.Add("Login", 100);
             listView1.Columns.Add("Email", 200);
 
-
+            // Iteruj przez wybrane uprawnienia
             foreach (string uprawnienia in wybraneUprawnienia)
             {
                 string queryUsers = $@"
-            SELECT u.u_email, u.u_login
-            FROM uzytkownik u
-            JOIN uprawnienia up ON u.id_uzytkownik_uprawnienia = up.id_uprawnienia
-            WHERE up.uprawnienia = '{uprawnienia}'
-        ";
+        SELECT u.u_email, u.u_login
+        FROM uzytkownik u
+        JOIN pary_uprawnienia pu ON u.id_uzytkownik = pu.id_uzytkownik
+        JOIN uprawnienia up ON pu.id_uprawnienia = up.id_uprawnienia
+        WHERE up.uprawnienia = '{uprawnienia}'";
 
                 bool isAnyResultFound = false; // Flaga informująca, czy znaleziono wyniki dla danego uprawnienia
 
@@ -101,4 +113,4 @@ namespace Biblioteka
             }
         }
     }
-}
+    }

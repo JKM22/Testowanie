@@ -55,7 +55,7 @@ namespace Biblioteka
                 }
             }
         }
-        public void PopulateListView2(ListView listView)
+        public void PopulateListViewFrom2(ListView listView)
         {
             listView.Items.Clear();
 
@@ -64,7 +64,12 @@ namespace Biblioteka
                 try
                 {
                     connection.Open();
-                    string query = "SELECT u_login, u_email FROM uzytkownik";
+                    string query = @"SELECT u.id_uzytkownik, u.u_login, u.u_email, 
+                            GROUP_CONCAT(IFNULL(p.uprawnienia, 'Brak uprawnień') SEPARATOR ', ') AS uprawnienia
+                            FROM uzytkownik u
+                            LEFT JOIN pary_uprawnienia pu ON u.id_uzytkownik = pu.id_uzytkownik
+                            LEFT JOIN uprawnienia p ON pu.id_uprawnienia = p.id_uprawnienia
+                            GROUP BY u.id_uzytkownik";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -72,10 +77,11 @@ namespace Biblioteka
                         {
                             while (reader.Read())
                             {
-                                // Tworzenie obiektu ListViewItem z loginem i mailem
-                                ListViewItem item = new ListViewItem(reader["u_login"].ToString()); // Login jako tekst pierwszej kolumny
+                                // Tworzenie obiektu ListViewItem z loginem, mailem i uprawnieniem
+                                ListViewItem item = new ListViewItem(reader["id_uzytkownik"].ToString()); // Identyfikator jako tekst pierwszej kolumny
+                                item.SubItems.Add(reader["u_login"].ToString()); // Login jako kolejna kolumna
                                 item.SubItems.Add(reader["u_email"].ToString()); // Email jako kolejna kolumna
-
+                                item.SubItems.Add(reader["uprawnienia"].ToString()); // Uprawnienia jako kolejna kolumna
                                 listView.Items.Add(item); // Dodanie obiektu ListViewItem do listy
                             }
                         }
@@ -88,7 +94,9 @@ namespace Biblioteka
             }
         }
 
-            public bool WykonajZapytanie(string query)
+         
+
+        public bool WykonajZapytanie(string query)
             {
                 using (MySqlConnection connection = new MySqlConnection(ConnectionString))
                 {

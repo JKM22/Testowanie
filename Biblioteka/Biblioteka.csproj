@@ -113,17 +113,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DodajUprawnienia.cs">
+    <Compile Include="Moduł 1 ROBOCZY\DodajUsunWyszukajKlasa.cs" />
+    <Compile Include="Moduł 1 ROBOCZY\DodajUzytkownika.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DodajUprawnienia.Designer.cs">
-      <DependentUpon>DodajUprawnienia.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DodajUsunWyszukajKlasa.cs" />
-    <Compile Include="DodajUzytkownika.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DodajUzytkownika.Designer.cs">
+    <Compile Include="Moduł 1 ROBOCZY\DodajUzytkownika.Designer.cs">
       <DependentUpon>DodajUzytkownika.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
@@ -132,24 +126,24 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModyfikacjaUzytkownika.cs">
+    <Compile Include="Moduł 1 ROBOCZY\ModyfikacjaUzytkownika.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModyfikacjaUzytkownika.Designer.cs">
+    <Compile Include="Moduł 1 ROBOCZY\ModyfikacjaUzytkownika.Designer.cs">
       <DependentUpon>ModyfikacjaUzytkownika.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModyfikacjaUzytkownikaKlasa.cs" />
-    <Compile Include="NadajUprawnienia.cs">
+    <Compile Include="Moduł 1 ROBOCZY\ModyfikacjaUzytkownikaKlasa.cs" />
+    <Compile Include="Moduł 2 UPRAWNIENIA\NadajUprawnienia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NadajUprawnienia.Designer.cs">
+    <Compile Include="Moduł 2 UPRAWNIENIA\NadajUprawnienia.Designer.cs">
       <DependentUpon>NadajUprawnienia.cs</DependentUpon>
     </Compile>
     <Compile Include="PolaczenieBazyKlasa.cs" />
-    <Compile Include="PrzegladajUprawnienia.cs">
+    <Compile Include="Moduł 2 UPRAWNIENIA\PrzegladajUprawnienia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PrzegladajUprawnienia.Designer.cs">
+    <Compile Include="Moduł 2 UPRAWNIENIA\PrzegladajUprawnienia.Designer.cs">
       <DependentUpon>PrzegladajUprawnienia.cs</DependentUpon>
     </Compile>
     <Compile Include="Registration.cs">
@@ -158,10 +152,10 @@
     <Compile Include="Registration.Designer.cs">
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Roboczy.cs">
+    <Compile Include="Moduł 1 ROBOCZY\Roboczy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Roboczy.Designer.cs">
+    <Compile Include="Moduł 1 ROBOCZY\Roboczy.Designer.cs">
       <DependentUpon>Roboczy.cs</DependentUpon>
     </Compile>
     <Compile Include="Start.cs">
@@ -172,41 +166,38 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Uprawnienia.cs">
+    <Compile Include="Moduł 2 UPRAWNIENIA\Uprawnienia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Uprawnienia.Designer.cs">
+    <Compile Include="Moduł 2 UPRAWNIENIA\Uprawnienia.Designer.cs">
       <DependentUpon>Uprawnienia.cs</DependentUpon>
     </Compile>
-    <Compile Include="UprawnieniaKlasa.cs" />
-    <Compile Include="WyszukajUprawnienie.cs">
+    <Compile Include="Moduł 2 UPRAWNIENIA\UprawnieniaKlasa.cs" />
+    <Compile Include="Moduł 2 UPRAWNIENIA\WyszukajUprawnienie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WyszukajUprawnienie.Designer.cs">
+    <Compile Include="Moduł 2 UPRAWNIENIA\WyszukajUprawnienie.Designer.cs">
       <DependentUpon>WyszukajUprawnienie.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DodajUprawnienia.resx">
-      <DependentUpon>DodajUprawnienia.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DodajUzytkownika.resx">
+    <EmbeddedResource Include="Moduł 1 ROBOCZY\DodajUzytkownika.resx">
       <DependentUpon>DodajUzytkownika.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModyfikacjaUzytkownika.resx">
+    <EmbeddedResource Include="Moduł 1 ROBOCZY\ModyfikacjaUzytkownika.resx">
       <DependentUpon>ModyfikacjaUzytkownika.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NadajUprawnienia.resx">
+    <EmbeddedResource Include="Moduł 2 UPRAWNIENIA\NadajUprawnienia.resx">
       <DependentUpon>NadajUprawnienia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PrzegladajUprawnienia.resx">
+    <EmbeddedResource Include="Moduł 2 UPRAWNIENIA\PrzegladajUprawnienia.resx">
       <DependentUpon>PrzegladajUprawnienia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Roboczy.resx">
+    <EmbeddedResource Include="Moduł 1 ROBOCZY\Roboczy.resx">
       <DependentUpon>Roboczy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Start.resx">
@@ -221,10 +212,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Uprawnienia.resx">
+    <EmbeddedResource Include="Moduł 2 UPRAWNIENIA\Uprawnienia.resx">
       <DependentUpon>Uprawnienia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WyszukajUprawnienie.resx">
+    <EmbeddedResource Include="Moduł 2 UPRAWNIENIA\WyszukajUprawnienie.resx">
       <DependentUpon>WyszukajUprawnienie.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
