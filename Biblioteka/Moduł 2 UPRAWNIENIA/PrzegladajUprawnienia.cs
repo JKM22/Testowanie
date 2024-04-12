@@ -44,7 +44,9 @@ namespace Biblioteka
             this.Hide();
         }
 
+        private void PrzegladajUprawnienia_Load(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

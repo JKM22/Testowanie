@@ -36,18 +36,20 @@
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(170, 117);
+            this.listView1.Location = new System.Drawing.Point(113, 76);
+            this.listView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(479, 246);
+            this.listView1.Size = new System.Drawing.Size(321, 161);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // button_Wroc
             // 
-            this.button_Wroc.Location = new System.Drawing.Point(667, 379);
+            this.button_Wroc.Location = new System.Drawing.Point(445, 246);
+            this.button_Wroc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_Wroc.Name = "button_Wroc";
-            this.button_Wroc.Size = new System.Drawing.Size(106, 59);
+            this.button_Wroc.Size = new System.Drawing.Size(71, 38);
             this.button_Wroc.TabIndex = 1;
             this.button_Wroc.Text = "WRÓĆ";
             this.button_Wroc.UseVisualStyleBackColor = true;
@@ -57,22 +59,25 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(195, 56);
+            this.label1.Location = new System.Drawing.Point(130, 36);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(428, 37);
+            this.label1.Size = new System.Drawing.Size(296, 26);
             this.label1.TabIndex = 2;
             this.label1.Text = "DOSTĘPNE UPRAWNIENIA";
             // 
             // PrzegladajUprawnienia
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(533, 292);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_Wroc);
             this.Controls.Add(this.listView1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "PrzegladajUprawnienia";
             this.Text = "PrzegladajUprawnienia";
+            this.Load += new System.EventHandler(this.PrzegladajUprawnienia_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
