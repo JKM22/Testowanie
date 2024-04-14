@@ -36,6 +36,7 @@
             this.uzytkownicy = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.uprawnienia = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.zamknij = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.wyloguj = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.SuspendLayout();
             // 
             // label1
@@ -135,12 +136,23 @@
             this.zamknij.Values.Text = "ZAMKNIJ APLIKACJĘ";
             this.zamknij.Click += new System.EventHandler(this.zamknij_Click);
             // 
+            // wyloguj
+            // 
+            this.wyloguj.Location = new System.Drawing.Point(663, 42);
+            this.wyloguj.Name = "wyloguj";
+            this.wyloguj.Palette = this.kryptonPalette1;
+            this.wyloguj.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.wyloguj.Size = new System.Drawing.Size(159, 48);
+            this.wyloguj.TabIndex = 10;
+            this.wyloguj.Values.Text = "WYLOGUJ";
+            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(834, 461);
+            this.Controls.Add(this.wyloguj);
             this.Controls.Add(this.zamknij);
             this.Controls.Add(this.uprawnienia);
             this.Controls.Add(this.uzytkownicy);
@@ -166,6 +178,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton uzytkownicy;
         private ComponentFactory.Krypton.Toolkit.KryptonButton uprawnienia;
         private ComponentFactory.Krypton.Toolkit.KryptonButton zamknij;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton wyloguj;
     }
 }
 
