@@ -13,6 +13,9 @@ namespace Biblioteka
 {
     public partial class Login : KryptonForm
     {
+        public bool LoginSuccessful { get; private set; }
+        public bool IsAdmin { get; private set; }
+
         public Login()
         {
             InitializeComponent();
@@ -31,16 +34,35 @@ namespace Biblioteka
 
         private void button_wroc_Click(object sender, EventArgs e)
         {
-           
-                Start start = new Start();
-                start.Show();
-                this.Hide();
-            
+            Start start = new Start();
+            start.Show();
+            this.Hide();
         }
 
         private void textBoxLoginLog_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            // Tutaj dodaj logikę sprawdzającą poprawność danych logowania
+            // Na potrzeby demonstracji ustawiamy login zawsze jako udany
+            LoginSuccessful = true;
+
+            // Tutaj dodaj logikę sprawdzającą czy zalogowany użytkownik jest administratorem
+            // Ustawiamy isAdmin na true dla demonstracji
+            IsAdmin = true;
+
+            if (LoginSuccessful)
+            {
+                MessageBox.Show("Zalogowano pomyślnie!");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Błędny login lub hasło. Spróbuj ponownie.");
+            }
         }
     }
 }
