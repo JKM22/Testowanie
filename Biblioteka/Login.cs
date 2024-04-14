@@ -44,7 +44,8 @@ namespace Biblioteka
 
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+
+        private void buttonLogin_Click_1(object sender, EventArgs e)
         {
             // Tutaj dodaj logikę sprawdzającą poprawność danych logowania
             // Na potrzeby demonstracji ustawiamy login zawsze jako udany
