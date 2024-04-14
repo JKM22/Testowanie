@@ -78,13 +78,17 @@ namespace Biblioteka
             }
         }
 
-        private void wyloguj_Click(object sender, EventArgs e)
+        private void wyloguj_Click_1(object sender, EventArgs e)
         {
             if (isUserLoggedIn)
             {
+                // Tutaj wywołujemy metodę wylogowania użytkownika
+                PolaczenieBazyKlasa polaczenie = new PolaczenieBazyKlasa();
+                polaczenie.Wyloguj();
+
+                // Aktualizujemy zmienną isUserLoggedIn na false
                 isUserLoggedIn = false;
-                isAdmin = false;
-                DisableAllOptions();
+                DisableAllOptions(); // Możesz również wyłączyć opcje dla niezalogowanego użytkownika
             }
             else
             {
@@ -117,5 +121,8 @@ namespace Biblioteka
         {
             System.Windows.Forms.Application.Exit();
         }
+        
+
+        
     }
 }

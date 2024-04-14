@@ -47,23 +47,39 @@ namespace Biblioteka
 
         private void buttonLogin_Click_1(object sender, EventArgs e)
         {
-            // Tutaj dodaj logikę sprawdzającą poprawność danych logowania
-            // Na potrzeby demonstracji ustawiamy login zawsze jako udany
-            LoginSuccessful = true;
+            PolaczenieBazyKlasa polaczenie = new PolaczenieBazyKlasa();
+            string login = textBoxLoginLog.Text;
+            string haslo = textBoxLoginPass.Text;
 
-            // Tutaj dodaj logikę sprawdzającą czy zalogowany użytkownik jest administratorem
-            // Ustawiamy isAdmin na true dla demonstracji
-            IsAdmin = true;
 
-            if (LoginSuccessful)
+            if (polaczenie.SprawdzDaneLogowania(login, haslo))
             {
+                // Zalogowano pomyślnie
+                LoginSuccessful = true;
                 MessageBox.Show("Zalogowano pomyślnie!");
+                IsAdmin = true;
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Błędny login lub hasło. Spróbuj ponownie.");
+                if (!polaczenie.CzyLoginPoprawny(login))
+                {
+                    // Błędny login
+                    MessageBox.Show("Błędny login!");
+                }
+                else
+                {
+                    // Błędne hasło
+                    MessageBox.Show("Błędne hasło!");
+                }
             }
+
+            // Tutaj dodaj logikę sprawdzającą czy zalogowany użytkownik jest administratorem
+            // Ustawiamy isAdmin na true dla demonstracji
+            
+
+
         }
+
     }
 }

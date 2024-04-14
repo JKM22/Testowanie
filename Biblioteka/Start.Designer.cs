@@ -145,6 +145,7 @@
             this.wyloguj.Size = new System.Drawing.Size(159, 48);
             this.wyloguj.TabIndex = 10;
             this.wyloguj.Values.Text = "WYLOGUJ";
+            this.wyloguj.Click += new System.EventHandler(this.wyloguj_Click_1);
             // 
             // Start
             // 
