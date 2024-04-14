@@ -9,10 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace Biblioteka
 {
-    public partial class WyszukajUprawnienie : Form
+    public partial class WyszukajUprawnienie : KryptonForm
     {
         private UprawnieniaKlasa uprawnieniaKlasa = new UprawnieniaKlasa();
         private const string ConnectionString = "Server=localhost;Database=biblioteka;Uid=root;Pwd=;";
@@ -111,6 +112,11 @@ namespace Biblioteka
                     }
                 }
             }
+        }
+
+        private void WyszukajUprawnienie_Load(object sender, EventArgs e)
+        {
+
         }
     }
     }

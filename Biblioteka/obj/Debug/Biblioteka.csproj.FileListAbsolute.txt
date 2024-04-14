@@ -333,3 +333,7 @@ C:\Users\Admin\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.csproj.Co
 C:\Users\Admin\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.csproj.CopyComplete
 C:\Users\Admin\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.exe
 C:\Users\Admin\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.pdb
+C:\Users\mopss\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.NadajUprawnienia.resources
+C:\Users\mopss\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.PrzegladajUprawnienia.resources
+C:\Users\mopss\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.Uprawnienia.resources
+C:\Users\mopss\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.WyszukajUprawnienie.resources

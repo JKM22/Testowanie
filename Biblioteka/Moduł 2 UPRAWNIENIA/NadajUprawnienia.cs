@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using MySql.Data.MySqlClient;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace Biblioteka
 {
-    public partial class NadajUprawnienia : Form
+    public partial class NadajUprawnienia : KryptonForm
     {
         private PolaczenieBazyKlasa polaczenieBazy = new PolaczenieBazyKlasa();
         private DodajUsunWyszukajKlasa dodajUzytkownika = new DodajUsunWyszukajKlasa();

@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace Biblioteka
 {
-    public partial class Uprawnienia : Form
+    public partial class Uprawnienia : KryptonForm
     {
         public Uprawnienia()
         {
@@ -44,6 +45,11 @@ namespace Biblioteka
             wyszukajUprawnienie.Show();
             this.Hide();
                 
+        }
+
+        private void Uprawnienia_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
