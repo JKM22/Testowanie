@@ -51,6 +51,11 @@ namespace Biblioteka
             uprawnienia.Show();
             this.Hide();
         }
+
+        private void wyloguj_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     
 }
