@@ -277,7 +277,6 @@ C:\Users\Acer\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.NadajUpraw
 C:\Users\Acer\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.PrzegladajUprawnienia.resources
 C:\Users\Acer\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.DodajUprawnienia.resources
 C:\Users\Acer\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.WyszukajUprawnienie.resources
-C:\Users\dawid\Source\Repos\JKM22\Testowanie\Biblioteka\obj\Debug\Biblioteka.DodajUprawnienia.resources
 C:\Users\dawid\Source\Repos\JKM22\Testowanie\Biblioteka\obj\Debug\Biblioteka.NadajUprawnienia.resources
 C:\Users\dawid\Source\Repos\JKM22\Testowanie\Biblioteka\obj\Debug\Biblioteka.PrzegladajUprawnienia.resources
 C:\Users\dawid\Source\Repos\JKM22\Testowanie\Biblioteka\obj\Debug\Biblioteka.Uprawnienia.resources
