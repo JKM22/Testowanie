@@ -9,10 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace Biblioteka
 {
-    public partial class PrzegladajUprawnienia : Form
+    public partial class PrzegladajUprawnienia : KryptonForm
     {
         private PolaczenieBazyKlasa polaczenieBazy = new PolaczenieBazyKlasa();
         private UprawnieniaKlasa uprawnieniaKlasa = new UprawnieniaKlasa();
@@ -45,6 +46,11 @@ namespace Biblioteka
         }
 
         private void PrzegladajUprawnienia_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
