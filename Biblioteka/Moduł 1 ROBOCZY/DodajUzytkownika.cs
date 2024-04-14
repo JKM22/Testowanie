@@ -19,6 +19,7 @@ namespace Biblioteka
         public DodajUzytkownika()
         {
             InitializeComponent();
+
         }
         private string CalculateMD5Hash(string input)
         {
