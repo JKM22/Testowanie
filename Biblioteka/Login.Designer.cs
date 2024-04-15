@@ -37,6 +37,7 @@
             this.buttonLogin = new System.Windows.Forms.Button();
             this.button_wroc = new System.Windows.Forms.Button();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
+            this.buttonPassForg = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -77,9 +78,9 @@
             // buttonLogin
             // 
             this.buttonLogin.Font = new System.Drawing.Font("Roboto Medium", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonLogin.Location = new System.Drawing.Point(118, 164);
+            this.buttonLogin.Location = new System.Drawing.Point(97, 132);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(89, 23);
+            this.buttonLogin.Size = new System.Drawing.Size(114, 23);
             this.buttonLogin.TabIndex = 4;
             this.buttonLogin.Text = "ZALOGUJ";
             this.buttonLogin.UseVisualStyleBackColor = true;
@@ -130,12 +131,24 @@
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.ButtonEdgeInset = 10;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             // 
+            // buttonPassForg
+            // 
+            this.buttonPassForg.Font = new System.Drawing.Font("Roboto Medium", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonPassForg.Location = new System.Drawing.Point(97, 173);
+            this.buttonPassForg.Name = "buttonPassForg";
+            this.buttonPassForg.Size = new System.Drawing.Size(114, 23);
+            this.buttonPassForg.TabIndex = 7;
+            this.buttonPassForg.Text = "ODZYSKAJ HASŁO";
+            this.buttonPassForg.UseVisualStyleBackColor = true;
+            this.buttonPassForg.Click += new System.EventHandler(this.buttonPassForg_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(246, 349);
+            this.Controls.Add(this.buttonPassForg);
             this.Controls.Add(this.button_wroc);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.textBoxLoginPass);
@@ -163,5 +176,6 @@
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.Button button_wroc;
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
+        private System.Windows.Forms.Button buttonPassForg;
     }
 }
