@@ -15,6 +15,7 @@ namespace Biblioteka
     {
         private bool isUserLoggedIn = false;
         private bool isAdmin = false;
+        private int userId;
 
         public Start()
         {
@@ -23,6 +24,7 @@ namespace Biblioteka
 
         private void Start_Load(object sender, EventArgs e)
         {
+            CheckSession();
             // Sprawdzanie czy użytkownik jest zalogowany
             if (!isUserLoggedIn)
             {
@@ -32,6 +34,40 @@ namespace Biblioteka
             {
                 EnableOptions();
             }
+        }
+        private void CheckSession()
+        {
+            if (!PolaczenieBazyKlasa.Zalogowany) // Jeśli użytkownik nie jest zalogowany, wyloguj
+            {
+                LogoutUser();
+            }
+            else // Jeśli użytkownik jest zalogowany, zaloguj go
+            {
+                LoginUser(PolaczenieBazyKlasa.ZalogowanyUzytkownikId, PolaczenieBazyKlasa.ZalogowanyUzytkownikLogin);
+            }
+        }
+
+        private void LoginUser(int userId, string login)
+        {
+            isUserLoggedIn = true;
+            this.userId = userId;
+
+            // Pobierz uprawnienia użytkownika z bazy danych
+            PolaczenieBazyKlasa polaczenie = new PolaczenieBazyKlasa();
+            List<string> userPermissions = polaczenie.GetPermissionsForUser(userId);
+
+            // Sprawdź, czy użytkownik ma uprawnienia administratora
+            isAdmin = userPermissions.Contains("Administrator");
+
+            EnableOptions(); // Włącz opcje dostępne dla zalogowanego użytkownika
+        }
+
+        private void LogoutUser()
+        {
+            isUserLoggedIn = false;
+            isAdmin = false;
+            userId = 0;
+            DisableAllOptions(); // Wyłącz wszystkie opcje
         }
 
         private void zaloguj_Click(object sender, EventArgs e)
@@ -86,13 +122,11 @@ namespace Biblioteka
         {
             if (isUserLoggedIn)
             {
-                // Tutaj wywołujemy metodę wylogowania użytkownika
+                // Wyloguj użytkownika
                 PolaczenieBazyKlasa polaczenie = new PolaczenieBazyKlasa();
                 polaczenie.Wyloguj();
 
-                // Aktualizujemy zmienną isUserLoggedIn na false
-                isUserLoggedIn = false;
-                DisableAllOptions(); // Możesz również wyłączyć opcje dla niezalogowanego użytkownika
+                LogoutUser(); // Wyloguj użytkownika
             }
             else
             {
@@ -123,7 +157,8 @@ namespace Biblioteka
 
             // Pobierz uprawnienia użytkownika z bazy danych
             PolaczenieBazyKlasa polaczenie = new PolaczenieBazyKlasa();
-            List<string> userPermissions = polaczenie.GetPermissionsForUser();
+            List<string> userPermissions = polaczenie.GetPermissionsForUser(userId);
+
 
             // Sprawdź, czy użytkownik ma żądane uprawnienie
             return userPermissions.Contains(permission);

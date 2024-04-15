@@ -51,19 +51,29 @@ namespace Biblioteka
             string login = textBoxLoginLog.Text;
             string haslo = textBoxLoginPass.Text;
 
-            (bool loginSuccess, bool isAdmin) = polaczenie.Zaloguj(login, haslo);
-
-            if (loginSuccess)
+            if (polaczenie.SprawdzDaneLogowania(login, haslo))
             {
                 // Zalogowano pomyślnie
+                PolaczenieBazyKlasa.ZalogowanyUzytkownikId = PolaczenieBazyKlasa.ZalogowanyUzytkownikId;
+                PolaczenieBazyKlasa.ZalogowanyUzytkownikLogin = login;
+
                 LoginSuccessful = true;
                 MessageBox.Show("Zalogowano pomyślnie!");
-                IsAdmin = isAdmin;
+                IsAdmin = true;
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Błędne dane logowania!");
+                if (!polaczenie.CzyLoginPoprawny(login))
+                {
+                    // Błędny login
+                    MessageBox.Show("Błędny login!");
+                }
+                else
+                {
+                    // Błędne hasło
+                    MessageBox.Show("Błędne hasło!");
+                }
             }
         }
 
