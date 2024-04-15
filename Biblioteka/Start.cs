@@ -59,9 +59,7 @@ namespace Biblioteka
             // Sprawdź, czy użytkownik ma uprawnienia administratora
             isAdmin = userPermissions.Contains("Administrator");
 
-            RefreshStartView();
-
-            MessageBox.Show("Zalogowano pomyślnie!");
+            EnableOptions(); // Włącz opcje dostępne dla zalogowanego użytkownika
         }
 
         private void LogoutUser()
@@ -69,21 +67,9 @@ namespace Biblioteka
             isUserLoggedIn = false;
             isAdmin = false;
             userId = 0;
-            RefreshStartView();
+            DisableAllOptions(); // Wyłącz wszystkie opcje
+        }
 
-            MessageBox.Show("Wylogowano");
-        }
-        private void RefreshStartView()
-        {
-            if (isUserLoggedIn)
-            {
-                EnableOptions();
-            }
-            else
-            {
-                DisableAllOptions();
-            }
-        }
         private void zaloguj_Click(object sender, EventArgs e)
         {
             if (!isUserLoggedIn)
