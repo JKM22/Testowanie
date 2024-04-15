@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Biblioteka
@@ -120,7 +121,7 @@ namespace Biblioteka
         }
 
 
-
+       
         private static string zalogowanyUzytkownikLogin;
         private static string zalogowanyUzytkownikHaslo;
         private static int zalogowanyUzytkownikId;
@@ -219,20 +220,127 @@ namespace Biblioteka
                 }
             }
         }
-
-            public void Wyloguj()
+        public (bool, bool) Zaloguj(string login, string haslo)
+        {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
+                try
+                {
+                    connection.Open();
+
+                    string query = "SELECT id_uzytkownik FROM uzytkownik WHERE u_login = @Login AND u_haslo = @Haslo";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Login", login);
+                        command.Parameters.AddWithValue("@Haslo", haslo);
+
+                        object result = command.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            int id = Convert.ToInt32(result);
+                            UstawZalogowanegoUzytkownika(id, login, haslo);
+
+                            // Sprawdzamy uprawnienia użytkownika
+                            bool isAdmin = CzyUzytkownikMaUprawnienie(id, "Administrator");
+                            bool isLoggedUser = CzyUzytkownikMaUprawnienie(id, "Użytkownik zalogowany");
+
+                            return (true, isAdmin);
+                        }
+                        else
+                        {
+                            return (false, false);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Błąd podczas logowania: " + ex.Message);
+                    return (false, false);
+                }
+            }
+        }
+        private bool CzyUzytkownikMaUprawnienie(int idUzytkownika, string uprawnienie)
+        {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = @"SELECT COUNT(*) FROM pary_uprawnienia pu
+                             JOIN uprawnienia u ON pu.id_uprawnienia = u.id_uprawnienia
+                             WHERE pu.id_uzytkownik = @IdUzytkownika AND u.uprawnienia = @Uprawnienie";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@IdUzytkownika", idUzytkownika);
+                        command.Parameters.AddWithValue("@Uprawnienie", uprawnienie);
+
+                        int count = Convert.ToInt32(command.ExecuteScalar());
+
+                        return count > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Błąd podczas sprawdzania uprawnień: " + ex.Message);
+                    return false;
+                }
+            }
+        }
+
+        public void Wyloguj()
+        {
             zalogowanyUzytkownikLogin = null;
             zalogowanyUzytkownikHaslo = null;
 
             MessageBox.Show("Wylogowano");
 
         }
+
+        public List<string> GetPermissionsForUser()
+        {
+            List<string> permissions = new List<string>();
+
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = @"SELECT p.uprawnienia 
+                             FROM uprawnienia p 
+                             JOIN pary_uprawnienia pu ON p.id_uprawnienia = pu.id_uprawnienia 
+                             WHERE pu.id_uzytkownik = @UserID";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserID", ZalogowanyUzytkownikId);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                permissions.Add(reader["uprawnienia"].ToString());
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Błąd podczas pobierania uprawnień użytkownika: " + ex.Message);
+                }
+            }
+
+            return permissions;
         }
     }
+}
 
 
 
-    
+
 
 

@@ -28,6 +28,10 @@ namespace Biblioteka
             {
                 DisableAllOptions();
             }
+            else
+            {
+                EnableOptions();
+            }
         }
 
         private void zaloguj_Click(object sender, EventArgs e)
@@ -112,9 +116,17 @@ namespace Biblioteka
 
         private bool HasPermission(string permission)
         {
-            // Sprawdzenie czy użytkownik ma konkretne uprawnienie
-            // Tymczasowo zwraca true dla demonstracji
-            return true;
+            if (isAdmin) // Jeśli użytkownik jest administratorem, ma dostęp do wszystkich uprawnień
+            {
+                return true;
+            }
+
+            // Pobierz uprawnienia użytkownika z bazy danych
+            PolaczenieBazyKlasa polaczenie = new PolaczenieBazyKlasa();
+            List<string> userPermissions = polaczenie.GetPermissionsForUser();
+
+            // Sprawdź, czy użytkownik ma żądane uprawnienie
+            return userPermissions.Contains(permission);
         }
 
         private void zamknij_Click(object sender, EventArgs e)

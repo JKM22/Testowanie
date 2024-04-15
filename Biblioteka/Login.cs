@@ -51,34 +51,20 @@ namespace Biblioteka
             string login = textBoxLoginLog.Text;
             string haslo = textBoxLoginPass.Text;
 
+            (bool loginSuccess, bool isAdmin) = polaczenie.Zaloguj(login, haslo);
 
-            if (polaczenie.SprawdzDaneLogowania(login, haslo))
+            if (loginSuccess)
             {
                 // Zalogowano pomyślnie
                 LoginSuccessful = true;
                 MessageBox.Show("Zalogowano pomyślnie!");
-                IsAdmin = true;
+                IsAdmin = isAdmin;
                 this.Close();
             }
             else
             {
-                if (!polaczenie.CzyLoginPoprawny(login))
-                {
-                    // Błędny login
-                    MessageBox.Show("Błędny login!");
-                }
-                else
-                {
-                    // Błędne hasło
-                    MessageBox.Show("Błędne hasło!");
-                }
+                MessageBox.Show("Błędne dane logowania!");
             }
-
-            // Tutaj dodaj logikę sprawdzającą czy zalogowany użytkownik jest administratorem
-            // Ustawiamy isAdmin na true dla demonstracji
-            
-
-
         }
 
     }
