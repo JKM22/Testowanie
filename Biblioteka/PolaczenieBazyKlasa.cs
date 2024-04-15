@@ -130,11 +130,13 @@ namespace Biblioteka
         public static string ZalogowanyUzytkownikLogin
         {
             get { return zalogowanyUzytkownikLogin; }
+            set { zalogowanyUzytkownikLogin = value; }
         }
 
         public static int ZalogowanyUzytkownikId
         {
             get { return zalogowanyUzytkownikId; }
+            set { zalogowanyUzytkownikId = value; }
         }
 
         public static bool Zalogowany
@@ -300,7 +302,7 @@ namespace Biblioteka
 
         }
 
-        public List<string> GetPermissionsForUser()
+        public List<string> GetPermissionsForUser(int userId)
         {
             List<string> permissions = new List<string>();
 
