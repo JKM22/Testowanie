@@ -74,6 +74,7 @@ namespace Biblioteka
         {
             if (!isUserLoggedIn)
             {
+                this.Hide();
                 Login login = new Login();
                 login.ShowDialog();
 
@@ -81,7 +82,10 @@ namespace Biblioteka
                 {
                     isUserLoggedIn = true;
                     isAdmin = login.IsAdmin;
+                    Start start = new Start();
+                    start.Show();
                     EnableOptions();
+
                 }
             }
             else
