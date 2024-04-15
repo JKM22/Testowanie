@@ -94,6 +94,33 @@ namespace Biblioteka
                 }
             }
         }
+
+
+
+        public bool WykonajZapytanie(string query)
+        {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        return rowsAffected > 0; // Zwróć true jeśli coś zostało zmienione w bazie danych
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error executing query: " + ex.Message);
+                    return false;
+                }
+            }
+        }
+
+
        
         private static string zalogowanyUzytkownikLogin;
         private static string zalogowanyUzytkownikHaslo;
@@ -164,6 +191,10 @@ namespace Biblioteka
             }
         }
 
+        public bool CzyUzytkownikZalogowany()
+        {
+            return !string.IsNullOrEmpty(zalogowanyUzytkownikLogin);
+        }
 
         public bool CzyLoginPoprawny(string login)
         {
@@ -191,7 +222,76 @@ namespace Biblioteka
                 }
             }
         }
-       
+        public (bool, bool) Zaloguj(string login, string haslo)
+        {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = "SELECT id_uzytkownik FROM uzytkownik WHERE u_login = @Login AND u_haslo = @Haslo";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Login", login);
+                        command.Parameters.AddWithValue("@Haslo", haslo);
+
+                        object result = command.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            int id = Convert.ToInt32(result);
+                            UstawZalogowanegoUzytkownika(id, login, haslo);
+
+                            // Sprawdzamy uprawnienia użytkownika
+                            bool isAdmin = CzyUzytkownikMaUprawnienie(id, "Administrator");
+                            bool isLoggedUser = CzyUzytkownikMaUprawnienie(id, "Użytkownik zalogowany");
+
+                            return (true, isAdmin);
+                        }
+                        else
+                        {
+                            return (false, false);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Błąd podczas logowania: " + ex.Message);
+                    return (false, false);
+                }
+            }
+        }
+        private bool CzyUzytkownikMaUprawnienie(int idUzytkownika, string uprawnienie)
+        {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = @"SELECT COUNT(*) FROM pary_uprawnienia pu
+                             JOIN uprawnienia u ON pu.id_uprawnienia = u.id_uprawnienia
+                             WHERE pu.id_uzytkownik = @IdUzytkownika AND u.uprawnienia = @Uprawnienie";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@IdUzytkownika", idUzytkownika);
+                        command.Parameters.AddWithValue("@Uprawnienie", uprawnienie);
+
+                        int count = Convert.ToInt32(command.ExecuteScalar());
+
+                        return count > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Błąd podczas sprawdzania uprawnień: " + ex.Message);
+                    return false;
+                }
+            }
+        }
 
         public void Wyloguj()
         {
