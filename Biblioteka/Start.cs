@@ -24,6 +24,7 @@ namespace Biblioteka
 
         private void Start_Load(object sender, EventArgs e)
         {
+
             CheckSession();
             // Sprawdzanie czy użytkownik jest zalogowany
             if (!isUserLoggedIn)
@@ -34,6 +35,7 @@ namespace Biblioteka
             {
                 EnableOptions();
             }
+
         }
         private void CheckSession()
         {
@@ -166,7 +168,7 @@ namespace Biblioteka
 
         private void zamknij_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.Application.Exit();
+            Application.Exit();
         }
         
 
