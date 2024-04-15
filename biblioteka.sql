@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2024 at 10:54 AM
--- Wersja serwera: 10.4.32-MariaDB
--- Wersja PHP: 8.2.12
+-- Generation Time: Apr 15, 2024 at 04:55 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `autor`
+-- Table structure for table `autor`
 --
 
 CREATE TABLE `autor` (
@@ -36,7 +36,7 @@ CREATE TABLE `autor` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `gatunek`
+-- Table structure for table `gatunek`
 --
 
 CREATE TABLE `gatunek` (
@@ -61,7 +61,7 @@ INSERT INTO `gatunek` (`id_gatunek`, `nazwa`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `ksiazka`
+-- Table structure for table `ksiazka`
 --
 
 CREATE TABLE `ksiazka` (
@@ -75,7 +75,7 @@ CREATE TABLE `ksiazka` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `pary_uprawnienia`
+-- Table structure for table `pary_uprawnienia`
 --
 
 CREATE TABLE `pary_uprawnienia` (
@@ -89,13 +89,14 @@ CREATE TABLE `pary_uprawnienia` (
 --
 
 INSERT INTO `pary_uprawnienia` (`id_pary`, `id_uprawnienia`, `id_uzytkownik`) VALUES
-(30, 2, 2),
-(79, 1, 1);
+(85, 1, 1),
+(86, 3, 2),
+(87, 4, 3);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `uprawnienia`
+-- Table structure for table `uprawnienia`
 --
 
 CREATE TABLE `uprawnienia` (
@@ -111,14 +112,12 @@ INSERT INTO `uprawnienia` (`id_uprawnienia`, `uprawnienia`) VALUES
 (1, 'Administrator'),
 (2, 'Użytkownik zalogowany'),
 (3, 'Zmień uprawnienia'),
-(4, 'Modyfikacja użytkownika'),
-(5, 'Zmień hasło'),
-(6, 'Przeglądaj roboczy');
+(4, 'Modyfikacja użytkownika');
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `uzytkownik`
+-- Table structure for table `uzytkownik`
 --
 
 CREATE TABLE `uzytkownik` (
@@ -144,28 +143,29 @@ CREATE TABLE `uzytkownik` (
 --
 
 INSERT INTO `uzytkownik` (`id_uzytkownik`, `u_imie`, `u_nazwisko`, `u_email`, `u_telefon`, `u_miejscowosc`, `u_kod`, `u_ulica`, `u_nr_posesji`, `u_nr_lokalu`, `u_pesel`, `u_data_ur`, `u_plec`, `u_login`, `u_haslo`) VALUES
-(1, 'Jakub', 'Kowalski', 'mail@mail.com', 123456789, 'Rogów', '00-001', 'ul. Wielka', '33', '', '73110743682', '1994-03-09', 'Kobieta', 'kubakowal123', 'db3fc40e6439d4d972870252ccc72f62'),
-(2, 'Joanna', 'Wilk', 'mail123@mail.com', 987654321, 'Warszawa', '00-002', 'ul. Łódzka', '14', '21', '00220879196', '2004-08-20', 'Kobieta', 'asiaaisa', '241190129fd7bab5b857c600dac6e2c5'),
-(3, 'Mariusz', 'Pudzianowski', 'pudzian@mail.com', 123123123, 'Poznań', '00-003', 'ul. Mała', '12', NULL, '87080361313', '1997-02-07', 'Mężczyzna', 'pudzianator', '7c8a7c5f8338b02d82840d64e23e47e6');
+(1, 'Jakub', 'Kowalski', 'mail@mail.com', 123456789, 'Rogów', '00-001', 'ul. Wielka', '33', NULL, '73110743682', '1994-03-09', 'Kobieta', 'kubakowal123', 'password111'),
+(2, 'Joanna', 'Wilk', 'mail123@mail.com', 987654321, 'Warszawa', '00-002', 'ul. Łódzka', '14', '21', '00220879196', '2004-08-20', 'Kobieta', 'asiaaisa', 'password222'),
+(3, 'Mariusz', 'Pudzianowski', 'pudzian@mail.com', 123123123, 'Poznań', '00-003', 'ul. Mała', '12', NULL, '87080361313', '1997-02-07', 'Mężczyzna', 'pudzianator', 'password333'),
+(4, 'Test', 'Testowy', 'test@testmail.com', 123456789, 'Test', '00-001', 'Testowa', '3', '3', '73110743682', '1994-03-09', 'Kobieta', 'Test', 'Testpassword');
 
 --
--- Indeksy dla zrzutów tabel
+-- Indexes for dumped tables
 --
 
 --
--- Indeksy dla tabeli `autor`
+-- Indexes for table `autor`
 --
 ALTER TABLE `autor`
   ADD PRIMARY KEY (`id_autor`);
 
 --
--- Indeksy dla tabeli `gatunek`
+-- Indexes for table `gatunek`
 --
 ALTER TABLE `gatunek`
   ADD PRIMARY KEY (`id_gatunek`);
 
 --
--- Indeksy dla tabeli `ksiazka`
+-- Indexes for table `ksiazka`
 --
 ALTER TABLE `ksiazka`
   ADD PRIMARY KEY (`id_ksiazka`),
@@ -175,7 +175,7 @@ ALTER TABLE `ksiazka`
   ADD KEY `autor` (`autor`);
 
 --
--- Indeksy dla tabeli `pary_uprawnienia`
+-- Indexes for table `pary_uprawnienia`
 --
 ALTER TABLE `pary_uprawnienia`
   ADD PRIMARY KEY (`id_pary`),
@@ -183,13 +183,13 @@ ALTER TABLE `pary_uprawnienia`
   ADD KEY `id_uzytkownik` (`id_uzytkownik`);
 
 --
--- Indeksy dla tabeli `uprawnienia`
+-- Indexes for table `uprawnienia`
 --
 ALTER TABLE `uprawnienia`
   ADD PRIMARY KEY (`id_uprawnienia`);
 
 --
--- Indeksy dla tabeli `uzytkownik`
+-- Indexes for table `uzytkownik`
 --
 ALTER TABLE `uzytkownik`
   ADD PRIMARY KEY (`id_uzytkownik`);
@@ -220,7 +220,7 @@ ALTER TABLE `ksiazka`
 -- AUTO_INCREMENT for table `pary_uprawnienia`
 --
 ALTER TABLE `pary_uprawnienia`
-  MODIFY `id_pary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id_pary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `uzytkownik`
