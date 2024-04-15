@@ -336,3 +336,8 @@ C:\Users\mopss\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.NadajUpra
 C:\Users\mopss\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.PrzegladajUprawnienia.resources
 C:\Users\mopss\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.Uprawnienia.resources
 C:\Users\mopss\Source\Repos\Testowanie\Biblioteka\obj\Debug\Biblioteka.WyszukajUprawnienie.resources
+C:\Users\mopss\Source\Repos\Testowanie2\Biblioteka\obj\Debug\Biblioteka.NadajUprawnienia.resources
+C:\Users\mopss\Source\Repos\Testowanie2\Biblioteka\obj\Debug\Biblioteka.PrzegladajUprawnienia.resources
+C:\Users\mopss\Source\Repos\Testowanie2\Biblioteka\obj\Debug\Biblioteka.OdzyskiwanieHasla.resources
+C:\Users\mopss\Source\Repos\Testowanie2\Biblioteka\obj\Debug\Biblioteka.Uprawnienia.resources
+C:\Users\mopss\Source\Repos\Testowanie2\Biblioteka\obj\Debug\Biblioteka.WyszukajUprawnienie.resources

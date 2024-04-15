@@ -139,6 +139,12 @@
     <Compile Include="Moduł 2 UPRAWNIENIA\NadajUprawnienia.Designer.cs">
       <DependentUpon>NadajUprawnienia.cs</DependentUpon>
     </Compile>
+    <Compile Include="OdzyskiwanieHasla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OdzyskiwanieHasla.Designer.cs">
+      <DependentUpon>OdzyskiwanieHasla.cs</DependentUpon>
+    </Compile>
     <Compile Include="PolaczenieBazyKlasa.cs" />
     <Compile Include="Moduł 2 UPRAWNIENIA\PrzegladajUprawnienia.cs">
       <SubType>Form</SubType>
@@ -193,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Moduł 2 UPRAWNIENIA\PrzegladajUprawnienia.resx">
       <DependentUpon>PrzegladajUprawnienia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OdzyskiwanieHasla.resx">
+      <DependentUpon>OdzyskiwanieHasla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>

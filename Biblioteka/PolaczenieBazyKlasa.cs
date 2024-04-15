@@ -152,9 +152,33 @@ namespace Biblioteka
         }
 
 
+        private static Dictionary<string, (int attempts, DateTime lastAttempt)> loginAttempts = new Dictionary<string, (int, DateTime)>();
+        private const int MaxLoginAttempts = 3;
+        private static TimeSpan LockoutDuration = TimeSpan.FromMinutes(5);
 
         public bool SprawdzDaneLogowania(string login, string haslo)
         {
+            // Sprawdź, czy login ma ograniczenie na liczbę prób logowania
+            if (loginAttempts.ContainsKey(login))
+            {
+                var attempt = loginAttempts[login];
+                if (attempt.attempts >= MaxLoginAttempts && DateTime.Now - attempt.lastAttempt < LockoutDuration)
+                {
+                    MessageBox.Show("Konto zostało zablokowane na 5 minut. Spróbuj ponownie później.");
+                    return false;
+                }
+                else if (DateTime.Now - attempt.lastAttempt >= LockoutDuration)
+                {
+                    // Jeśli upłynął czas blokady, zresetuj liczbę prób
+                    loginAttempts[login] = (0, DateTime.Now);
+                }
+            }
+            else
+            {
+                // Jeśli login nie istnieje w słowniku, dodaj go z pierwszą próbą
+                loginAttempts.Add(login, (1, DateTime.Now));
+            }
+
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
                 try
@@ -165,7 +189,6 @@ namespace Biblioteka
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
-
                         command.Parameters.AddWithValue("@Login", login);
                         command.Parameters.AddWithValue("@Haslo", haslo);
 
@@ -175,10 +198,14 @@ namespace Biblioteka
                         {
                             int id = Convert.ToInt32(result);
                             UstawZalogowanegoUzytkownika(id, login, haslo);
+                            // Zresetuj liczbę prób po poprawnym zalogowaniu
+                            loginAttempts[login] = (0, DateTime.Now);
                             return true;
                         }
                         else
                         {
+                            // Inkrementuj liczbę prób po nieudanym logowaniu
+                            loginAttempts[login] = (loginAttempts[login].attempts + 1, DateTime.Now);
                             return false;
                         }
                     }
@@ -190,6 +217,7 @@ namespace Biblioteka
                 }
             }
         }
+
 
         public bool CzyUzytkownikZalogowany()
         {
@@ -338,6 +366,67 @@ namespace Biblioteka
 
             return permissions;
         }
+
+
+        public bool UserExists(string email, string login)
+        {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = "SELECT COUNT(*) FROM uzytkownik WHERE u_email = @Email AND u_login = @Login";
+
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Email", email);
+                        command.Parameters.AddWithValue("@Login", login);
+
+                        int count = Convert.ToInt32(command.ExecuteScalar());
+
+                        return count > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Błąd podczas sprawdzania użytkownika w bazie danych: " + ex.Message);
+                    return false;
+                }
+            }
+        }
+
+
+        public bool UpdatePassword(string email, string newPassword)
+        {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = "UPDATE uzytkownik SET u_haslo = @NewPassword WHERE u_email = @Email";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@NewPassword", newPassword);
+                        command.Parameters.AddWithValue("@Email", email);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        return rowsAffected > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Błąd podczas aktualizacji hasła w bazie danych: " + ex.Message);
+                    return false;
+                }
+            }
+        }
+
+
     }
 }
 

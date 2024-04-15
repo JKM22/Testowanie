@@ -77,5 +77,12 @@ namespace Biblioteka
             }
         }
 
+        private void buttonPassForg_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            OdzyskiwanieHasla odzyskiwanieHasla = new OdzyskiwanieHasla();
+            odzyskiwanieHasla.Show();
+        }
     }
 }
