@@ -44,9 +44,7 @@
             "Administrator",
             "Użytkownik zalogowany",
             "Zmień uprawnienia",
-            "Modyfikacja użytkownika",
-            "Zmień hasło",
-            "Przeglądaj roboczy"});
+            "Modyfikacja użytkownika"});
             this.comboBox1.Location = new System.Drawing.Point(11, 11);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
