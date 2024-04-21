@@ -1,0 +1,407 @@
+[33mcommit 786eca00255d08fa85b709e61d4013f616f8cc70[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Tue Apr 16 14:50:27 2024 +0200
+
+    fix
+
+[33mcommit 0209a236d1ae22c6d0058983533f78487f0571c7[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Mon Apr 15 22:47:00 2024 +0200
+
+    hid password while logging in
+
+[33mcommit 6c9d56c9949eef94fecaefba4fae73d760689695[m
+Author: dawkrusz <162909319+dawkrusz@users.noreply.github.com>
+Date:   Mon Apr 15 04:56:22 2024 +0200
+
+    Add files via upload
+
+[33mcommit 8db8cc98879426576ae0996c9d78e08b5bb68d8d[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Mon Apr 15 04:53:24 2024 +0200
+
+    logging in with owrking permissions working all (finally ;p)
+
+[33mcommit df3a245207da9dad92f99ca08ad354c3abb5a678[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Mon Apr 15 04:17:17 2024 +0200
+
+    fix
+
+[33mcommit 188943a887a57107487927ef91d58c8434967f4b[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Mon Apr 15 04:13:09 2024 +0200
+
+    Revert "deleted unnecessary code and outdated functions"
+    
+    This reverts commit 74b992bc69480c94f1b48373b16b3b4457492b2d.
+
+[33mcommit 5c3903e733ee7957235c1168927c510df5a93f1b[m
+Merge: 74b992b 952afd7
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Mon Apr 15 04:09:33 2024 +0200
+
+    fix
+
+[33mcommit 74b992bc69480c94f1b48373b16b3b4457492b2d[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Mon Apr 15 04:06:22 2024 +0200
+
+    deleted unnecessary code and outdated functions
+
+[33mcommit 952afd7435126ec53b4a9afc1e94e63e5cf8d146[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Mon Apr 15 04:06:22 2024 +0200
+
+    deleted unnecessary code and outdated functions
+
+[33mcommit 7f025498feed21ec52437c06a88100839580f8b2[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Mon Apr 15 03:40:58 2024 +0200
+
+    session system for logging in and signing out (permissions kinda buggy)
+
+[33mcommit 5ffc2814005ab32f4683a0c056984e4583c2ae6d[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Mon Apr 15 02:51:10 2024 +0200
+
+    logging in now works alongside permissions
+
+[33mcommit 366e34e423cea335c7550f12ffa2a6c997c08d29[m
+Author: jenchxc <UL0273300@edu.uni.lodz.pl>
+Date:   Sun Apr 14 20:04:44 2024 +0200
+
+    logowanie wip
+
+[33mcommit ba77c5047b29a2c605f11bf8d6d7764a662da35d[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Apr 14 18:39:47 2024 +0200
+
+    kinda fixed logging in
+
+[33mcommit 5c9dcb419392912003d7dfd195015915c79d3be7[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Apr 14 18:25:17 2024 +0200
+
+    fix
+
+[33mcommit 37f10cf4212db37b1ab71465c1dc37fc2b123807[m
+Merge: 0c2d74a b773b7d
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Apr 14 18:19:58 2024 +0200
+
+    Merge branch 'master' of https://github.com/JKM22/Testowanie
+
+[33mcommit 0c2d74a1892635e51de7e0c6457d5f67009ea9cf[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Apr 14 18:19:52 2024 +0200
+
+    login system (some progress but not much)
+
+[33mcommit b773b7dc3cc1c100a7dd68e58ba7db940ebf9755[m
+Merge: 1633655 de637db
+Author: jenchxc <UL0273300@edu.uni.lodz.pl>
+Date:   Sun Apr 14 18:15:28 2024 +0200
+
+    ui uprawnienia
+
+[33mcommit 163365575afc3e924dbcab83418655955751c584[m
+Author: jenchxc <UL0273300@edu.uni.lodz.pl>
+Date:   Sun Apr 14 18:12:36 2024 +0200
+
+    UI uprawnienia
+
+[33mcommit de637db94d88bb50ad50d7cd9e34e37510df1bca[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Apr 14 17:58:53 2024 +0200
+
+    fix
+
+[33mcommit 0ba526f7348c60e19eb0902304a486841647df18[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Apr 14 17:54:47 2024 +0200
+
+    grouped files to module 3 folder
+
+[33mcommit 1fb071a7c12fb9b118e6a340559ef310360f2713[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Apr 14 17:32:40 2024 +0200
+
+    added logout button
+
+[33mcommit e309332f01e2d2f724d051b3816f53239ce915c3[m
+Author: mMartynka <155664139+mMartynka@users.noreply.github.com>
+Date:   Fri Apr 12 10:55:14 2024 +0200
+
+    Update biblioteka.sql
+
+[33mcommit 8071395ff24ec5f680ffe477aeff73acc2b354df[m
+Author: mMartynka <ul0273293@edu.uni.lodz.pl>
+Date:   Fri Apr 12 10:53:06 2024 +0200
+
+    uprawnienia
+
+[33mcommit 7d3c5d9e690763ff417a55ac6df4ee28366ed4df[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Tue Mar 26 17:05:46 2024 +0100
+
+    added "*opcjonalne" to adequate spaces in the designer windows
+
+[33mcommit c5be2f527606dba5d1f782ef139b779013933d73[m
+Author: xpwit <wpatrycja146@gmail.com>
+Date:   Mon Mar 25 19:12:16 2024 +0100
+
+    b
+
+[33mcommit 17fd62dd71e3e29b60644d1a4e67faabebdb9e64[m
+Author: xpwit <155672839+xpwit@users.noreply.github.com>
+Date:   Mon Mar 25 17:50:34 2024 +0100
+
+    Update biblioteka.sql
+
+[33mcommit 1f3faed244604b153eee6408bcc909bba378251b[m
+Author: xpwit <155672839+xpwit@users.noreply.github.com>
+Date:   Mon Mar 25 17:25:24 2024 +0100
+
+    Update biblioteka.sql
+
+[33mcommit 87cb4003f81433ca8f115e55f894ec4fcc894b26[m
+Author: xpwit <155672839+xpwit@users.noreply.github.com>
+Date:   Mon Mar 25 16:46:27 2024 +0100
+
+    Update biblioteka.sql
+
+[33mcommit c3c4db8657d1ace7ba531b1bfaf442567944754d[m
+Author: xpwit <wpatrycja146@gmail.com>
+Date:   Mon Mar 25 16:44:30 2024 +0100
+
+    w trakcie robienia
+
+[33mcommit 799bdde353524c6a61452530d93c3ade96997c92[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Mar 24 20:09:49 2024 +0100
+
+    a
+
+[33mcommit 0add4f33c7e7c91af5451bedd0f2bc87f49cb797[m
+Merge: 9ad3225 2f8cd8a
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Mar 24 20:08:50 2024 +0100
+
+    Merge branch 'master' of https://github.com/JKM22/Testowanie
+
+[33mcommit 9ad3225244cfbbe5f587bcc8ec533d53fd3ea1a8[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Mar 24 20:08:40 2024 +0100
+
+    exceptions in gitignore
+
+[33mcommit 2f8cd8a5cc8b044669066c47ed670894ba1866fb[m
+Author: jenchxc <UL0273300@edu.uni.lodz.pl>
+Date:   Sun Mar 24 20:05:18 2024 +0100
+
+    do testow moduł 1
+
+[33mcommit 02f23bc386ecb8c7ffc5c4520ab1eeaae048d65e[m
+Merge: 3097362 dda920a
+Author: jenchxc <UL0273300@edu.uni.lodz.pl>
+Date:   Sun Mar 24 19:52:09 2024 +0100
+
+    qa
+
+[33mcommit 3097362fd19296a44b81661e12a659bd15c9bed0[m
+Author: jenchxc <UL0273300@edu.uni.lodz.pl>
+Date:   Sun Mar 24 19:48:50 2024 +0100
+
+    a
+
+[33mcommit dda920a49b9db251d07b237ab0914eef1b9b875a[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Mar 24 19:48:08 2024 +0100
+
+    fixed the fix that changed how main user list view works
+
+[33mcommit cb8d6ae248108adb043633e2c924064cd219743d[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Mar 24 19:08:10 2024 +0100
+
+    fix bcs new things didnt work xd
+
+[33mcommit 567cc8fa1e8b0f85e2ad29df5a31ae7b2f154459[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Mar 24 17:20:40 2024 +0100
+
+    fix
+
+[33mcommit 18d697f6106813e48ea04c6f5873858b10d0b691[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Mar 24 17:16:33 2024 +0100
+
+    editing users fix
+
+[33mcommit 54db8f747e3467461bb956d5dfe31000f97918bc[m
+Merge: 0acb897 de525a4
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Mar 24 17:16:17 2024 +0100
+
+    editing users working fix
+
+[33mcommit de525a46a0b598712b471a57eb95b101d8d1c26f[m
+Author: jenchxc <UL0273300@edu.uni.lodz.pl>
+Date:   Sun Mar 24 16:55:04 2024 +0100
+
+    modyfikacja z walidacja
+
+[33mcommit 0acb89752fa9f07104f1940cce067bf49f7347ee[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Mar 24 16:11:27 2024 +0100
+
+    split same pesel and login exceptions into 2 different exceptions and now works correctly and the succesful message box doesnt show
+
+[33mcommit fb373af70b92b12dd18743a9dfacda82836a8161[m
+Merge: 6bfeafd 933540c
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Mar 24 15:42:21 2024 +0100
+
+    asd
+
+[33mcommit 933540c18c963f134fcaab8b8e1cb90f756d6f9e[m
+Author: jenchxc <UL0273300@edu.uni.lodz.pl>
+Date:   Sun Mar 24 15:40:44 2024 +0100
+
+    walidacja pesel mail
+
+[33mcommit 6bfeafdf988e02ecd6e38507bbede09337f9fd66[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Sun Mar 24 15:15:55 2024 +0100
+
+    changed listview size so it scales, omitted id and haslo in listview, changed listview width
+
+[33mcommit bd995baa502cd1b6eedb974ebf06c6808ca3b25f[m
+Merge: f701489 e536a1e
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Tue Mar 19 18:33:30 2024 +0100
+
+    fix
+
+[33mcommit f701489f24cd5b55e8e4142427556585ee798cd9[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Tue Mar 19 18:31:23 2024 +0100
+
+    fixed pesel and login errors
+
+[33mcommit e536a1eff11185a77ff92d99dd30b1854e29a79b[m
+Author: jenchxc <UL0273300@edu.uni.lodz.pl>
+Date:   Tue Mar 19 14:48:28 2024 +0100
+
+    tab :)
+
+[33mcommit 62021f4b043f77cad3a2af80f0b26f1fdae1ae6c[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Tue Mar 19 14:40:32 2024 +0100
+
+    fixed app closing instead of only window exiting and added hashing password while adding a user
+
+[33mcommit 0a8c923e573b84668036b6c17c07d430056a7c50[m
+Author: jenchxc <UL0273300@edu.uni.lodz.pl>
+Date:   Tue Mar 19 14:25:27 2024 +0100
+
+    a
+
+[33mcommit 373095c67f200c1ed7329954979750d90dbdd783[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Tue Mar 19 14:16:44 2024 +0100
+
+    edited .gitignore file and added the release folders, because it messed up compilation fsr
+
+[33mcommit e06c5cefc914334a1300e96e2e1651df87e44724[m
+Author: dawkrusz <162909319+dawkrusz@users.noreply.github.com>
+Date:   Tue Mar 19 14:14:56 2024 +0100
+
+    Update .gitignore
+
+[33mcommit 958d8d70a038318faf3dd2926aecd78d20555f3b[m
+Author: jenchxc <UL0273300@edu.uni.lodz.pl>
+Date:   Tue Mar 19 13:59:53 2024 +0100
+
+    2
+
+[33mcommit 597ecd6be8fb6014cd2685c625c8f2d8c6b35687[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Tue Mar 19 13:03:17 2024 +0100
+
+    added krypton references
+
+[33mcommit eceeef918183cf180a5cff430ddcb5d27a50763e[m
+Author: jenchxc <UL0273300@edu.uni.lodz.pl>
+Date:   Tue Mar 19 02:16:38 2024 +0100
+
+    UI zaktualizowane
+
+[33mcommit f93b614877300235a73800126d4588260317ce56[m
+Author: mMartynka <ul0273293@edu.uni.lodz.pl>
+Date:   Mon Mar 18 22:35:52 2024 +0100
+
+    o
+
+[33mcommit 8c69290e43320f748bb848e4ac6cbfe251b16727[m
+Author: dawkrusz <162909319+dawkrusz@users.noreply.github.com>
+Date:   Mon Mar 18 16:10:00 2024 +0100
+
+    fixed database small issues and added users
+
+[33mcommit ccb90ea05506e7fbf61ddb435dfd9caf9683fb31[m
+Author: dawkrusz <kruszynski.dd@gmail.com>
+Date:   Mon Mar 18 16:05:11 2024 +0100
+
+    ListeUser added the necessary tables according to use cases
+
+[33mcommit 6a326e033e60b42fe2c7d4062e8afb9894455702[m
+Author: JKM22 <102245343+JKM22@users.noreply.github.com>
+Date:   Tue Mar 12 15:34:00 2024 +0100
+
+    Add files via upload
+
+[33mcommit 4636ac0e25e1c08e090657f3bf20693cd626a0eb[m
+Author: xpwit <155672839+xpwit@users.noreply.github.com>
+Date:   Mon Mar 11 00:32:51 2024 +0100
+
+    Add files via upload
+
+[33mcommit ed7d8f43dd43bcad862207ff5b6c721209b86dd5[m
+Author: xpwit <155672839+xpwit@users.noreply.github.com>
+Date:   Mon Mar 11 00:31:59 2024 +0100
+
+    Add files via upload
+
+[33mcommit 68bf7fddcea9cf2feff0e17cd5e59b2d9a3d9091[m
+Author: KarolKra <162916160+KarolKra@users.noreply.github.com>
+Date:   Sun Mar 10 20:18:53 2024 +0100
+
+    Add files via upload
+
+[33mcommit b4d7d8bc5cb452f8ae6659ea477a99ce7af4378d[m
+Author: dawkrusz <162909319+dawkrusz@users.noreply.github.com>
+Date:   Sun Mar 10 20:01:21 2024 +0100
+
+    Rename biblioteka (2).sql to biblioteka.sql
+
+[33mcommit 9cd49b81e80495155fd2ecea350ebada4c1e1fe9[m
+Author: dawkrusz <162909319+dawkrusz@users.noreply.github.com>
+Date:   Sun Mar 10 20:00:37 2024 +0100
+
+    Add files via upload
+    
+    baza biblioteka skrypt
+
+[33mcommit 120d44ba6272ed24d440f55424f6ad681656d9cb[m
+Author: mopss <mopss@DESKTOP-1K9JBQI>
+Date:   Sun Mar 10 19:52:53 2024 +0100
+
+    Dodaj pliki projektów.
+
+[33mcommit 9ba194e7b7c1842cb05b0be952707c145e53e745[m
+Author: mopss <mopss@DESKTOP-1K9JBQI>
+Date:   Sun Mar 10 19:52:51 2024 +0100
+
+    Dodaj .gitattributes i .gitignore.
