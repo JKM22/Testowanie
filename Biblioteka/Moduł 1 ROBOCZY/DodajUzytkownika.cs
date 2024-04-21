@@ -21,7 +21,7 @@ namespace Biblioteka
             InitializeComponent();
 
         }
-        private string CalculateMD5Hash(string input)
+        /*private string CalculateMD5Hash(string input)
         {
             using (MD5 md5 = MD5.Create())
             {
@@ -35,7 +35,7 @@ namespace Biblioteka
                 }
                 return sb.ToString();
             }
-        }
+        }*/
 
         public void button_dodaj_Click(object sender, EventArgs e)
         {
@@ -51,7 +51,7 @@ namespace Biblioteka
             string pesel = textBox_dodajpesel.Text;
             string dataUrodzenia = dateTimePicker_dodajdata.Value.ToString("yyyy-MM-dd");
             string login = textBox_dodajlogin.Text;
-            string haslo = CalculateMD5Hash(textBox_dodajhaslo.Text); // Haszowanie hasła
+            string haslo = textBox_dodajhaslo.Text;
 
 
             string plec = "";
