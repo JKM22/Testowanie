@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2024 at 07:11 PM
+-- Generation Time: Apr 29, 2024 at 05:46 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -61,27 +61,46 @@ INSERT INTO `gatunek` (`id_gatunek`, `nazwa`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `hasla_generowane`
+-- Struktura tabeli dla tabeli `hasla`
 --
 
-CREATE TABLE `hasla_generowane` (
+CREATE TABLE `hasla` (
   `id_hasla` int(11) NOT NULL,
   `id_uzytkownik` int(11) NOT NULL,
-  `ostatnieGenerowaneHaslo` varchar(255) NOT NULL
+  `haslo` varchar(255) NOT NULL,
+  `czy_generowane` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `hasla_generowane`
+-- Dumping data for table `hasla`
 --
 
-INSERT INTO `hasla_generowane` (`id_hasla`, `id_uzytkownik`, `ostatnieGenerowaneHaslo`) VALUES
-(3, 7, 'D6W$$qdoQ7'),
-(4, 7, 'QFrc#&Y3s1'),
-(5, 7, 'kA*f4s-UT9'),
-(6, 7, 'C$Sb&zJt40'),
-(7, 7, 'nkLX$vM41#'),
-(8, 7, 'MsuBx$*4R8'),
-(9, 7, '*u1daCWI7-');
+INSERT INTO `hasla` (`id_hasla`, `id_uzytkownik`, `haslo`, `czy_generowane`) VALUES
+(4, 7, 'QFrc#&Y3s1', 0),
+(5, 7, 'kA*f4s-UT9', 0),
+(6, 7, 'C$Sb&zJt40', 0),
+(7, 7, 'nkLX$vM41#', 0),
+(8, 7, 'MsuBx$*4R8', 0),
+(9, 7, '*u1daCWI7-', 0),
+(10, 7, 'w*06qBCjL*', 0),
+(11, 7, '1JJ2#-mgrT', 1),
+(12, 7, 'R7hqRh&$3P', 1),
+(13, 7, '123Siema1!', 0),
+(14, 7, 'yOzcZL0#-0', 1),
+(15, 7, '1JJ2#-mgrT', 0),
+(16, 7, '28Duh&#JmQ', 1),
+(17, 7, '4qh3FVe*L$', 1),
+(18, 7, 'nywW6H0$Z_', 1),
+(19, 7, '#Z$chvCU90', 1),
+(20, 7, 'Qtx55*NN*c', 1),
+(21, 7, 'b&P-2mQ9kI', 1),
+(22, 7, 'UXqk#$16Fx', 1),
+(23, 7, '5T#n2Tc-xB', 1),
+(24, 7, 'T4$hd_p6RR', 1),
+(25, 7, 'un7R3&P&uF', 1),
+(26, 7, '$5hB9j_LVx', 1),
+(27, 7, '*KI4lFj4$k', 1),
+(28, 7, '$5xZmm#J7H', 1);
 
 -- --------------------------------------------------------
 
@@ -172,7 +191,7 @@ INSERT INTO `uzytkownik` (`id_uzytkownik`, `u_imie`, `u_nazwisko`, `u_email`, `u
 (2, 'Joanna', 'Wilk', 'mail123@mail.com', 987654321, 'Warszawa', '00-002', 'ul. Łódzka', '14', '21', '00220879196', '2004-08-20', 'Kobieta', 'asiaaisa', 'password222'),
 (3, 'Mariusz', 'Pudzianowski', 'pudzian@mail.com', 123123123, 'Poznań', '00-003', 'ul. Mała', '12', NULL, '87080361313', '1997-02-07', 'Mężczyzna', 'pudzianator', 'password333'),
 (4, 'Test', 'Testowy', 'test@testmail.com', 123456789, 'Test', '00-001', 'Testowa', '3', '3', '73110743682', '1994-03-09', 'Kobieta', 'Test', 'Testpassword'),
-(7, 'Renata', 'Gołąbek', 'golab@wp.pl', 129098188, 'Warszawa', '12-123', 'Ptasia', '12', '98', '12345678909', '2004-04-11', '1', 'golab', '<\\g<U*k2n3Y3');
+(7, 'Renata', 'Gołąbek', 'bibliotekapasswordreset@outlook.com', 129098188, 'Warszawa', '12-123', 'Ptasia', '12', '98', '12345678909', '2004-04-11', '1', 'golab', '$5xZmm#J7H');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -191,9 +210,9 @@ ALTER TABLE `gatunek`
   ADD PRIMARY KEY (`id_gatunek`);
 
 --
--- Indeksy dla tabeli `hasla_generowane`
+-- Indeksy dla tabeli `hasla`
 --
-ALTER TABLE `hasla_generowane`
+ALTER TABLE `hasla`
   ADD PRIMARY KEY (`id_hasla`),
   ADD KEY `id_uzytkownik` (`id_uzytkownik`);
 
@@ -244,10 +263,10 @@ ALTER TABLE `gatunek`
   MODIFY `id_gatunek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `hasla_generowane`
+-- AUTO_INCREMENT for table `hasla`
 --
-ALTER TABLE `hasla_generowane`
-  MODIFY `id_hasla` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE `hasla`
+  MODIFY `id_hasla` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `ksiazka`
@@ -265,17 +284,17 @@ ALTER TABLE `pary_uprawnienia`
 -- AUTO_INCREMENT for table `uzytkownik`
 --
 ALTER TABLE `uzytkownik`
-  MODIFY `id_uzytkownik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_uzytkownik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `hasla_generowane`
+-- Constraints for table `hasla`
 --
-ALTER TABLE `hasla_generowane`
-  ADD CONSTRAINT `hasla_generowane_ibfk_1` FOREIGN KEY (`id_uzytkownik`) REFERENCES `uzytkownik` (`id_uzytkownik`);
+ALTER TABLE `hasla`
+  ADD CONSTRAINT `hasla_ibfk_1` FOREIGN KEY (`id_uzytkownik`) REFERENCES `uzytkownik` (`id_uzytkownik`);
 
 --
 -- Constraints for table `ksiazka`
