@@ -93,13 +93,13 @@ namespace Biblioteka
 
         private void SendEmail(string newPassword)
         {
-                var fromMail = new MailAddress("bibliotekapasswordreset@outlook.com", "Zmiana hasła biblioteka");
+                var fromMail = new MailAddress("bibliotekapasswordreset1@outlook.com", "Zmiana hasła biblioteka");
                 var toMail = new MailAddress(textBoxEmail.Text);
 
                 string subject = "Resetowanie Hasła";
                 string body = $"Twoje nowe hasło to: {newPassword}";
 
-                string email = "bibliotekapasswordreset@outlook.com";
+                string email = "bibliotekapasswordreset1@outlook.com";
                 string haslo = "alamakota123";
                 string Host = "smtp.office365.com";
                 int Port = 587;
