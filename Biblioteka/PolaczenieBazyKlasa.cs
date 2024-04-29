@@ -237,7 +237,7 @@ namespace Biblioteka
                 {
                     connection.Open();
 
-                    string query = "SELECT COUNT(*) FROM hasla_generowane WHERE id_uzytkownik = @UserId AND ostatnieGenerowaneHaslo = @Haslo";
+                    string query = "SELECT COUNT(*) FROM hasla WHERE id_uzytkownik = @UserId AND haslo = @Haslo AND czy_generowane = 1";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -256,6 +256,7 @@ namespace Biblioteka
                 }
             }
         }
+
 
 
         public bool CzyUzytkownikZalogowany()
@@ -448,16 +449,24 @@ namespace Biblioteka
                     // Pobierz id_uzytkownik na podstawie adresu e-mail
                     int userId = GetUserIdByEmail(email);
 
-                    // Dodaj informacje o ostatnio wygenerowanym haśle użytkownika, jeśli jest to hasło wygenerowane
-                    if (isGeneratedPassword)
+                    // Pobierz ostatnie trzy hasła użytkownika
+                    List<string> lastThreePasswords = GetLastThreePasswords(userId);
+
+                    // Sprawdź, czy nowe hasło jest różne od ostatnich trzech
+                    if (lastThreePasswords.Contains(newPassword))
                     {
-                        string insertQuery = "INSERT INTO hasla_generowane (id_uzytkownik, ostatnieGenerowaneHaslo) VALUES (@UserId, @NewPassword)";
-                        using (MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection))
-                        {
-                            insertCommand.Parameters.AddWithValue("@UserId", userId);
-                            insertCommand.Parameters.AddWithValue("@NewPassword", newPassword);
-                            insertCommand.ExecuteNonQuery();
-                        }
+                        MessageBox.Show("Nowe hasło musi być różne od ostatnich trzech haseł.");
+                        return false;
+                    }
+
+                    // Dodaj informacje o ostatnio wygenerowanym haśle użytkownika, jeśli jest to hasło wygenerowane
+                    string insertQuery = "INSERT INTO hasla (id_uzytkownik, haslo, czy_generowane) VALUES (@UserId, @NewPassword, @IsGenerated)";
+                    using (MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection))
+                    {
+                        insertCommand.Parameters.AddWithValue("@UserId", userId);
+                        insertCommand.Parameters.AddWithValue("@NewPassword", newPassword);
+                        insertCommand.Parameters.AddWithValue("@IsGenerated", isGeneratedPassword ? 1 : 0);
+                        insertCommand.ExecuteNonQuery();
                     }
 
                     // Aktualizuj hasło użytkownika w tabeli uzytkownik
@@ -477,6 +486,41 @@ namespace Biblioteka
                 }
             }
         }
+
+        private List<string> GetLastThreePasswords(int userId)
+        {
+            List<string> lastThreePasswords = new List<string>();
+
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = "SELECT haslo FROM hasla WHERE id_uzytkownik = @UserId ORDER BY id_hasla DESC LIMIT 3";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserId", userId);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                lastThreePasswords.Add(reader.GetString(0));
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Błąd podczas pobierania ostatnich trzech haseł użytkownika: " + ex.Message);
+                }
+            }
+
+            return lastThreePasswords;
+        }
+
 
         // Metoda pomocnicza do pobrania id_uzytkownik na podstawie adresu e-mail
         private int GetUserIdByEmail(string email)
