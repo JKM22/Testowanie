@@ -67,12 +67,12 @@ namespace Biblioteka
                 if (!polaczenie.CzyLoginPoprawny(login))
                 {
                     // Błędny login
-                    MessageBox.Show("Błędny login!");
+                    MessageBox.Show("Błędne dane logowania!");
                 }
                 else
                 {
                     // Błędne hasło
-                    MessageBox.Show("Błędne hasło!");
+                    MessageBox.Show("Błędne dane logowania!");
                 }
             }
         }
