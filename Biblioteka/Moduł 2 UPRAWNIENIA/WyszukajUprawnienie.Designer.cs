@@ -44,9 +44,7 @@
             "Administrator",
             "Użytkownik zalogowany",
             "Zmień uprawnienia",
-            "Modyfikacja użytkownika",
-            "Zmień hasło",
-            "Przeglądaj roboczy"});
+            "Modyfikacja użytkownika"});
             this.comboBox1.Location = new System.Drawing.Point(11, 11);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
@@ -56,7 +54,7 @@
             // 
             // button_Wyszukaj
             // 
-            this.button_Wyszukaj.Font = new System.Drawing.Font("Roboto Medium", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Wyszukaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Wyszukaj.Location = new System.Drawing.Point(233, 11);
             this.button_Wyszukaj.Margin = new System.Windows.Forms.Padding(2);
             this.button_Wyszukaj.Name = "button_Wyszukaj";
@@ -68,7 +66,7 @@
             // 
             // button_Wroc
             // 
-            this.button_Wroc.Font = new System.Drawing.Font("Roboto Medium", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Wroc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Wroc.Location = new System.Drawing.Point(447, 258);
             this.button_Wroc.Margin = new System.Windows.Forms.Padding(2);
             this.button_Wroc.Name = "button_Wroc";
