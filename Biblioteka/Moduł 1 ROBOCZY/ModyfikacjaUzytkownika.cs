@@ -72,6 +72,9 @@ namespace Biblioteka
             if (!IsValidLogin(login))
                 errors.Add("Nieprawidłowy login.");
 
+            if (!IsValidPassword(haslo))
+                errors.Add("Hasło nie spełnia warunków walidacji.");
+
             // Walidacja pozostałych pól
             if (!dodajUzytkownikaKlasa.WalidujDane(imie, nazwisko, email, telefon, miejscowosc, kodPocztowy, ulica, nrPosesji, nrLokalu, pesel, dataUrodzenia, login, haslo))
                 errors.Add("Proszę wypełnić wszystkie wymagane pola poprawnie.");
@@ -95,8 +98,29 @@ namespace Biblioteka
             {
                 MessageBox.Show("Nie udało się zaktualizować danych użytkownika. Błąd: " + ex.Message);
             }
-        } 
+        }
 
+        private bool IsValidPassword(string password)
+        {
+            // Sprawdzenie długości hasła
+            if (password.Length < 8 || password.Length > 15)
+            {
+                return false;
+            }
+
+            // Sprawdzenie, czy hasło zawiera przynajmniej jedną dużą literę, małą literę, cyfrę i znak specjalny
+            bool hasUpperCase = password.Any(char.IsUpper);
+            bool hasLowerCase = password.Any(char.IsLower);
+            bool hasDigit = password.Any(char.IsDigit);
+            bool hasSpecialChar = password.Any(ch => !char.IsLetterOrDigit(ch));
+
+            if (!hasUpperCase || !hasLowerCase || !hasDigit || !hasSpecialChar)
+            {
+                return false;
+            }
+
+            return true;
+        }
         private bool IsValidPesel(string pesel, string plec)
         {
             // Sprawdzenie długości

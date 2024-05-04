@@ -92,6 +92,12 @@ namespace Biblioteka
                 return;
             }
 
+            if (!IsValidPassword(haslo))
+            {
+                MessageBox.Show("Hasło nie spełnia wymagań");
+                return;
+            }
+
             // Walidacja pozostałych pól
             if (!dodajUzytkownikaKlasa.WalidujDane(imie, nazwisko, email, telefon, miejscowosc, kodPocztowy, nrPosesji, pesel, dataUrodzenia, login, haslo))
             {
@@ -235,12 +241,30 @@ namespace Biblioteka
 
         private bool IsValidLogin(string login)
         {
-            // Tutaj możesz sprawdzić unikalność loginu w systemie, np. korzystając z bazy danych
-            // Jeśli login jest unikalny, zwróć true, w przeciwnym razie false
             return true;
         }
 
+        private bool IsValidPassword(string password)
+        {
+            // Sprawdzenie długości hasła
+            if (password.Length < 8 || password.Length > 15)
+            {
+                return false;
+            }
 
+            // Sprawdzenie, czy hasło zawiera przynajmniej jedną dużą literę, małą literę, cyfrę i znak specjalny
+            bool hasUpperCase = password.Any(char.IsUpper);
+            bool hasLowerCase = password.Any(char.IsLower);
+            bool hasDigit = password.Any(char.IsDigit);
+            bool hasSpecialChar = password.Any(ch => !char.IsLetterOrDigit(ch));
+
+            if (!hasUpperCase || !hasLowerCase || !hasDigit || !hasSpecialChar)
+            {
+                return false;
+            }
+
+            return true;
+        }
         private void checkBox_kobieta_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_kobieta.Checked)
