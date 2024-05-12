@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2024 at 05:46 PM
+-- Generation Time: Maj 12, 2024 at 07:08 PM
 -- Wersja serwera: 10.4.32-MariaDB
--- Wersja PHP: 8.2.12
+-- Wersja PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,43 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `biblioteka`
 --
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `autor`
---
-
-CREATE TABLE `autor` (
-  `id_autor` int(11) NOT NULL,
-  `imie` varchar(150) NOT NULL,
-  `nazwisko` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `gatunek`
---
-
-CREATE TABLE `gatunek` (
-  `id_gatunek` int(11) NOT NULL,
-  `nazwa` varchar(70) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
-
---
--- Dumping data for table `gatunek`
---
-
-INSERT INTO `gatunek` (`id_gatunek`, `nazwa`) VALUES
-(1, 'fantasy'),
-(2, 'science fiction'),
-(3, 'kryminał'),
-(4, 'romans'),
-(5, 'thriller'),
-(6, 'słownik'),
-(7, 'biografia'),
-(8, 'komiks');
 
 -- --------------------------------------------------------
 
@@ -112,9 +75,23 @@ CREATE TABLE `ksiazka` (
   `id_ksiazka` int(11) NOT NULL,
   `tytul` varchar(253) NOT NULL,
   `autor` int(11) NOT NULL,
-  `gatunek` int(11) NOT NULL,
-  `opis` text DEFAULT NULL
+  `gatunek` varchar(11) NOT NULL,
+  `opis` text DEFAULT NULL,
+  `liczba_stron` int(11) NOT NULL,
+  `wydawnictwo` varchar(100) NOT NULL,
+  `rok_wydania` int(11) NOT NULL,
+  `cena` decimal(11,0) NOT NULL,
+  `liczba_sztuk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `ksiazka`
+--
+
+INSERT INTO `ksiazka` (`id_ksiazka`, `tytul`, `autor`, `gatunek`, `opis`, `liczba_stron`, `wydawnictwo`, `rok_wydania`, `cena`, `liczba_sztuk`) VALUES
+(24, 'Lalka', 0, '1', 'g', 680, 'GREG', 1951, 39, 1),
+(29, 'Lalka', 0, 'dramat', 'bf', 0, '', 1950, 0, 0),
+(32, 'I nie było już nikogo', 0, 'kryminał', 'Dziesięć osób, każda podejrzana o morderstwo, zostaje zaproszonych przez tajemniczego gospodarza do domu na wyspie. Gdy ginie druga osoba, goście szybko zdają sobie sprawę, że to, co początkowo uważali za nieszczęśliwy wypadek, jest robotą zabójcy. Postanawiają odkryć jego tożsamość, ale okazuje się, że nikt nie ma alibi. Odizolowani od społeczeństwa, niezdolni do opuszczenia miejsca pobytu, umierają jeden po drugim w sposób opisany w dziecięcej rymowance, która wywieszona jest w ich pokojach.', 216, ' Dolnośląskie', 1939, 29, 1);
 
 -- --------------------------------------------------------
 
@@ -135,7 +112,8 @@ CREATE TABLE `pary_uprawnienia` (
 INSERT INTO `pary_uprawnienia` (`id_pary`, `id_uprawnienia`, `id_uzytkownik`) VALUES
 (85, 1, 1),
 (86, 3, 2),
-(87, 4, 3);
+(87, 4, 3),
+(88, 5, 9);
 
 -- --------------------------------------------------------
 
@@ -156,7 +134,8 @@ INSERT INTO `uprawnienia` (`id_uprawnienia`, `uprawnienia`) VALUES
 (1, 'Administrator'),
 (2, 'Użytkownik zalogowany'),
 (3, 'Zmień uprawnienia'),
-(4, 'Modyfikacja użytkownika');
+(4, 'Modyfikacja użytkownika'),
+(5, 'Rejestracja książek');
 
 -- --------------------------------------------------------
 
@@ -191,23 +170,12 @@ INSERT INTO `uzytkownik` (`id_uzytkownik`, `u_imie`, `u_nazwisko`, `u_email`, `u
 (2, 'Joanna', 'Wilk', 'mail123@mail.com', 987654321, 'Warszawa', '00-002', 'ul. Łódzka', '14', '21', '00220879196', '2004-08-20', 'Kobieta', 'asiaaisa', 'password222'),
 (3, 'Mariusz', 'Pudzianowski', 'pudzian@mail.com', 123123123, 'Poznań', '00-003', 'ul. Mała', '12', NULL, '87080361313', '1997-02-07', 'Mężczyzna', 'pudzianator', 'password333'),
 (4, 'Test', 'Testowy', 'test@testmail.com', 123456789, 'Test', '00-001', 'Testowa', '3', '3', '73110743682', '1994-03-09', 'Kobieta', 'Test', 'Testpassword'),
-(7, 'Renata', 'Gołąbek', 'bibliotekapasswordreset@outlook.com', 129098188, 'Warszawa', '12-123', 'Ptasia', '12', '98', '12345678909', '2004-04-11', '1', 'golab', '$5xZmm#J7H');
+(7, 'Renata', 'Gołąbek', 'bibliotekapasswordreset@outlook.com', 129098188, 'Warszawa', '12-123', 'Ptasia', '12', '98', '12345678909', '2004-04-11', '1', 'golab', '$5xZmm#J7H'),
+(9, 'Janina', 'Nowak', 'bibliotekarz@gmail.com', 111222333, 'Łódź', '00-004', 'Piotrkowska', '22', '2', '67040212348', '1967-04-02', 'Kobieta', 'bibliotekarz', 'Bibliotekarz@');
 
 --
 -- Indeksy dla zrzutów tabel
 --
-
---
--- Indeksy dla tabeli `autor`
---
-ALTER TABLE `autor`
-  ADD PRIMARY KEY (`id_autor`);
-
---
--- Indeksy dla tabeli `gatunek`
---
-ALTER TABLE `gatunek`
-  ADD PRIMARY KEY (`id_gatunek`);
 
 --
 -- Indeksy dla tabeli `hasla`
@@ -251,18 +219,6 @@ ALTER TABLE `uzytkownik`
 --
 
 --
--- AUTO_INCREMENT for table `autor`
---
-ALTER TABLE `autor`
-  MODIFY `id_autor` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `gatunek`
---
-ALTER TABLE `gatunek`
-  MODIFY `id_gatunek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
 -- AUTO_INCREMENT for table `hasla`
 --
 ALTER TABLE `hasla`
@@ -272,19 +228,19 @@ ALTER TABLE `hasla`
 -- AUTO_INCREMENT for table `ksiazka`
 --
 ALTER TABLE `ksiazka`
-  MODIFY `id_ksiazka` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ksiazka` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `pary_uprawnienia`
 --
 ALTER TABLE `pary_uprawnienia`
-  MODIFY `id_pary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id_pary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `uzytkownik`
 --
 ALTER TABLE `uzytkownik`
-  MODIFY `id_uzytkownik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_uzytkownik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
@@ -295,13 +251,6 @@ ALTER TABLE `uzytkownik`
 --
 ALTER TABLE `hasla`
   ADD CONSTRAINT `hasla_ibfk_1` FOREIGN KEY (`id_uzytkownik`) REFERENCES `uzytkownik` (`id_uzytkownik`);
-
---
--- Constraints for table `ksiazka`
---
-ALTER TABLE `ksiazka`
-  ADD CONSTRAINT `ksiazka_ibfk_1` FOREIGN KEY (`gatunek`) REFERENCES `gatunek` (`id_gatunek`),
-  ADD CONSTRAINT `ksiazka_ibfk_2` FOREIGN KEY (`autor`) REFERENCES `autor` (`id_autor`);
 
 --
 -- Constraints for table `pary_uprawnienia`
