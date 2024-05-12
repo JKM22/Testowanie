@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Maj 12, 2024 at 07:08 PM
+-- Generation Time: Maj 12, 2024 at 07:50 PM
 -- Wersja serwera: 10.4.32-MariaDB
--- Wersja PHP: 8.0.30
+-- Wersja PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -73,25 +73,33 @@ INSERT INTO `hasla` (`id_hasla`, `id_uzytkownik`, `haslo`, `czy_generowane`) VAL
 
 CREATE TABLE `ksiazka` (
   `id_ksiazka` int(11) NOT NULL,
-  `tytul` varchar(253) NOT NULL,
-  `autor` int(11) NOT NULL,
-  `gatunek` varchar(11) NOT NULL,
-  `opis` text DEFAULT NULL,
+  `tytul` varchar(200) NOT NULL,
+  `autor` varchar(200) NOT NULL,
+  `gatunek` varchar(200) NOT NULL,
+  `opis` varchar(1500) NOT NULL,
   `liczba_stron` int(11) NOT NULL,
-  `wydawnictwo` varchar(100) NOT NULL,
+  `wydawnictwo` varchar(200) NOT NULL,
   `rok_wydania` int(11) NOT NULL,
-  `cena` decimal(11,0) NOT NULL,
-  `liczba_sztuk` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+  `cena` int(11) NOT NULL,
+  `liczba_sztuk` int(11) NOT NULL,
+  `status` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `ksiazka`
 --
 
-INSERT INTO `ksiazka` (`id_ksiazka`, `tytul`, `autor`, `gatunek`, `opis`, `liczba_stron`, `wydawnictwo`, `rok_wydania`, `cena`, `liczba_sztuk`) VALUES
-(24, 'Lalka', 0, '1', 'g', 680, 'GREG', 1951, 39, 1),
-(29, 'Lalka', 0, 'dramat', 'bf', 0, '', 1950, 0, 0),
-(32, 'I nie było już nikogo', 0, 'kryminał', 'Dziesięć osób, każda podejrzana o morderstwo, zostaje zaproszonych przez tajemniczego gospodarza do domu na wyspie. Gdy ginie druga osoba, goście szybko zdają sobie sprawę, że to, co początkowo uważali za nieszczęśliwy wypadek, jest robotą zabójcy. Postanawiają odkryć jego tożsamość, ale okazuje się, że nikt nie ma alibi. Odizolowani od społeczeństwa, niezdolni do opuszczenia miejsca pobytu, umierają jeden po drugim w sposób opisany w dziecięcej rymowance, która wywieszona jest w ich pokojach.', 216, ' Dolnośląskie', 1939, 29, 1);
+INSERT INTO `ksiazka` (`id_ksiazka`, `tytul`, `autor`, `gatunek`, `opis`, `liczba_stron`, `wydawnictwo`, `rok_wydania`, `cena`, `liczba_sztuk`, `status`) VALUES
+(1, 'Szeptucha', 'Anna Kozłowska', 'Fantasy', 'Wciągająca opowieść o młodej dziewczynie posiadającej nadnaturalne moce, która staje w obronie swojej wioski przed złowrogimi siłami.', 420, 'Fabryka Słów', 2023, 50, 80, 'Niedostępna'),
+(2, 'Pole grawitacyjne', 'Jacek Dukaj', 'Science fiction', 'Niezwykła podróż po alternatywnej historii Polski, gdzie technologia zmienia oblicze społeczeństwa.', 736, 'Wydawnictwo Literackie', 2022, 60, 100, 'Niedostępna'),
+(3, 'Słodki dom', 'Wojciech Chmielarz', 'Kryminał', 'Trzymający w napięciu thriller o zbrodni popełnionej w z pozoru spokojnej okolicy, której śledztwo odkrywa mroczne sekrety mieszkańców.', 360, 'Wydawnictwo Literackie', 2024, 40, 90, 'Niedostępna'),
+(4, 'Zaginiona księga', 'Dan Brown', 'Thriller', 'Robert Langdon powraca, by rozwikłać zagadkę zniknięcia starożytnej księgi, która może zmienić bieg historii.', 512, 'C&T', 2023, 45, 70, 'Niedostępna'),
+(5, 'Nocna muzyka', 'Jojo Moyes', 'Literatura obyczajowa', 'Wzruszająca opowieść o miłości, marzeniach i przeznaczeniu, które prowadzi bohaterów przez życie pełne wyzwań i nieoczekiwanych zwrotów.', 480, 'Znak', 2023, 35, 120, 'Niedostępna'),
+(6, 'Ostatnia przysięga', 'Karolina Ramqvist', 'Literatura kobieca', 'Historia odkrywania siły, odwagi i determinacji przez kobietę, która zostaje samotną matką po śmierci męża.', 320, 'Wydawnictwo Literackie', 2024, 30, 60, 'Niedostępna'),
+(7, 'Synowie chaosu', 'Brandon Sanderson', 'Fantasy', 'Pierwszy tom nowej epickiej sagi fantasy, która przenosi czytelnika do świata pełnego magii, intryg i niebezpieczeństwa.', 800, 'Nasza Księgarnia', 2022, 65, 85, 'Niedostępna'),
+(8, 'Władca Mroków', 'Andrzej Sapkowski', 'Fantasy', 'Kontynuacja sagi o Wiedźminie, która ponownie zabiera czytelnika do świata zamieszkałego przez potwory, magię i polityczne intrygi.', 560, 'SuperNowa', 2023, 55, 100, 'Niedostępna'),
+(9, 'Lament w przeciwgwieźdnej nocy', 'Liu Cixin', 'Science fiction', 'Niezwykła podróż przez kosmos, gdzie ludzkość staje w obliczu zagrożenia ze strony obcych cywilizacji i musi znaleźć sposób na przetrwanie.', 672, 'Wydawnictwo SQN', 2024, 60, 80, 'Niedostępna'),
+(10, 'Wiatr zimy', 'Hannah Richell', 'Literatura obyczajowa', 'Poruszająca historia dwóch kobiet, których losy splatają się na tle zapierającego dech pejzażu Islandii.', 400, 'Czarna Owca', 2023, 43, 110, 'Niedostępna');
 
 -- --------------------------------------------------------
 
@@ -188,11 +196,7 @@ ALTER TABLE `hasla`
 -- Indeksy dla tabeli `ksiazka`
 --
 ALTER TABLE `ksiazka`
-  ADD PRIMARY KEY (`id_ksiazka`),
-  ADD UNIQUE KEY `gatunek` (`gatunek`),
-  ADD UNIQUE KEY `gatunek_2` (`gatunek`),
-  ADD KEY `gatunek_3` (`gatunek`),
-  ADD KEY `autor` (`autor`);
+  ADD PRIMARY KEY (`id_ksiazka`);
 
 --
 -- Indeksy dla tabeli `pary_uprawnienia`
@@ -223,12 +227,6 @@ ALTER TABLE `uzytkownik`
 --
 ALTER TABLE `hasla`
   MODIFY `id_hasla` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
---
--- AUTO_INCREMENT for table `ksiazka`
---
-ALTER TABLE `ksiazka`
-  MODIFY `id_ksiazka` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `pary_uprawnienia`
