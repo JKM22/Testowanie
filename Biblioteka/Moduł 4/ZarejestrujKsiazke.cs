@@ -14,13 +14,24 @@ namespace Biblioteka.Moduł_4
 {
     public partial class ZarejestrujKsiazke : Form
     {
+        private WyswietlKsiazki wyswietlKsiazki = new WyswietlKsiazki();
+
         public ZarejestrujKsiazke()
         {
             InitializeComponent();
+            listView1.FullRowSelect = true; // Ustawienie FullRowSelect na true
+            WyswietlListeKsiazek();
+           
+        }
+     
 
+        public void WyswietlListeKsiazek()
+        {
+            // Wywołanie metody WyswietlUprawnienia z klasy UprawnieniaKlasa
+            wyswietlKsiazki.WyswietlListeKsiazek(listView1);
         }
 
-
+        
         private void button2_Click(object sender, EventArgs e)
         {
             ZarzadzajBiblioteka zarzadzajBiblioteka = new ZarzadzajBiblioteka();
@@ -30,6 +41,8 @@ namespace Biblioteka.Moduł_4
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+
             // Pobierz dane z formularza
             string tytul = textBox_Tytul.Text;
             string autor = textBox_Autor.Text;
@@ -82,6 +95,134 @@ namespace Biblioteka.Moduł_4
                 MessageBox.Show($"Wystąpił błąd podczas dodawania książki: {ex.Message}", "Błąd",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void numericUpDown_RokWydania_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            // Sprawdź, czy jakikolwiek wiersz jest zaznaczony
+            if (listView1.SelectedItems.Count > 0)
+            {
+                button1.Enabled = false;
+                // Pobierz pierwszy zaznaczony wiersz
+                ListViewItem selectedRow = listView1.SelectedItems[0];
+
+                // Pobierz wartości kolumn zaznaczonego wiersza
+                string tytul = selectedRow.SubItems[1].Text;
+                string autor = selectedRow.SubItems[2].Text;
+                string gatunek = selectedRow.SubItems[3].Text;
+                string opis = selectedRow.SubItems[4].Text;
+                string liczbaStron = selectedRow.SubItems[5].Text;
+                string wydawnictwo = selectedRow.SubItems[6].Text;
+                string rokWydania = selectedRow.SubItems[7].Text;
+                string cena = selectedRow.SubItems[8].Text;
+                string liczbaSztuk = selectedRow.SubItems[9].Text;
+
+                // Wpisz pobrane wartości do textboxów
+                textBox_Tytul.Text = tytul;
+                textBox_Autor.Text = autor;
+                textBox_Gatunek.Text = gatunek;
+                textBox_Opis.Text = opis;
+                numericUpDown_LiczbaStron.Value = int.Parse(liczbaStron);
+                textBox_Wydawnictwo.Text = wydawnictwo;
+                numericUpDown_RokWydania.Value = int.Parse(rokWydania);
+                numericUpDown_Cena.Value = decimal.Parse(cena);
+                numericUpDown_LiczbaSztuk.Value = int.Parse(liczbaSztuk);
+
+            }
+            else
+            {
+                button1.Enabled = true;
+            }
+        }
+
+
+
+        private void ZarejestrujKsiazke_Load(object sender, EventArgs e)
+        {
+            // Ustaw widok kontrolki ListView na Details
+            listView1.View = View.Details;
+
+            // Dodaj kolumny do kontrolki ListView
+            listView1.Columns.Add("ID", 50);
+            listView1.Columns.Add("Tytuł", 150);
+            listView1.Columns.Add("Autor", 100);
+            listView1.Columns.Add("Gatunek", 100);
+            listView1.Columns.Add("Opis", 200); // Dodaj kolumnę opisu
+            listView1.Columns.Add("Liczba Stron", 80);
+            listView1.Columns.Add("Wydawnictwo", 100);
+            listView1.Columns.Add("Rok Wydania", 80);
+            listView1.Columns.Add("Cena", 80);
+            listView1.Columns.Add("Liczba Sztuk", 80);
+            listView1.Columns.Add("Status", 100);
+
+            // Wyświetl listę książek
+            WyswietlListeKsiazek();
+        }
+
+
+
+       
+
+        private void button_zarejestujksiazke_Click(object sender, EventArgs e)
+        {
+             // Upewnij się, że użytkownik wybrał książkę
+            if (listView1.SelectedItems.Count > 0)
+            {
+                // Pobierz ID wybranej książki
+                int selectedBookId = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
+
+                try
+                {
+
+                    string status = listView1.SelectedItems[0].SubItems[10].Text;
+
+                    // Sprawdź, czy książka ma status "Dostępna"
+                    if (status == "Dostępna")
+                    {
+                        MessageBox.Show("Wybrana książka jest już zarejestrowana i ma status 'Dostępna'.", "Błąd",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return; // Przerwij dalsze działanie metody
+                    }
+
+
+                    // Zmiana statusu książki na "Dostępna"
+                    wyswietlKsiazki.AktualizujStatusKsiazki(selectedBookId, "Dostępna");
+
+                    // Wyświetl komunikat o powodzeniu
+                    MessageBox.Show("Status książki został pomyślnie zmieniony na 'Dostępna'.", "Sukces",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Odśwież listę książek
+                    WyswietlListeKsiazek();
+                }
+                catch (Exception ex)
+                {
+                    // Wyświetl komunikat o błędzie
+                    MessageBox.Show($"Wystąpił błąd podczas zmiany statusu książki: {ex.Message}", "Błąd",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Proszę wybrać książkę, aby zmienić jej status.", "Błąd",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

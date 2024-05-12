@@ -152,6 +152,7 @@
     <Compile Include="Moduł 3 LOGOWANIE\OdzyskiwanieHasla.Designer.cs">
       <DependentUpon>OdzyskiwanieHasla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moduł 4\WyswietlKsiazki.cs" />
     <Compile Include="Moduł 4\ZarejestrujKsiazke.cs">
       <SubType>Form</SubType>
     </Compile>
