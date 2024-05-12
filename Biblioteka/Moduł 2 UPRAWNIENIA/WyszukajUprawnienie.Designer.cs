@@ -44,21 +44,21 @@
             "Administrator",
             "Użytkownik zalogowany",
             "Zmień uprawnienia",
-            "Modyfikacja użytkownika"});
-            this.comboBox1.Location = new System.Drawing.Point(11, 11);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
+            "Modyfikacja użytkownika",
+            "Rejestracja książek"});
+            this.comboBox1.Location = new System.Drawing.Point(16, 17);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(205, 21);
+            this.comboBox1.Size = new System.Drawing.Size(306, 28);
             this.comboBox1.TabIndex = 2;
             this.comboBox1.Text = "Wybierz uprawnienie";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button_Wyszukaj
             // 
             this.button_Wyszukaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_Wyszukaj.Location = new System.Drawing.Point(233, 11);
-            this.button_Wyszukaj.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Wyszukaj.Location = new System.Drawing.Point(350, 17);
             this.button_Wyszukaj.Name = "button_Wyszukaj";
-            this.button_Wyszukaj.Size = new System.Drawing.Size(77, 21);
+            this.button_Wyszukaj.Size = new System.Drawing.Size(116, 32);
             this.button_Wyszukaj.TabIndex = 3;
             this.button_Wyszukaj.Text = "WYSZUKAJ";
             this.button_Wyszukaj.UseVisualStyleBackColor = true;
@@ -67,10 +67,9 @@
             // button_Wroc
             // 
             this.button_Wroc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_Wroc.Location = new System.Drawing.Point(447, 258);
-            this.button_Wroc.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Wroc.Location = new System.Drawing.Point(670, 397);
             this.button_Wroc.Name = "button_Wroc";
-            this.button_Wroc.Size = new System.Drawing.Size(75, 23);
+            this.button_Wroc.Size = new System.Drawing.Size(112, 35);
             this.button_Wroc.TabIndex = 4;
             this.button_Wroc.Text = "WRÓĆ";
             this.button_Wroc.UseVisualStyleBackColor = true;
@@ -79,10 +78,9 @@
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(11, 51);
-            this.listView1.Margin = new System.Windows.Forms.Padding(2);
+            this.listView1.Location = new System.Drawing.Point(16, 78);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(511, 203);
+            this.listView1.Size = new System.Drawing.Size(764, 310);
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -126,15 +124,14 @@
             // 
             // WyszukajUprawnienie
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(533, 292);
+            this.ClientSize = new System.Drawing.Size(800, 449);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.button_Wroc);
             this.Controls.Add(this.button_Wyszukaj);
             this.Controls.Add(this.comboBox1);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "WyszukajUprawnienie";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;

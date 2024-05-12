@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Biblioteka.Moduł_4;
 using ComponentFactory.Krypton.Toolkit;
 
 namespace Biblioteka
@@ -190,8 +191,12 @@ namespace Biblioteka
         {
             System.Windows.Forms.Application.Exit();
         }
-        
 
-        
+        private void button_ZarzadzajBiblioteka_Click(object sender, EventArgs e)
+        {
+            ZarzadzajBiblioteka zarzadzajBiblioteka = new ZarzadzajBiblioteka();
+            zarzadzajBiblioteka.Show();
+            this.Hide();
+        }
     }
 }

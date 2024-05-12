@@ -81,6 +81,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.7.0.2\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
     </Reference>
@@ -151,6 +152,19 @@
     <Compile Include="Moduł 3 LOGOWANIE\OdzyskiwanieHasla.Designer.cs">
       <DependentUpon>OdzyskiwanieHasla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moduł 4\ZarejestrujKsiazke.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moduł 4\ZarejestrujKsiazke.Designer.cs">
+      <DependentUpon>ZarejestrujKsiazke.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Moduł 4\ZarzadzajBiblioteka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moduł 4\ZarzadzajBiblioteka.Designer.cs">
+      <DependentUpon>ZarzadzajBiblioteka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Moduł 4\ZarzadzajBibliotekaKlasa.cs" />
     <Compile Include="PolaczenieBazyKlasa.cs" />
     <Compile Include="Moduł 2 UPRAWNIENIA\PrzegladajUprawnienia.cs">
       <SubType>Form</SubType>
@@ -211,6 +225,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Moduł 3 LOGOWANIE\OdzyskiwanieHasla.resx">
       <DependentUpon>OdzyskiwanieHasla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moduł 4\ZarejestrujKsiazke.resx">
+      <DependentUpon>ZarejestrujKsiazke.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moduł 4\ZarzadzajBiblioteka.resx">
+      <DependentUpon>ZarzadzajBiblioteka.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
