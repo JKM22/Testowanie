@@ -44,5 +44,12 @@ namespace Biblioteka.Moduł_4
             listaRejestracjiKsiazki_.Show();
             this.Hide();
         }
+
+        private void button_rejestracjaWtpozyczenia_Click(object sender, EventArgs e)
+        {
+            RejestracjaWypozyczeniaKsiazki rejestracjaWypozyczeniaKsiazki = new RejestracjaWypozyczeniaKsiazki();
+            rejestracjaWypozyczeniaKsiazki.Show();
+            this.Hide();
+        }
     }
 }
