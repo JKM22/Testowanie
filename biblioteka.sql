@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Maj 12, 2024 at 07:50 PM
+-- Generation Time: Maj 13, 2024 at 10:44 AM
 -- Wersja serwera: 10.4.32-MariaDB
--- Wersja PHP: 8.2.12
+-- Wersja PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -90,7 +90,7 @@ CREATE TABLE `ksiazka` (
 --
 
 INSERT INTO `ksiazka` (`id_ksiazka`, `tytul`, `autor`, `gatunek`, `opis`, `liczba_stron`, `wydawnictwo`, `rok_wydania`, `cena`, `liczba_sztuk`, `status`) VALUES
-(1, 'Szeptucha', 'Anna Kozłowska', 'Fantasy', 'Wciągająca opowieść o młodej dziewczynie posiadającej nadnaturalne moce, która staje w obronie swojej wioski przed złowrogimi siłami.', 420, 'Fabryka Słów', 2023, 50, 80, 'Niedostępna'),
+(1, 'Szeptucha', 'Anna Kozłowska', 'Fantasy', 'Wciągająca opowieść o młodej dziewczynie posiadającej nadnaturalne moce, która staje w obronie swojej wioski przed złowrogimi siłami.', 420, 'Fabryka Słów', 2023, 50, 80, 'Dostępna'),
 (2, 'Pole grawitacyjne', 'Jacek Dukaj', 'Science fiction', 'Niezwykła podróż po alternatywnej historii Polski, gdzie technologia zmienia oblicze społeczeństwa.', 736, 'Wydawnictwo Literackie', 2022, 60, 100, 'Niedostępna'),
 (3, 'Słodki dom', 'Wojciech Chmielarz', 'Kryminał', 'Trzymający w napięciu thriller o zbrodni popełnionej w z pozoru spokojnej okolicy, której śledztwo odkrywa mroczne sekrety mieszkańców.', 360, 'Wydawnictwo Literackie', 2024, 40, 90, 'Niedostępna'),
 (4, 'Zaginiona księga', 'Dan Brown', 'Thriller', 'Robert Langdon powraca, by rozwikłać zagadkę zniknięcia starożytnej księgi, która może zmienić bieg historii.', 512, 'C&T', 2023, 45, 70, 'Niedostępna'),
@@ -121,7 +121,10 @@ INSERT INTO `pary_uprawnienia` (`id_pary`, `id_uprawnienia`, `id_uzytkownik`) VA
 (85, 1, 1),
 (86, 3, 2),
 (87, 4, 3),
-(88, 5, 9);
+(88, 5, 9),
+(89, 6, 10),
+(90, 7, 10),
+(91, 7, 9);
 
 -- --------------------------------------------------------
 
@@ -143,7 +146,9 @@ INSERT INTO `uprawnienia` (`id_uprawnienia`, `uprawnienia`) VALUES
 (2, 'Użytkownik zalogowany'),
 (3, 'Zmień uprawnienia'),
 (4, 'Modyfikacja użytkownika'),
-(5, 'Rejestracja książek');
+(5, 'Rejestracja książek'),
+(6, 'Lista rejestracji książek'),
+(7, 'Lista książek');
 
 -- --------------------------------------------------------
 
@@ -179,7 +184,8 @@ INSERT INTO `uzytkownik` (`id_uzytkownik`, `u_imie`, `u_nazwisko`, `u_email`, `u
 (3, 'Mariusz', 'Pudzianowski', 'pudzian@mail.com', 123123123, 'Poznań', '00-003', 'ul. Mała', '12', NULL, '87080361313', '1997-02-07', 'Mężczyzna', 'pudzianator', 'password333'),
 (4, 'Test', 'Testowy', 'test@testmail.com', 123456789, 'Test', '00-001', 'Testowa', '3', '3', '73110743682', '1994-03-09', 'Kobieta', 'Test', 'Testpassword'),
 (7, 'Renata', 'Gołąbek', 'bibliotekapasswordreset@outlook.com', 129098188, 'Warszawa', '12-123', 'Ptasia', '12', '98', '12345678909', '2004-04-11', '1', 'golab', '$5xZmm#J7H'),
-(9, 'Janina', 'Nowak', 'bibliotekarz@gmail.com', 111222333, 'Łódź', '00-004', 'Piotrkowska', '22', '2', '67040212348', '1967-04-02', 'Kobieta', 'bibliotekarz', 'Bibliotekarz@');
+(9, 'Janina', 'Nowak', 'bibliotekarz@gmail.com', 111222333, 'Łódź', '00-004', 'Piotrkowska', '22', '2', '67040212348', '1967-04-02', 'Kobieta', 'bibliotekarz', 'Bibliotekarz@'),
+(10, 'Jan', 'Kot', 'jankot@gmail.com', 222111333, 'Warszawa', '00-008', 'Jutrzennki', '1', '2', '76111512336', '1976-11-15', 'Mężczyzna', 'jankot', 'Manager1@');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -232,13 +238,13 @@ ALTER TABLE `hasla`
 -- AUTO_INCREMENT for table `pary_uprawnienia`
 --
 ALTER TABLE `pary_uprawnienia`
-  MODIFY `id_pary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id_pary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `uzytkownik`
 --
 ALTER TABLE `uzytkownik`
-  MODIFY `id_uzytkownik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_uzytkownik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
