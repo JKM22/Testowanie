@@ -124,7 +124,7 @@ namespace Biblioteka.Moduł_4
                             string tytul = reader.GetString("tytul");
                             string autor = reader.GetString("autor");
                             string gatunek = reader.GetString("gatunek");
-                          string wydawnictwo = reader.GetString("wydawnictwo");
+                            string wydawnictwo = reader.GetString("wydawnictwo");
                             string status = reader.GetString("status");
 
 
@@ -140,7 +140,248 @@ namespace Biblioteka.Moduł_4
                 }
             }
         }
-        
+        public void WypelnijComboBoxNazwamiKolumn(ComboBox comboBoxFilter)
+        {
+            comboBoxFilter.Items.Clear();
+
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Modyfikujemy zapytanie SQL, aby zwracało tylko nazwy wybranych kolumn
+                    string query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'ksiazka' " +
+                                   "AND COLUMN_NAME IN ('autor', 'tytul', 'gatunek', 'wydawnictwo', 'status')";
+
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            comboBoxFilter.Items.Add(reader.GetString("COLUMN_NAME"));
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Błąd podczas pobierania nazw kolumn: " + ex.Message);
+                }
+            }
+        }
+
+
+        public void WypelnijComboBoxDane(string selectedColumn, ComboBox comboBoxDane)
+        {
+            comboBoxDane.Items.Clear();
+
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Tworzymy zapytanie SQL, które pobiera unikalne wartości z wybranej kolumny
+                    string query = $"SELECT DISTINCT {selectedColumn} FROM ksiazka";
+
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            comboBoxDane.Items.Add(reader.GetString(selectedColumn));
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Błąd podczas pobierania danych: " + ex.Message);
+                }
+            }
+        }
+
+
+        public void FiltrujDane(string columnName, string filterValue, ListView listView)
+        {
+            listView.Items.Clear();
+
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Tworzymy zapytanie SQL, które zwróci tylko te wiersze,
+                    // które zawierają wybraną wartość w odpowiedniej kolumnie
+                    string query = $"SELECT * FROM ksiazka WHERE {columnName} = @filterValue";
+
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@filterValue", filterValue);
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            // Dodajemy pasujące wiersze do listView
+                            int id = reader.GetInt32("id_ksiazka");
+                            string tytul = reader.GetString("tytul");
+                            string autor = reader.GetString("autor");
+                            string gatunek = reader.GetString("gatunek");
+                            string wydawnictwo = reader.GetString("wydawnictwo");
+                            string status = reader.GetString("status");
+
+                            ListViewItem item = new ListViewItem(new string[] { id.ToString(), tytul, autor, gatunek, wydawnictwo, status });
+                            listView.Items.Add(item);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Błąd podczas filtrowania danych: " + ex.Message);
+                }
+            }
+        }
+
+        public void FiltrujStatus(string columnName, string filterValue, ListView listView)
+        {
+            listView.Items.Clear();
+
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Tworzymy zapytanie SQL, które zwróci tylko te wiersze,
+                    // które zawierają wybraną wartość w odpowiedniej kolumnie
+                    string query = $"SELECT * FROM ksiazka WHERE {columnName} = @filterValue";
+
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@filterValue", filterValue);
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {// Dodajemy książki do listView
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32("id_ksiazka");
+                            string tytul = reader.GetString("tytul");
+                            string autor = reader.GetString("autor");
+                            string gatunek = reader.GetString("gatunek");
+                            string opis = reader.GetString("opis");
+                            int liczbaStron = reader.GetInt32("liczba_stron");
+                            string wydawnictwo = reader.GetString("wydawnictwo");
+                            int rokWydania = reader.GetInt32("rok_wydania");
+                            decimal cena = reader.GetDecimal("cena");
+                            int liczbaSztuk = reader.GetInt32("liczba_sztuk");
+                            string status = reader.GetString("status");
+
+                            // Tworzymy nowy element ListViewItem z danymi książki
+                            ListViewItem item = new ListViewItem(new string[] { id.ToString(), tytul, autor, gatunek, opis, liczbaStron.ToString(), wydawnictwo, rokWydania.ToString(), cena.ToString(), liczbaSztuk.ToString(), status });
+                            listView.Items.Add(item);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Błąd podczas filtrowania danych: " + ex.Message);
+                }
+            }
+        }
+
+
+        public string WyswietlPelneInformacjeOKsiazce(int bookId)
+        {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Tworzymy zapytanie SQL do pobrania pełnych informacji o wybranej książce
+                    string query = "SELECT * FROM ksiazka WHERE id_ksiazka = @bookId";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@bookId", bookId);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // Pobieramy pełne informacje o książce
+                            int id = reader.GetInt32("id_ksiazka");
+                            string tytul = reader.GetString("tytul");
+                            string autor = reader.GetString("autor");
+                            string gatunek = reader.GetString("gatunek");
+                            string opis = reader.GetString("opis");
+                            int liczbaStron = reader.GetInt32("liczba_stron");
+                            string wydawnictwo = reader.GetString("wydawnictwo");
+                            int rokWydania = reader.GetInt32("rok_wydania");
+                            decimal cena = reader.GetDecimal("cena");
+                            int liczbaSztuk = reader.GetInt32("liczba_sztuk");
+                            string status = reader.GetString("status");
+
+                            // Zwracamy ciąg znaków z pełnymi informacjami o książce
+                            return $"ID: {id}\nTytuł: {tytul}\nAutor: {autor}\nGatunek: {gatunek}\nOpis: {opis}\nLiczba stron: {liczbaStron}\nWydawnictwo: {wydawnictwo}\nRok wydania: {rokWydania}\nCena: {cena}\nLiczba sztuk: {liczbaSztuk}\nStatus: {status}";
+                        }
+                        else
+                        {
+                            return "Nie znaleziono informacji o książce.";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return "Wystąpił błąd podczas pobierania danych: " + ex.Message;
+                }
+            }
+        }
+
+        public void PodgladPelnychInformacjiOKsiazce(ListView listView)
+        {
+            // Sprawdzamy, czy wybrano jakąś książkę w listView
+            if (listView.SelectedItems.Count > 0)
+            {
+                // Pobieramy identyfikator wybranej książki (zakładając, że identyfikator jest w pierwszej kolumnie)
+                int selectedBookId = int.Parse(listView.SelectedItems[0].SubItems[0].Text);
+
+                // Wywołujemy metodę do wyświetlenia pełnych informacji o wybranej książce
+                WyswietlPelneInformacjeOKsiazce(selectedBookId);
+            }
+            else
+            {
+                MessageBox.Show("Proszę wybrać książkę do podglądu.");
+            }
+        }
+
+
+
+        public void WypelnijComboBoxStatus(ComboBox comboBoxStatus)
+        {
+            comboBoxStatus.Items.Clear();
+
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Tworzymy zapytanie SQL, które pobiera unikalne wartości z kolumny status
+                    string query = "SELECT DISTINCT status FROM ksiazka";
+
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            comboBoxStatus.Items.Add(reader.GetString("status"));
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Błąd podczas pobierania danych: " + ex.Message);
+                }
+            }
+        }
+
+
+
     }
 }
-    

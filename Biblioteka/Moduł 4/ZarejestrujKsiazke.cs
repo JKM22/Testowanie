@@ -21,9 +21,11 @@ namespace Biblioteka.Moduł_4
             InitializeComponent();
             listView1.FullRowSelect = true; // Ustawienie FullRowSelect na true
             WyswietlListeKsiazek();
-           
+            WypelnijComboBoxStatus();
+
+
         }
-     
+
 
         public void WyswietlListeKsiazek()
         {
@@ -31,7 +33,14 @@ namespace Biblioteka.Moduł_4
             wyswietlKsiazki.WyswietlListeKsiazek(listView1);
         }
 
-        
+        public void WypelnijComboBoxStatus()
+        {
+            wyswietlKsiazki.WypelnijComboBoxStatus(comboBox_status);
+        }
+
+
+
+
         private void button2_Click(object sender, EventArgs e)
         {
             ZarzadzajBiblioteka zarzadzajBiblioteka = new ZarzadzajBiblioteka();
@@ -223,6 +232,68 @@ namespace Biblioteka.Moduł_4
         private void label2_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void button_wyszukajstatus_Click(object sender, EventArgs e)
+        {
+            // Pobierz wybraną wartość z comboBox_status
+            string selectedStatus = comboBox_status.SelectedItem.ToString();
+
+            // Wywołaj metodę do filtrowania danych z wyswietlKsiazki, aby wyświetlić tylko książki o wybranym statusie
+            wyswietlKsiazki.FiltrujStatus("status", selectedStatus, listView1);
+        }
+
+        private void button_odswiezstatus_Click(object sender, EventArgs e)
+        {
+            // Wywołanie metody WyswietlUprawnienia z klasy UprawnieniaKlasa
+            wyswietlKsiazki.WyswietlListeKsiazek(listView1);
+        }
+
+        private void button_cofnijrejestracje_Click(object sender, EventArgs e)
+        {
+
+            // Upewnij się, że użytkownik wybrał książkę
+            if (listView1.SelectedItems.Count > 0)
+            {
+                // Pobierz ID wybranej książki
+                int selectedBookId = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
+
+                try
+                {
+
+                    string status = listView1.SelectedItems[0].SubItems[10].Text;
+
+                    // Sprawdź, czy książka ma status "Dostępna"
+                    if (status == "Niedostępna")
+                    {
+                        MessageBox.Show("Wybrana książka jest już wyrejestrowana i ma status 'Niedostępna'.", "Błąd",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return; // Przerwij dalsze działanie metody
+                    }
+
+
+                    // Zmiana statusu książki na "Dostępna"
+                    wyswietlKsiazki.AktualizujStatusKsiazki(selectedBookId, "Niedostępna");
+
+                    // Wyświetl komunikat o powodzeniu
+                    MessageBox.Show("Status książki został pomyślnie zmieniony na 'Niedostępna'.", "Sukces",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Odśwież listę książek
+                    WyswietlListeKsiazek();
+                }
+                catch (Exception ex)
+                {
+                    // Wyświetl komunikat o błędzie
+                    MessageBox.Show($"Wystąpił błąd podczas zmiany statusu książki: {ex.Message}", "Błąd",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Proszę wybrać książkę, aby zmienić jej status.", "Błąd",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

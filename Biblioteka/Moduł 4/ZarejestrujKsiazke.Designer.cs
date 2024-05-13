@@ -53,6 +53,11 @@
             this.button_zarejestujksiazke = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.comboBox_status = new System.Windows.Forms.ComboBox();
+            this.button_wyszukajstatus = new System.Windows.Forms.Button();
+            this.button_cofnijrejestracje = new System.Windows.Forms.Button();
+            this.button_odswiezstatus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_LiczbaStron)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Cena)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_LiczbaSztuk)).BeginInit();
@@ -267,7 +272,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1174, 588);
+            this.button2.Location = new System.Drawing.Point(1174, 555);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(97, 31);
@@ -279,7 +284,7 @@
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 77);
+            this.listView1.Location = new System.Drawing.Point(18, 140);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(873, 446);
             this.listView1.TabIndex = 22;
@@ -289,9 +294,9 @@
             // 
             // button_zarejestujksiazke
             // 
-            this.button_zarejestujksiazke.Location = new System.Drawing.Point(887, 548);
+            this.button_zarejestujksiazke.Location = new System.Drawing.Point(18, 111);
             this.button_zarejestujksiazke.Name = "button_zarejestujksiazke";
-            this.button_zarejestujksiazke.Size = new System.Drawing.Size(172, 23);
+            this.button_zarejestujksiazke.Size = new System.Drawing.Size(209, 23);
             this.button_zarejestujksiazke.TabIndex = 23;
             this.button_zarejestujksiazke.Text = "ZAREJESTRUJ KSIĄŻKE";
             this.button_zarejestujksiazke.UseVisualStyleBackColor = true;
@@ -316,11 +321,63 @@
             this.label2.TabIndex = 25;
             this.label2.Text = "wszystkie pola wymagane";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(520, 114);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(113, 16);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "STATUS KSIĄŻKI";
+            // 
+            // comboBox_status
+            // 
+            this.comboBox_status.FormattingEnabled = true;
+            this.comboBox_status.Location = new System.Drawing.Point(653, 109);
+            this.comboBox_status.Name = "comboBox_status";
+            this.comboBox_status.Size = new System.Drawing.Size(121, 24);
+            this.comboBox_status.TabIndex = 27;
+            // 
+            // button_wyszukajstatus
+            // 
+            this.button_wyszukajstatus.Location = new System.Drawing.Point(793, 90);
+            this.button_wyszukajstatus.Name = "button_wyszukajstatus";
+            this.button_wyszukajstatus.Size = new System.Drawing.Size(98, 23);
+            this.button_wyszukajstatus.TabIndex = 28;
+            this.button_wyszukajstatus.Text = "WYSZUKAJ";
+            this.button_wyszukajstatus.UseVisualStyleBackColor = true;
+            this.button_wyszukajstatus.Click += new System.EventHandler(this.button_wyszukajstatus_Click);
+            // 
+            // button_cofnijrejestracje
+            // 
+            this.button_cofnijrejestracje.Location = new System.Drawing.Point(233, 111);
+            this.button_cofnijrejestracje.Name = "button_cofnijrejestracje";
+            this.button_cofnijrejestracje.Size = new System.Drawing.Size(207, 23);
+            this.button_cofnijrejestracje.TabIndex = 29;
+            this.button_cofnijrejestracje.Text = "COFNIJ REJESTRACJE";
+            this.button_cofnijrejestracje.UseVisualStyleBackColor = true;
+            this.button_cofnijrejestracje.Click += new System.EventHandler(this.button_cofnijrejestracje_Click);
+            // 
+            // button_odswiezstatus
+            // 
+            this.button_odswiezstatus.Location = new System.Drawing.Point(793, 111);
+            this.button_odswiezstatus.Name = "button_odswiezstatus";
+            this.button_odswiezstatus.Size = new System.Drawing.Size(98, 23);
+            this.button_odswiezstatus.TabIndex = 30;
+            this.button_odswiezstatus.Text = "ODŚWIEŻ";
+            this.button_odswiezstatus.UseVisualStyleBackColor = true;
+            this.button_odswiezstatus.Click += new System.EventHandler(this.button_odswiezstatus_Click);
+            // 
             // ZarejestrujKsiazke
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1283, 661);
+            this.ClientSize = new System.Drawing.Size(1283, 615);
+            this.Controls.Add(this.button_odswiezstatus);
+            this.Controls.Add(this.button_cofnijrejestracje);
+            this.Controls.Add(this.button_wyszukajstatus);
+            this.Controls.Add(this.comboBox_status);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.button_zarejestujksiazke);
@@ -386,5 +443,10 @@
         private System.Windows.Forms.Button button_zarejestujksiazke;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox comboBox_status;
+        private System.Windows.Forms.Button button_wyszukajstatus;
+        private System.Windows.Forms.Button button_cofnijrejestracje;
+        private System.Windows.Forms.Button button_odswiezstatus;
     }
 }
