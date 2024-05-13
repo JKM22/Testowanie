@@ -147,5 +147,10 @@ namespace Biblioteka
         {
             polaczenieBazy.PopulateListView(listView1);
         }
+
+        private void textBox_wyszukaj_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

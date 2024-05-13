@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Biblioteka.Moduł_4
 {
@@ -96,8 +97,50 @@ namespace Biblioteka.Moduł_4
                 }
             }
         }
-      
+        public void WyswietlListeKsiazek2(ListView listView)
+        {
+            listView.Items.Clear();
+            // Tworzymy połączenie z bazą danych
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    // Otwieramy połączenie
+                    connection.Open();
+
+                    // Tworzymy zapytanie SQL
+                    string query = "SELECT id_ksiazka, tytul, autor, gatunek, wydawnictwo,status FROM ksiazka";
+
+                    // Tworzymy obiekt MySqlCommand
+                    MySqlCommand command = new MySqlCommand(query, connection);
+
+                    // Tworzymy obiekt MySqlDataReader do odczytu wyników zapytania
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        // Dodajemy książki do listView
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32("id_ksiazka");
+                            string tytul = reader.GetString("tytul");
+                            string autor = reader.GetString("autor");
+                            string gatunek = reader.GetString("gatunek");
+                          string wydawnictwo = reader.GetString("wydawnictwo");
+                            string status = reader.GetString("status");
 
 
+                            // Tworzymy nowy element ListViewItem z danymi książki
+                            ListViewItem item = new ListViewItem(new string[] { id.ToString(), tytul, autor, gatunek, wydawnictwo, status });
+                            listView.Items.Add(item);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Wystąpił błąd podczas pobierania danych: " + ex.Message);
+                }
+            }
+        }
+        
     }
 }
+    
