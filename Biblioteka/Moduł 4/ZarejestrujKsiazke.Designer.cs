@@ -340,7 +340,7 @@
             // 
             // button_wyszukajstatus
             // 
-            this.button_wyszukajstatus.Location = new System.Drawing.Point(793, 90);
+            this.button_wyszukajstatus.Location = new System.Drawing.Point(793, 82);
             this.button_wyszukajstatus.Name = "button_wyszukajstatus";
             this.button_wyszukajstatus.Size = new System.Drawing.Size(98, 23);
             this.button_wyszukajstatus.TabIndex = 28;

@@ -55,8 +55,12 @@ namespace Biblioteka.Moduł_4
 
         private void WypelnijComboBoxNazwamiKolumn()
         {
-            wyswietlKsiazki.WypelnijComboBoxNazwamiKolumn(comboBoxFilter);
-        }
+            
+                comboBoxFilter.Items.Clear(); // Wyczyść wszystkie wartości w comboboxFilter
+                wyswietlKsiazki.WypelnijComboBoxNazwamiKolumn(comboBoxFilter); // Dodaj nowe wartości
+            }
+
+        
 
         private void comboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -79,23 +83,33 @@ namespace Biblioteka.Moduł_4
 
         private void button_filtruj_Click(object sender, EventArgs e)
         {
-           
-                // Pobierz wybraną wartość z comboBoxDane
-                string selectedValue = comboBoxDane.SelectedItem.ToString();
 
-                // Sprawdź, która kolumna jest wybrana w comboBoxFilter
-                string selectedColumn = comboBoxFilter.SelectedItem.ToString();
-
-                // Wywołaj metodę do filtrowania danych z wyswietlKsiazki
-                wyswietlKsiazki.FiltrujDane(selectedColumn, selectedValue, listView1);
+            // Sprawdź, czy wybrano jakiekolwiek wartości w obu comboboxach
+            if (comboBoxDane.SelectedItem == null || comboBoxFilter.SelectedItem == null)
+            {
+                MessageBox.Show("Proszę wybrać kolumnę i wartość do filtrowania.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Zakończ metodę, jeśli którakolwiek z wartości nie jest wybrana
             }
+
+            // Pobierz wybraną wartość z comboBoxDane
+            string selectedValue = comboBoxDane.SelectedItem.ToString();
+
+            // Pobierz wybraną kolumnę z comboBoxFilter
+            string selectedColumn = comboBoxFilter.SelectedItem.ToString();
+
+            // Wywołaj metodę do filtrowania danych z wyswietlKsiazki
+            wyswietlKsiazki.FiltrujDane(selectedColumn, selectedValue, listView1);
+
+        }
 
         private void button_odswiez_Click(object sender, EventArgs e)
         {
             // Ponownie wywołaj metodę WyswietlListeKsiazek2, aby odświeżyć listView1
-            WyswietlListeKsiazek2();
-            // Odśwież comboboxy
-            WypelnijComboBoxNazwamiKolumn();
+    WyswietlListeKsiazek2();
+    // Odśwież comboboxy
+    WypelnijComboBoxNazwamiKolumn(); // Dodaj tę linię
+    comboBoxDane.SelectedIndex = -1;
+    comboBoxFilter.SelectedIndex = -1;
 
 
         }

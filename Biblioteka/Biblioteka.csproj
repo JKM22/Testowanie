@@ -152,11 +152,18 @@
     <Compile Include="Moduł 3 LOGOWANIE\OdzyskiwanieHasla.Designer.cs">
       <DependentUpon>OdzyskiwanieHasla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moduł 4\KlasaListaRejestracjiKsiazek.cs" />
     <Compile Include="Moduł 4\ListaKsiazek.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Moduł 4\ListaKsiazek.Designer.cs">
       <DependentUpon>ListaKsiazek.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Moduł 4\ListaRejestracjiKsiazek.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moduł 4\ListaRejestracjiKsiazek.Designer.cs">
+      <DependentUpon>ListaRejestracjiKsiazek.cs</DependentUpon>
     </Compile>
     <Compile Include="Moduł 4\WyswietlKsiazki.cs" />
     <Compile Include="Moduł 4\ZarejestrujKsiazke.cs">
@@ -235,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Moduł 4\ListaKsiazek.resx">
       <DependentUpon>ListaKsiazek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moduł 4\ListaRejestracjiKsiazek.resx">
+      <DependentUpon>ListaRejestracjiKsiazek.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Moduł 4\ZarejestrujKsiazke.resx">
       <DependentUpon>ZarejestrujKsiazke.cs</DependentUpon>

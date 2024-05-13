@@ -37,5 +37,12 @@ namespace Biblioteka.Moduł_4
             listaKsiazek.Show();    
             this.Hide();    
         }
+
+        private void button_PrzegladajRejestracjaKsiazki_Click(object sender, EventArgs e)
+        {
+            ListaRejestracjiKsiazek listaRejestracjiKsiazki_ = new ListaRejestracjiKsiazek();
+            listaRejestracjiKsiazki_.Show();
+            this.Hide();
+        }
     }
 }

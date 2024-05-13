@@ -333,22 +333,7 @@ namespace Biblioteka.Moduł_4
             }
         }
 
-        public void PodgladPelnychInformacjiOKsiazce(ListView listView)
-        {
-            // Sprawdzamy, czy wybrano jakąś książkę w listView
-            if (listView.SelectedItems.Count > 0)
-            {
-                // Pobieramy identyfikator wybranej książki (zakładając, że identyfikator jest w pierwszej kolumnie)
-                int selectedBookId = int.Parse(listView.SelectedItems[0].SubItems[0].Text);
-
-                // Wywołujemy metodę do wyświetlenia pełnych informacji o wybranej książce
-                WyswietlPelneInformacjeOKsiazce(selectedBookId);
-            }
-            else
-            {
-                MessageBox.Show("Proszę wybrać książkę do podglądu.");
-            }
-        }
+        
 
 
 

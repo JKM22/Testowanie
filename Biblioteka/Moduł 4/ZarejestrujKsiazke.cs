@@ -181,11 +181,11 @@ namespace Biblioteka.Moduł_4
 
 
 
-       
+
 
         private void button_zarejestujksiazke_Click(object sender, EventArgs e)
         {
-             // Upewnij się, że użytkownik wybrał książkę
+            // Upewnij się, że użytkownik wybrał książkę
             if (listView1.SelectedItems.Count > 0)
             {
                 // Pobierz ID wybranej książki
@@ -193,10 +193,8 @@ namespace Biblioteka.Moduł_4
 
                 try
                 {
-
-                    string status = listView1.SelectedItems[0].SubItems[10].Text;
-
                     // Sprawdź, czy książka ma status "Dostępna"
+                    string status = listView1.SelectedItems[0].SubItems[10].Text;
                     if (status == "Dostępna")
                     {
                         MessageBox.Show("Wybrana książka jest już zarejestrowana i ma status 'Dostępna'.", "Błąd",
@@ -204,6 +202,10 @@ namespace Biblioteka.Moduł_4
                         return; // Przerwij dalsze działanie metody
                     }
 
+                    // Zarejestruj książkę
+                    int id_uzytkownika = 1; // Przykładowe ID zalogowanego użytkownika
+                    KlasaListaRejestracjiKsiazek rejestracjaKsiazek = new KlasaListaRejestracjiKsiazek();
+                    rejestracjaKsiazek.ZarejestrujKsiazke(selectedBookId, id_uzytkownika);
 
                     // Zmiana statusu książki na "Dostępna"
                     wyswietlKsiazki.AktualizujStatusKsiazki(selectedBookId, "Dostępna");
@@ -218,7 +220,7 @@ namespace Biblioteka.Moduł_4
                 catch (Exception ex)
                 {
                     // Wyświetl komunikat o błędzie
-                    MessageBox.Show($"Wystąpił błąd podczas zmiany statusu książki: {ex.Message}", "Błąd",
+                    MessageBox.Show($"Wystąpił błąd podczas rejestracji książki: {ex.Message}", "Błąd",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -229,6 +231,7 @@ namespace Biblioteka.Moduł_4
             }
         }
 
+
         private void label2_Click_1(object sender, EventArgs e)
         {
 
@@ -236,6 +239,13 @@ namespace Biblioteka.Moduł_4
 
         private void button_wyszukajstatus_Click(object sender, EventArgs e)
         {
+            // Sprawdź, czy wybrano jakąkolwiek wartość w comboboxie
+            if (comboBox_status.SelectedItem == null)
+            {
+                MessageBox.Show("Proszę wybrać status książki.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Zakończ metodę, jeśli nic nie jest wybrane
+            }
+
             // Pobierz wybraną wartość z comboBox_status
             string selectedStatus = comboBox_status.SelectedItem.ToString();
 
@@ -245,8 +255,12 @@ namespace Biblioteka.Moduł_4
 
         private void button_odswiezstatus_Click(object sender, EventArgs e)
         {
-            // Wywołanie metody WyswietlUprawnienia z klasy UprawnieniaKlasa
-            wyswietlKsiazki.WyswietlListeKsiazek(listView1);
+            // Wywołaj metodę do odświeżenia listy książek
+            WyswietlListeKsiazek();
+
+            // Wyzeruj wybór w comboboxie
+            comboBox_status.SelectedIndex = -1;
+
         }
 
         private void button_cofnijrejestracje_Click(object sender, EventArgs e)
@@ -270,6 +284,10 @@ namespace Biblioteka.Moduł_4
                                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return; // Przerwij dalsze działanie metody
                     }
+                    // Zarejestruj książkę
+                    int id_uzytkownika = 1; // Przykładowe ID zalogowanego użytkownika
+                    KlasaListaRejestracjiKsiazek rejestracjaKsiazek = new KlasaListaRejestracjiKsiazek();
+                    rejestracjaKsiazek.WyrejestrujKsiazke(selectedBookId, id_uzytkownika);
 
 
                     // Zmiana statusu książki na "Dostępna"
