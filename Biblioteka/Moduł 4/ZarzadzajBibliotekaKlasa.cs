@@ -18,20 +18,21 @@ namespace Biblioteka.Moduł_4
                 {
                     connection.Open();
 
-                    string query = @"INSERT INTO ksiazka (tytul, autor, gatunek, opis, liczba_stron, wydawnictwo, rok_wydania, cena, liczba_sztuk)
-                                    VALUES (@tytul, @autor, @gatunek, @opis, @liczba_stron, 
-                                    @wydawnictwo, @rok_wydania, @cena, @liczba_sztuk)";
+                    string query = @"INSERT INTO ksiazka (tytul, autor, gatunek, opis, liczba_stron, wydawnictwo, rok_wydania, cena, liczba_sztuk, status) " +
+                           "VALUES (@tytul, @autor, @gatunek, @opis, @liczbaStron, @wydawnictwo, @rokWydania, @cena, @liczbaSztuk, @status)";
 
                     MySqlCommand command = new MySqlCommand(query, connection);
                     command.Parameters.AddWithValue("@tytul", tytul);
                     command.Parameters.AddWithValue("@autor", autor);
                     command.Parameters.AddWithValue("@gatunek", gatunek);
                     command.Parameters.AddWithValue("@opis", opis);
-                    command.Parameters.AddWithValue("@liczba_stron", liczbaStron);
+                    command.Parameters.AddWithValue("@liczbaStron", liczbaStron);
                     command.Parameters.AddWithValue("@wydawnictwo", wydawnictwo);
-                    command.Parameters.AddWithValue("@rok_wydania", rokWydania);
+                    command.Parameters.AddWithValue("@rokWydania", rokWydania);
                     command.Parameters.AddWithValue("@cena", cena);
-                    command.Parameters.AddWithValue("@liczba_sztuk", liczbaSztuk);
+                    command.Parameters.AddWithValue("@liczbaSztuk", liczbaSztuk);
+                    command.Parameters.AddWithValue("@status", "Niedostępna");
+      
 
                     int rowsAffected = command.ExecuteNonQuery();
                     if (rowsAffected > 0)
