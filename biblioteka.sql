@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Maj 14, 2024 at 12:59 AM
+-- Generation Time: Maj 14, 2024 at 03:24 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.0.30
 
@@ -99,7 +99,8 @@ INSERT INTO `ksiazka` (`id_ksiazka`, `tytul`, `autor`, `gatunek`, `opis`, `liczb
 (7, 'Synowie chaosu', 'Brandon Sanderson', 'Fantasy', 'Pierwszy tom nowej epickiej sagi fantasy, która przenosi czytelnika do świata pełnego magii, intryg i niebezpieczeństwa.', 800, 'Nasza Księgarnia', 2022, 65, 85, 'Niedostępna'),
 (8, 'Władca Mroków', 'Andrzej Sapkowski', 'Fantasy', 'Kontynuacja sagi o Wiedźminie, która ponownie zabiera czytelnika do świata zamieszkałego przez potwory, magię i polityczne intrygi.', 560, 'SuperNowa', 2023, 55, 100, 'Dostępna'),
 (9, 'Lament w przeciwgwieźdnej nocy', 'Liu Cixin', 'Science fiction', 'Niezwykła podróż przez kosmos, gdzie ludzkość staje w obliczu zagrożenia ze strony obcych cywilizacji i musi znaleźć sposób na przetrwanie.', 672, 'Wydawnictwo SQN', 2024, 60, 80, 'Niedostępna'),
-(10, 'Wiatr zimy', 'Hannah Richell', 'Literatura obyczajowa', 'Poruszająca historia dwóch kobiet, których losy splatają się na tle zapierającego dech pejzażu Islandii.', 400, 'Czarna Owca', 2023, 43, 110, 'Dostępna');
+(10, 'Wiatr zimy', 'Hannah Richell', 'Literatura obyczajowa', 'Poruszająca historia dwóch kobiet, których losy splatają się na tle zapierającego dech pejzażu Islandii.', 400, 'Czarna Owca', 2023, 43, 110, 'Dostępna'),
+(12, 'i nie', 'christie', 'kryminal', 'f', 4, 'greg', 1900, 2, 2, 'Dostępna');
 
 -- --------------------------------------------------------
 
@@ -125,7 +126,10 @@ INSERT INTO `lista_rejestracji_ksiazek` (`id_rejestracji`, `id_r_ksiazki`, `data
 (3, 5, '2024-05-13 17:12:00', 1, 'Książka zarejestrowana'),
 (4, 6, '2024-05-13 17:12:04', 1, 'Książka zarejestrowana'),
 (5, 10, '2024-05-13 17:12:07', 1, 'Książka zarejestrowana'),
-(6, 8, '2024-05-13 22:50:44', 1, 'Książka zarejestrowana');
+(6, 8, '2024-05-13 22:50:44', 1, 'Książka zarejestrowana'),
+(7, 12, '2024-05-14 13:21:18', 1, 'Książka zarejestrowana'),
+(8, 12, '2024-05-14 13:21:50', 1, 'Książka wyrejestrowana'),
+(9, 12, '2024-05-14 13:21:58', 1, 'Książka zarejestrowana');
 
 -- --------------------------------------------------------
 
@@ -330,10 +334,16 @@ ALTER TABLE `hasla`
   MODIFY `id_hasla` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
+-- AUTO_INCREMENT for table `ksiazka`
+--
+ALTER TABLE `ksiazka`
+  MODIFY `id_ksiazka` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `lista_rejestracji_ksiazek`
 --
 ALTER TABLE `lista_rejestracji_ksiazek`
-  MODIFY `id_rejestracji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_rejestracji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `pary_uprawnienia`
