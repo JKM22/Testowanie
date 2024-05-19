@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Maj 14, 2024 at 03:24 PM
+-- Generation Time: Maj 19, 2024 at 11:38 AM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.0.30
 
@@ -90,17 +90,20 @@ CREATE TABLE `ksiazka` (
 --
 
 INSERT INTO `ksiazka` (`id_ksiazka`, `tytul`, `autor`, `gatunek`, `opis`, `liczba_stron`, `wydawnictwo`, `rok_wydania`, `cena`, `liczba_sztuk`, `status`) VALUES
-(1, 'Szeptucha', 'Anna Kozłowska', 'Fantasy', 'Wciągająca opowieść o młodej dziewczynie posiadającej nadnaturalne moce, która staje w obronie swojej wioski przed złowrogimi siłami.', 420, 'Fabryka Słów', 2023, 50, 1, 'Dostępna'),
-(2, 'Pole grawitacyjne', 'Jacek Dukaj', 'Science fiction', 'Niezwykła podróż po alternatywnej historii Polski, gdzie technologia zmienia oblicze społeczeństwa.', 736, 'Wydawnictwo Literackie', 2022, 60, 100, 'Dostępna'),
-(3, 'Słodki dom', 'Wojciech Chmielarz', 'Kryminał', 'Trzymający w napięciu thriller o zbrodni popełnionej w z pozoru spokojnej okolicy, której śledztwo odkrywa mroczne sekrety mieszkańców.', 360, 'Wydawnictwo Literackie', 2024, 40, 90, 'Niedostępna'),
+(1, 'Szeptucha', 'Anna Kozłowska', 'Fantasy', 'Wciągająca opowieść o młodej dziewczynie posiadającej nadnaturalne moce, która staje w obronie swojej wioski przed złowrogimi siłami.', 420, 'Fabryka Słów', 2023, 50, 0, 'Niedostępna'),
+(2, 'Pole grawitacyjne', 'Jacek Dukaj', 'Science fiction', 'Niezwykła podróż po alternatywnej historii Polski, gdzie technologia zmienia oblicze społeczeństwa.', 736, 'Wydawnictwo Literackie', 2022, 60, 2, 'Dostępna'),
+(3, 'Słodki dom', 'Wojciech Chmielarz', 'Kryminał', 'Trzymający w napięciu thriller o zbrodni popełnionej w z pozoru spokojnej okolicy, której śledztwo odkrywa mroczne sekrety mieszkańców.', 360, 'Wydawnictwo Literackie', 2024, 40, 0, 'Niedostępna'),
 (4, 'Zaginiona księga', 'Dan Brown', 'Thriller', 'Robert Langdon powraca, by rozwikłać zagadkę zniknięcia starożytnej księgi, która może zmienić bieg historii.', 512, 'C&T', 2023, 45, 70, 'Dostępna'),
 (5, 'Nocna muzyka', 'Jojo Moyes', 'Literatura obyczajowa', 'Wzruszająca opowieść o miłości, marzeniach i przeznaczeniu, które prowadzi bohaterów przez życie pełne wyzwań i nieoczekiwanych zwrotów.', 480, 'Znak', 2023, 35, 120, 'Dostępna'),
 (6, 'Ostatnia przysięga', 'Karolina Ramqvist', 'Literatura kobieca', 'Historia odkrywania siły, odwagi i determinacji przez kobietę, która zostaje samotną matką po śmierci męża.', 320, 'Wydawnictwo Literackie', 2024, 30, 60, 'Dostępna'),
 (7, 'Synowie chaosu', 'Brandon Sanderson', 'Fantasy', 'Pierwszy tom nowej epickiej sagi fantasy, która przenosi czytelnika do świata pełnego magii, intryg i niebezpieczeństwa.', 800, 'Nasza Księgarnia', 2022, 65, 85, 'Niedostępna'),
-(8, 'Władca Mroków', 'Andrzej Sapkowski', 'Fantasy', 'Kontynuacja sagi o Wiedźminie, która ponownie zabiera czytelnika do świata zamieszkałego przez potwory, magię i polityczne intrygi.', 560, 'SuperNowa', 2023, 55, 100, 'Dostępna'),
+(8, 'Władca Mroków', 'Andrzej Sapkowski', 'Fantasy', 'Kontynuacja sagi o Wiedźminie, która ponownie zabiera czytelnika do świata zamieszkałego przez potwory, magię i polityczne intrygi.', 560, 'SuperNowa', 2023, 55, 10, 'Dostępna'),
 (9, 'Lament w przeciwgwieźdnej nocy', 'Liu Cixin', 'Science fiction', 'Niezwykła podróż przez kosmos, gdzie ludzkość staje w obliczu zagrożenia ze strony obcych cywilizacji i musi znaleźć sposób na przetrwanie.', 672, 'Wydawnictwo SQN', 2024, 60, 80, 'Niedostępna'),
 (10, 'Wiatr zimy', 'Hannah Richell', 'Literatura obyczajowa', 'Poruszająca historia dwóch kobiet, których losy splatają się na tle zapierającego dech pejzażu Islandii.', 400, 'Czarna Owca', 2023, 43, 110, 'Dostępna'),
-(12, 'i nie', 'christie', 'kryminal', 'f', 4, 'greg', 1900, 2, 2, 'Dostępna');
+(12, 'i nie', 'christie', 'kryminal', 'f', 4, 'greg', 1900, 2, 0, 'Niedostępna'),
+(13, 'Zaginiona księga', 'Dan Brown', 'Thriller', 'Robert Langdon powraca, by rozwikłać zagadkę zniknięcia starożytnej księgi, która może zmienić bieg historii.', 512, 'C&T', 2023, 45, 70, 'Dostępna'),
+(14, 'Tego lata stałam się piękna', 'Jenny Han', 'dramat', 'dfssdfsd', 315, 'sowa', 2018, 35, 1, 'Niedostępna'),
+(15, 'Bez ciebie nie ma lata', 'Jenny Han', 'dramat', 'dsfd', 315, 'sowa', 2019, 35, 1, 'Niedostępna');
 
 -- --------------------------------------------------------
 
@@ -121,15 +124,10 @@ CREATE TABLE `lista_rejestracji_ksiazek` (
 --
 
 INSERT INTO `lista_rejestracji_ksiazek` (`id_rejestracji`, `id_r_ksiazki`, `data_rejestracji`, `id_r_uzytkownika`, `status_rejestracji`) VALUES
-(1, 1, '2024-05-13 17:11:05', 1, 'Książka zarejestrowana'),
-(2, 2, '2024-05-13 17:11:13', 1, 'Książka zarejestrowana'),
-(3, 5, '2024-05-13 17:12:00', 1, 'Książka zarejestrowana'),
-(4, 6, '2024-05-13 17:12:04', 1, 'Książka zarejestrowana'),
-(5, 10, '2024-05-13 17:12:07', 1, 'Książka zarejestrowana'),
-(6, 8, '2024-05-13 22:50:44', 1, 'Książka zarejestrowana'),
-(7, 12, '2024-05-14 13:21:18', 1, 'Książka zarejestrowana'),
-(8, 12, '2024-05-14 13:21:50', 1, 'Książka wyrejestrowana'),
-(9, 12, '2024-05-14 13:21:58', 1, 'Książka zarejestrowana');
+(1, 1, '2024-05-13 17:11:05', 1, 'Książka dostępna'),
+(2, 2, '2024-05-13 17:11:13', 1, 'Książka dostępna'),
+(3, 5, '2024-05-13 17:12:00', 1, 'Książka dostępna'),
+(23, 15, '2024-05-19 09:35:20', 1, 'Książka niedostępna');
 
 -- --------------------------------------------------------
 
@@ -337,13 +335,13 @@ ALTER TABLE `hasla`
 -- AUTO_INCREMENT for table `ksiazka`
 --
 ALTER TABLE `ksiazka`
-  MODIFY `id_ksiazka` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_ksiazka` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `lista_rejestracji_ksiazek`
 --
 ALTER TABLE `lista_rejestracji_ksiazek`
-  MODIFY `id_rejestracji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_rejestracji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `pary_uprawnienia`

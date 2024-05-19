@@ -58,6 +58,8 @@
             this.button_wyszukajstatus = new System.Windows.Forms.Button();
             this.button_cofnijrejestracje = new System.Windows.Forms.Button();
             this.button_odswiezstatus = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.button_edytuj = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_LiczbaStron)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Cena)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_LiczbaSztuk)).BeginInit();
@@ -261,7 +263,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(973, 488);
+            this.button1.Location = new System.Drawing.Point(973, 489);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(290, 35);
@@ -272,7 +274,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1174, 555);
+            this.button2.Location = new System.Drawing.Point(1174, 573);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(97, 31);
@@ -294,11 +296,11 @@
             // 
             // button_zarejestujksiazke
             // 
-            this.button_zarejestujksiazke.Location = new System.Drawing.Point(18, 111);
+            this.button_zarejestujksiazke.Location = new System.Drawing.Point(270, 82);
             this.button_zarejestujksiazke.Name = "button_zarejestujksiazke";
-            this.button_zarejestujksiazke.Size = new System.Drawing.Size(209, 23);
+            this.button_zarejestujksiazke.Size = new System.Drawing.Size(137, 23);
             this.button_zarejestujksiazke.TabIndex = 23;
-            this.button_zarejestujksiazke.Text = "ZAREJESTRUJ KSIĄŻKE";
+            this.button_zarejestujksiazke.Text = "DOSTĘPNA";
             this.button_zarejestujksiazke.UseVisualStyleBackColor = true;
             this.button_zarejestujksiazke.Click += new System.EventHandler(this.button_zarejestujksiazke_Click);
             // 
@@ -306,11 +308,11 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label12.Location = new System.Drawing.Point(12, 26);
+            this.label12.Location = new System.Drawing.Point(12, 9);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(710, 32);
+            this.label12.Size = new System.Drawing.Size(338, 32);
             this.label12.TabIndex = 24;
-            this.label12.Text = "Dodaj nową książke lub wybierz z listy w celu rejestracji";
+            this.label12.Text = "ZAREJESTRUJ KSIĄŻKE";
             // 
             // label2
             // 
@@ -333,7 +335,7 @@
             // comboBox_status
             // 
             this.comboBox_status.FormattingEnabled = true;
-            this.comboBox_status.Location = new System.Drawing.Point(653, 109);
+            this.comboBox_status.Location = new System.Drawing.Point(666, 108);
             this.comboBox_status.Name = "comboBox_status";
             this.comboBox_status.Size = new System.Drawing.Size(121, 24);
             this.comboBox_status.TabIndex = 27;
@@ -350,17 +352,17 @@
             // 
             // button_cofnijrejestracje
             // 
-            this.button_cofnijrejestracje.Location = new System.Drawing.Point(233, 111);
+            this.button_cofnijrejestracje.Location = new System.Drawing.Point(270, 114);
             this.button_cofnijrejestracje.Name = "button_cofnijrejestracje";
-            this.button_cofnijrejestracje.Size = new System.Drawing.Size(207, 23);
+            this.button_cofnijrejestracje.Size = new System.Drawing.Size(137, 23);
             this.button_cofnijrejestracje.TabIndex = 29;
-            this.button_cofnijrejestracje.Text = "COFNIJ REJESTRACJE";
+            this.button_cofnijrejestracje.Text = "NIEDOSTĘPNA";
             this.button_cofnijrejestracje.UseVisualStyleBackColor = true;
             this.button_cofnijrejestracje.Click += new System.EventHandler(this.button_cofnijrejestracje_Click);
             // 
             // button_odswiezstatus
             // 
-            this.button_odswiezstatus.Location = new System.Drawing.Point(793, 111);
+            this.button_odswiezstatus.Location = new System.Drawing.Point(793, 110);
             this.button_odswiezstatus.Name = "button_odswiezstatus";
             this.button_odswiezstatus.Size = new System.Drawing.Size(98, 23);
             this.button_odswiezstatus.TabIndex = 30;
@@ -368,11 +370,33 @@
             this.button_odswiezstatus.UseVisualStyleBackColor = true;
             this.button_odswiezstatus.Click += new System.EventHandler(this.button_odswiezstatus_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label14.Location = new System.Drawing.Point(14, 85);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(228, 20);
+            this.label14.TabIndex = 31;
+            this.label14.Text = "ZMIEŃ STATUS KSIĄŻKI NA:";
+            // 
+            // button_edytuj
+            // 
+            this.button_edytuj.Location = new System.Drawing.Point(973, 529);
+            this.button_edytuj.Name = "button_edytuj";
+            this.button_edytuj.Size = new System.Drawing.Size(290, 39);
+            this.button_edytuj.TabIndex = 32;
+            this.button_edytuj.Text = "EDYTUJ DANE KSIĄŻKI";
+            this.button_edytuj.UseVisualStyleBackColor = true;
+            this.button_edytuj.Click += new System.EventHandler(this.button_edytuj_Click);
+            // 
             // ZarejestrujKsiazke
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 615);
+            this.Controls.Add(this.button_edytuj);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.button_odswiezstatus);
             this.Controls.Add(this.button_cofnijrejestracje);
             this.Controls.Add(this.button_wyszukajstatus);
@@ -448,5 +472,7 @@
         private System.Windows.Forms.Button button_wyszukajstatus;
         private System.Windows.Forms.Button button_cofnijrejestracje;
         private System.Windows.Forms.Button button_odswiezstatus;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button button_edytuj;
     }
 }

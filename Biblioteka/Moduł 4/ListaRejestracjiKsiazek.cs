@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 
 namespace Biblioteka.Moduł_4
 {
@@ -20,37 +22,24 @@ namespace Biblioteka.Moduł_4
 
             listView1.View = View.Details;
             listView1.Columns.Add("Autor", 120);
-            listView1.Columns.Add("Gatunek", 60);
+            listView1.Columns.Add("Gatunek", 100);
             listView1.Columns.Add("Tytul", 100);
             listView1.Columns.Add("Wydawnictwo", 150);
             listView1.Columns.Add("Data rejestracji", 120);
             listView1.Columns.Add("Osoba rejestrująca", 100);
-            listView1.Columns.Add("Status rejestracji", 130);
+            listView1.Columns.Add("Status rejestracji", 150);
+
 
             WyswietlListeRejestracji();
+            klasaListaRejestracjiKsiazek.WypelnijComboBoxAutor(comboBox_autor);
+            klasaListaRejestracjiKsiazek.WypelnijComboBoxTytul(comboBox_tytul);
+            klasaListaRejestracjiKsiazek.WypelnijComboBoxGatunek(comboBox_gatunek);
+            klasaListaRejestracjiKsiazek.WypelnijComboBoxWydawnictwo(comboBox_wydawnictwo);
+            klasaListaRejestracjiKsiazek.WypelnijComboBoxOsobaRejestrujaca(comboBox_osoba);
 
-            WypelnijComboBoxNazwamiKolumn();
-
-
-
-
-
-            comboBoxFilter.SelectedIndexChanged += comboBoxFilter_SelectedIndexChanged;
         }
 
-        private void comboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedColumn = comboBoxFilter.SelectedItem.ToString();
-            KlasaListaRejestracjiKsiazek klasaListaRejestracjiKsiazek = new KlasaListaRejestracjiKsiazek();
-            klasaListaRejestracjiKsiazek.WypelnijComboBoxDane(selectedColumn, comboBox_Dane);
-        }
-        private void WypelnijComboBoxNazwamiKolumn()
-        {
-            comboBoxFilter.Items.Clear(); 
-
-            KlasaListaRejestracjiKsiazek klasaListaRejestracjiKsiazek = new KlasaListaRejestracjiKsiazek();
-            klasaListaRejestracjiKsiazek.WypelnijComboBoxNazwamiKolumn(comboBoxFilter);
-        }
+      
 
 
         private void ListaRejestracjiKsiazek_Load(object sender, EventArgs e)
@@ -73,33 +62,45 @@ namespace Biblioteka.Moduł_4
 
         private void button_filtruj_Click(object sender, EventArgs e)
         {
-
-            // Sprawdź, czy wybrano jakiekolwiek wartości w obu comboboxach
-            if (comboBox_Dane.SelectedItem == null || comboBoxFilter.SelectedItem == null)
-            {
-                MessageBox.Show("Proszę wybrać kolumnę i wartość do filtrowania.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Zakończ metodę, jeśli którakolwiek z wartości nie jest wybrana
-            }
-
-            // Pobierz wybraną wartość z comboBoxDane
-            string selectedValue = comboBox_Dane.SelectedItem.ToString();
-
-            // Pobierz wybraną kolumnę z comboBoxFilter
-            string selectedColumn = comboBoxFilter.SelectedItem.ToString();
-
-            // Wywołaj metodę do filtrowania danych z wyswietlKsiazki
-            klasaListaRejestracjiKsiazek.FiltrujDane(selectedColumn, selectedValue, listView1);
+            KlasaListaRejestracjiKsiazek listaRejestracji = new KlasaListaRejestracjiKsiazek();
+            listaRejestracji.FiltrujListe(listView1, comboBox_autor, comboBox_tytul, comboBox_gatunek, comboBox_wydawnictwo, comboBox_osoba, dateTimePicker_od, dateTimePicker_do);
         }
+
+
 
         private void button_odswiez_Click(object sender, EventArgs e)
         {
-            // Ponownie wywołaj metodę WyswietlListeKsiazek2, aby odświeżyć listView1
-            WyswietlListeRejestracji();
-            // Odśwież comboboxy
-            WypelnijComboBoxNazwamiKolumn(); // Dodaj tę linię
-            comboBox_Dane.SelectedIndex = -1;
-            comboBoxFilter.SelectedIndex = -1;
+            KlasaListaRejestracjiKsiazek listaRejestracji = new KlasaListaRejestracjiKsiazek();
+            
+
+            listaRejestracji.WyswietlListeRejestracji(listView1);
+
+
+
+            // Wyczyść textboxy
+            comboBox_autor.Text = "";
+            comboBox_tytul.Text = "";
+            comboBox_wydawnictwo.Text = "";
+            comboBox_osoba.Text = "";
+            comboBox_gatunek.Text = "";
+            dateTimePicker_od.Value = new DateTime(2024, 1, 1);
+            dateTimePicker_do.Value = new DateTime(2024, 12, 31);
+
+
         }
+
     }
-   }
+
+
+
+
+
+
+
+
+
+
+
+    }
+
 

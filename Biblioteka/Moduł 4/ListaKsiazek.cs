@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Biblioteka.Moduł_4
@@ -31,11 +32,17 @@ namespace Biblioteka.Moduł_4
             listView1.Columns.Add("Wydawnictwo", 100);
             listView1.Columns.Add("Status", 100);
 
-            WypelnijComboBoxNazwamiKolumn();
-            comboBoxFilter.SelectedIndexChanged += comboBoxFilter_SelectedIndexChanged;
+          
 
 
             listView1.FullRowSelect = true; // Ustawienie FullRowSelect na true
+            wyswietlKsiazki.WypelnijComboBoxAutor(comboBox_autor);
+            wyswietlKsiazki.WypelnijComboBoxTytul(comboBox_tytul);
+            wyswietlKsiazki.WypelnijComboBoxGatunek(comboBox_gatunek);
+            wyswietlKsiazki.WypelnijComboBoxWydawnictwo(comboBox_wydawnictwo);
+            wyswietlKsiazki.WypelnijComboBoxStatus(comboBox_status);
+
+            button_filtruj.Click += button_filtruj_Click;
 
 
 
@@ -53,20 +60,11 @@ namespace Biblioteka.Moduł_4
             WyswietlListeKsiazek2();
         }
 
-        private void WypelnijComboBoxNazwamiKolumn()
-        {
-            
-                comboBoxFilter.Items.Clear(); // Wyczyść wszystkie wartości w comboboxFilter
-                wyswietlKsiazki.WypelnijComboBoxNazwamiKolumn(comboBoxFilter); // Dodaj nowe wartości
-            }
+     
 
         
 
-        private void comboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedColumn = comboBoxFilter.SelectedItem.ToString();
-            wyswietlKsiazki.WypelnijComboBoxDane(selectedColumn, comboBoxDane);
-        }
+     
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -76,40 +74,19 @@ namespace Biblioteka.Moduł_4
             this.Hide();
         }
 
-        private void ListaKsiazek_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button_filtruj_Click(object sender, EventArgs e)
-        {
-
-            // Sprawdź, czy wybrano jakiekolwiek wartości w obu comboboxach
-            if (comboBoxDane.SelectedItem == null || comboBoxFilter.SelectedItem == null)
-            {
-                MessageBox.Show("Proszę wybrać kolumnę i wartość do filtrowania.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Zakończ metodę, jeśli którakolwiek z wartości nie jest wybrana
-            }
-
-            // Pobierz wybraną wartość z comboBoxDane
-            string selectedValue = comboBoxDane.SelectedItem.ToString();
-
-            // Pobierz wybraną kolumnę z comboBoxFilter
-            string selectedColumn = comboBoxFilter.SelectedItem.ToString();
-
-            // Wywołaj metodę do filtrowania danych z wyswietlKsiazki
-            wyswietlKsiazki.FiltrujDane(selectedColumn, selectedValue, listView1);
-
-        }
+      
 
         private void button_odswiez_Click(object sender, EventArgs e)
         {
-            // Ponownie wywołaj metodę WyswietlListeKsiazek2, aby odświeżyć listView1
-    WyswietlListeKsiazek2();
-    // Odśwież comboboxy
-    WypelnijComboBoxNazwamiKolumn(); // Dodaj tę linię
-    comboBoxDane.SelectedIndex = -1;
-    comboBoxFilter.SelectedIndex = -1;
+            wyswietlKsiazki.WyswietlListeKsiazek2(listView1);
+
+            // Wyczyść textboxy
+            comboBox_autor.Text = "";
+            comboBox_tytul.Text = "";
+            comboBox_wydawnictwo.Text = "";
+            comboBox_status.Text = "";
+            comboBox_gatunek.Text = "";
+          
 
 
         }
@@ -134,6 +111,22 @@ namespace Biblioteka.Moduł_4
             }
         }
 
-    }
+        private void button_filtruj_Click(object sender, EventArgs e)
+        {
+            // Pobierz wybrane wartości z ComboBoxów
+            string autor = comboBox_autor.SelectedItem?.ToString();
+            string tytul = comboBox_tytul.SelectedItem?.ToString();
+            string gatunek = comboBox_gatunek.SelectedItem?.ToString();
+            string wydawnictwo = comboBox_wydawnictwo.SelectedItem?.ToString();
+            string status = comboBox_status.SelectedItem?.ToString();
 
+            // Wywołaj metodę PobierzDaneZBazy z odpowiednimi parametrami i przekaż ListView
+            wyswietlKsiazki.PobierzDaneZBazy(autor, tytul, gatunek, wydawnictwo, status, listView1);
+        }
+
+        private void ListaKsiazek_Load_1(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

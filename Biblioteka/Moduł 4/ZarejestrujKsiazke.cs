@@ -14,6 +14,7 @@ namespace Biblioteka.Moduł_4
 {
     public partial class ZarejestrujKsiazke : Form
     {
+        private int selectedBookId; // Deklaracja zmiennej selectedBookId
         private WyswietlKsiazki wyswietlKsiazki = new WyswietlKsiazki();
 
         public ZarejestrujKsiazke()
@@ -22,6 +23,7 @@ namespace Biblioteka.Moduł_4
             listView1.FullRowSelect = true; // Ustawienie FullRowSelect na true
             WyswietlListeKsiazek();
             WypelnijComboBoxStatus();
+            button_edytuj.Enabled = false;
 
 
         }
@@ -50,8 +52,6 @@ namespace Biblioteka.Moduł_4
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-
             // Pobierz dane z formularza
             string tytul = textBox_Tytul.Text;
             string autor = textBox_Autor.Text;
@@ -64,13 +64,13 @@ namespace Biblioteka.Moduł_4
             string opis = textBox_Opis.Text;
 
             if (string.IsNullOrEmpty(tytul) ||
-        string.IsNullOrEmpty(autor) ||
-        string.IsNullOrEmpty(gatunek) ||
-        string.IsNullOrEmpty(wydawnictwo) ||
-        liczbaStron <= 0 ||
-        rokWydania <= 0 ||
-        cena <= 0 ||
-        liczbaSztuk <= 0)
+                string.IsNullOrEmpty(autor) ||
+                string.IsNullOrEmpty(gatunek) ||
+                string.IsNullOrEmpty(wydawnictwo) ||
+                liczbaStron <= 0 ||
+                rokWydania <= 0 ||
+                cena <= 0 ||
+                liczbaSztuk <= 0)
             {
                 MessageBox.Show("Aby zarejestrować książkę wypełnij wszystkie pola formularza",
                                 "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -97,6 +97,8 @@ namespace Biblioteka.Moduł_4
                 numericUpDown_Cena.Value = 0;
                 numericUpDown_LiczbaSztuk.Value = 0;
                 textBox_Opis.Text = "";
+
+                WyswietlListeKsiazek();
             }
             catch (Exception ex)
             {
@@ -125,6 +127,7 @@ namespace Biblioteka.Moduł_4
                 button1.Enabled = false;
                 // Pobierz pierwszy zaznaczony wiersz
                 ListViewItem selectedRow = listView1.SelectedItems[0];
+                selectedBookId = int.Parse(selectedRow.SubItems[0].Text);
 
                 // Pobierz wartości kolumn zaznaczonego wiersza
                 string tytul = selectedRow.SubItems[1].Text;
@@ -148,10 +151,26 @@ namespace Biblioteka.Moduł_4
                 numericUpDown_Cena.Value = decimal.Parse(cena);
                 numericUpDown_LiczbaSztuk.Value = int.Parse(liczbaSztuk);
 
+                // Aktywuj przycisk "Edytuj"
+                button_edytuj.Enabled = true;
             }
             else
             {
                 button1.Enabled = true;
+
+                button_edytuj.Enabled = false;
+
+                // Wyczyść textboxy
+                textBox_Tytul.Text = "";
+                textBox_Autor.Text = "";
+                textBox_Gatunek.Text = "";
+                textBox_Opis.Text = "";
+                numericUpDown_LiczbaStron.Value = 0;
+                textBox_Wydawnictwo.Text = "";
+                numericUpDown_RokWydania.Value = DateTime.Now.Year;
+                numericUpDown_Cena.Value = 0;
+                numericUpDown_LiczbaSztuk.Value = 0;
+
             }
         }
 
@@ -202,12 +221,22 @@ namespace Biblioteka.Moduł_4
                         return; // Przerwij dalsze działanie metody
                     }
 
+                    // Pobierz liczbę sztuk książki
+                    int liczbaSztuk = int.Parse(listView1.SelectedItems[0].SubItems[9].Text);
+                    if (liczbaSztuk == 0)
+                    {
+                        MessageBox.Show("Nie można ustawić statusu na 'Dostępna', ponieważ liczba sztuk wynosi 0.", "Błąd",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return; // Przerwij dalsze działanie metody
+                    }
+
                     // Zarejestruj książkę
                     int id_uzytkownika = 1; // Przykładowe ID zalogowanego użytkownika
                     KlasaListaRejestracjiKsiazek rejestracjaKsiazek = new KlasaListaRejestracjiKsiazek();
                     rejestracjaKsiazek.ZarejestrujKsiazke(selectedBookId, id_uzytkownika);
 
                     // Zmiana statusu książki na "Dostępna"
+                    WyswietlKsiazki wyswietlKsiazki = new WyswietlKsiazki();
                     wyswietlKsiazki.AktualizujStatusKsiazki(selectedBookId, "Dostępna");
 
                     // Wyświetl komunikat o powodzeniu
@@ -215,7 +244,7 @@ namespace Biblioteka.Moduł_4
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Odśwież listę książek
-                    WyswietlListeKsiazek();
+                    wyswietlKsiazki.WyswietlListeKsiazek(listView1);
                 }
                 catch (Exception ex)
                 {
@@ -249,8 +278,6 @@ namespace Biblioteka.Moduł_4
             // Pobierz wybraną wartość z comboBox_status
             string selectedStatus = comboBox_status.SelectedItem.ToString();
 
-            // Wywołaj metodę do filtrowania danych z wyswietlKsiazki, aby wyświetlić tylko książki o wybranym statusie
-            wyswietlKsiazki.FiltrujStatus("status", selectedStatus, listView1);
         }
 
         private void button_odswiezstatus_Click(object sender, EventArgs e)
@@ -313,5 +340,35 @@ namespace Biblioteka.Moduł_4
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button_edytuj_Click(object sender, EventArgs e)
+        {
+            if (selectedBookId != 0)
+            {
+                ZarzadzajBibliotekaKlasa zarzadzajBiblioteka = new ZarzadzajBibliotekaKlasa();
+                zarzadzajBiblioteka.EdytujKsiazke(selectedBookId, textBox_Tytul.Text, textBox_Autor.Text, textBox_Gatunek.Text,
+                    textBox_Opis.Text, (int)numericUpDown_LiczbaStron.Value, textBox_Wydawnictwo.Text, (int)numericUpDown_RokWydania.Value,
+                    numericUpDown_Cena.Value, (int)numericUpDown_LiczbaSztuk.Value);
+                WyswietlListeKsiazek(); // Dodano odświeżenie listy książek po edycji
+
+                // Wyczyść wartości textboxów po edycji
+                textBox_Tytul.Text = "";
+                textBox_Autor.Text = "";
+                textBox_Gatunek.Text = "";
+                textBox_Opis.Text = "";
+                numericUpDown_LiczbaStron.Value = 0;
+                textBox_Wydawnictwo.Text = "";
+                numericUpDown_RokWydania.Value = DateTime.Now.Year;
+                numericUpDown_Cena.Value = 0;
+                numericUpDown_LiczbaSztuk.Value = 0;
+
+                MessageBox.Show("Książka została pomyślnie zaktualizowana.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Proszę wybrać książkę do zaktualizowania.");
+            }
+        }
+
     }
 }
