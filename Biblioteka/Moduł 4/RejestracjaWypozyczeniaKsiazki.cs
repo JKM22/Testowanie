@@ -17,53 +17,99 @@ namespace Biblioteka.Moduł_4
         {
             InitializeComponent();
             textBox_okresWypozyczenia.Text = "14";
+            listView1.FullRowSelect = true;
+
+            listView1.View = View.Details;
+            listView1.Columns.Add("ID", 50);
+            listView1.Columns.Add("Autor", 70);
+            listView1.Columns.Add("Tytul", 70);
+            listView1.Columns.Add("Status", 70);
+            WybierzKsiazke();
 
         }
 
+        public void WybierzKsiazke()
+        {
+            WypozyczeniaKsiazekKlasa wypozyczeniaKsiazekKlasa = new WypozyczeniaKsiazekKlasa();
+            wypozyczeniaKsiazekKlasa.WybierzKsiazke(listView1);
+        }
         private void button_wypozycz_Click(object sender, EventArgs e)
         {
+            // Sprawdź, czy wszystkie pola są wypełnione
             if (CzyWszystkiePolaWypelnione())
             {
-                string imie = textBox_imieWypozyczenie.Text;
-                string nazwisko = textBox_nazwiskoWypozyczenie.Text;
-                string adres = textBox_adresZamieszkaniaWypozyczenie.Text;
-                string numerTelefonu = textBox_numerTelefonu.Text;
-                int wypozyczonaKsiazkaId = Convert.ToInt32(textBox_idWypozyczonejKsiazki.Text);
-                DateTime dataWypozyczenia = dateTimePicker_Wypozyczenie.Value;
-                int okresWypozyczenia = Convert.ToInt32(textBox_okresWypozyczenia.Text);
-
-                try
+                // Sprawdź, czy została wybrana książka
+                if (listView1.SelectedItems.Count > 0)
                 {
-                    // Oblicz datę zwrotu na podstawie daty wypożyczenia i okresu wypożyczenia (14 dni)
-                    DateTime dataZwrotu = dataWypozyczenia.AddDays(okresWypozyczenia);
+                    // Pobierz dane z pól formularza
+                    string imie = textBox_imieWypozyczenie.Text;
+                    string nazwisko = textBox_nazwiskoWypozyczenie.Text;
+                    string adres = textBox_adresZamieszkaniaWypozyczenie.Text;
+                    string numerTelefonu = textBox_numerTelefonu.Text;
+                    DateTime dataWypozyczenia = dateTimePicker_Wypozyczenie.Value;
+                    int okresWypozyczenia = Convert.ToInt32(textBox_okresWypozyczenia.Text);
 
-                    // Ustaw wartość DateTimePicker'a na obliczoną datę zwrotu
-                    dateTimePicker2.Value = dataZwrotu;
+                    // Pobierz wybraną książkę
+                    ListViewItem selectedItem = listView1.SelectedItems[0];
+                    int wypozyczonaKsiazkaId = Convert.ToInt32(selectedItem.SubItems[0].Text); // Pobierz ID książki
 
-                    // Wywołaj metodę DodajWypozyczenie z klasy WypozyczeniaKsiazekKlasa
-                    wypozyczeniaKsiazekKlasa.DodajWypozyczenie(imie, nazwisko, adres, numerTelefonu, wypozyczonaKsiazkaId, dataWypozyczenia, okresWypozyczenia);
+                    // Sprawdź status wybranej książki
+                    string status = selectedItem.SubItems[3].Text; // Indeks 3 odpowiada kolumnie ze statusem
 
-                    MessageBox.Show("Wypożyczenie zarejestrowane pomyślnie! ");
+                    if (status == "Niedostępna")
+                    {
+                        // Wyświetl komunikat informujący użytkownika, że książka jest niedostępna
+                        MessageBox.Show("Nie można wypożyczyć tej książki, ponieważ jest niedostępna.", "Komunikat",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        // Oblicz datę zwrotu
+                        DateTime dataZwrotu = dataWypozyczenia.AddDays(okresWypozyczenia);
+                        dateTimePicker2.Value = dataZwrotu;
+
+                        try
+                        {
+                            // Wywołaj metodę DodajWypozyczenie z klasy WypozyczeniaKsiazekKlasa
+                            wypozyczeniaKsiazekKlasa.DodajWypozyczenie(imie, nazwisko, adres, numerTelefonu, wypozyczonaKsiazkaId, dataWypozyczenia, okresWypozyczenia);
+
+                            // Wyświetl komunikat o poprawnym zarejestrowaniu wypożyczenia
+                            MessageBox.Show("Wypożyczenie zarejestrowane pomyślnie! ");
+                            wypozyczeniaKsiazekKlasa.WybierzKsiazke(listView1);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Wyświetl komunikat o błędzie zapisu do bazy danych
+                            MessageBox.Show("Błąd podczas zapisu do bazy danych: " + ex.Message);
+                        }
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Błąd podczas zapisu do bazy danych: " + ex.Message);
+                    // Wyświetl komunikat informujący użytkownika, że nie wybrano żadnej książki
+                    MessageBox.Show("Proszę wybrać książkę do wypożyczenia.", "Komunikat",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Wypełnij wszystkie pola!");
+                // Wyświetl komunikat informujący użytkownika, że nie wszystkie pola zostały wypełnione
+                MessageBox.Show("Wypełnij wszystkie pola!", "Komunikat",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private bool CzyWszystkiePolaWypelnione()
+
+    
+
+    private bool CzyWszystkiePolaWypelnione()
         {
             // Sprawdź, czy wszystkie pola tekstowe nie są puste
             return !string.IsNullOrWhiteSpace(textBox_imieWypozyczenie.Text) &&
                    !string.IsNullOrWhiteSpace(textBox_nazwiskoWypozyczenie.Text) &&
                    !string.IsNullOrWhiteSpace(textBox_adresZamieszkaniaWypozyczenie.Text) &&
-                   !string.IsNullOrWhiteSpace(textBox_numerTelefonu.Text) &&
-                   !string.IsNullOrWhiteSpace(textBox_idWypozyczonejKsiazki.Text);
+                   !string.IsNullOrWhiteSpace(textBox_numerTelefonu.Text);
+                  
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -72,6 +118,8 @@ namespace Biblioteka.Moduł_4
             zarzadzajBiblioteka.Show();
             this.Hide();
         }
+
+        
     }
 }
 

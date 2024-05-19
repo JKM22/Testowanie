@@ -691,6 +691,16 @@ namespace Biblioteka.Moduł_4
                 }
             }
         }
+        private void textBoxGatunek_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdzamy czy wprowadzony znak jest cyfrą
+            if (char.IsDigit(e.KeyChar))
+            {
+                // Jeśli tak, zatrzymujemy jego wprowadzenie do kontrolki
+                e.Handled = true;
+            }
+        }
+
 
 
     }

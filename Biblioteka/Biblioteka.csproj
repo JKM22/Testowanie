@@ -165,6 +165,12 @@
     <Compile Include="Moduł 4\ListaRejestracjiKsiazek.Designer.cs">
       <DependentUpon>ListaRejestracjiKsiazek.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moduł 4\ListaWypozyczen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moduł 4\ListaWypozyczen.Designer.cs">
+      <DependentUpon>ListaWypozyczen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Moduł 4\RejestracjaWypozyczeniaKsiazki.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Moduł 4\ListaRejestracjiKsiazek.resx">
       <DependentUpon>ListaRejestracjiKsiazek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moduł 4\ListaWypozyczen.resx">
+      <DependentUpon>ListaWypozyczen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Moduł 4\RejestracjaWypozyczeniaKsiazki.resx">
       <DependentUpon>RejestracjaWypozyczeniaKsiazki.cs</DependentUpon>

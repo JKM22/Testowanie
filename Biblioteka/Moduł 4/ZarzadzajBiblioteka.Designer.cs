@@ -33,6 +33,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button_listaKsiazek = new System.Windows.Forms.Button();
             this.button_rejestracjaWtpozyczenia = new System.Windows.Forms.Button();
+            this.button_listaWypozyczen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_RejestracjaKsiazek
@@ -48,7 +49,7 @@
             // 
             // button_PrzegladajRejestracjaKsiazki
             // 
-            this.button_PrzegladajRejestracjaKsiazki.Location = new System.Drawing.Point(14, 116);
+            this.button_PrzegladajRejestracjaKsiazki.Location = new System.Drawing.Point(14, 156);
             this.button_PrzegladajRejestracjaKsiazki.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_PrzegladajRejestracjaKsiazki.Name = "button_PrzegladajRejestracjaKsiazki";
             this.button_PrzegladajRejestracjaKsiazki.Size = new System.Drawing.Size(178, 81);
@@ -70,7 +71,7 @@
             // 
             // button_listaKsiazek
             // 
-            this.button_listaKsiazek.Location = new System.Drawing.Point(14, 224);
+            this.button_listaKsiazek.Location = new System.Drawing.Point(12, 268);
             this.button_listaKsiazek.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_listaKsiazek.Name = "button_listaKsiazek";
             this.button_listaKsiazek.Size = new System.Drawing.Size(178, 58);
@@ -81,7 +82,7 @@
             // 
             // button_rejestracjaWtpozyczenia
             // 
-            this.button_rejestracjaWtpozyczenia.Location = new System.Drawing.Point(14, 306);
+            this.button_rejestracjaWtpozyczenia.Location = new System.Drawing.Point(281, 21);
             this.button_rejestracjaWtpozyczenia.Name = "button_rejestracjaWtpozyczenia";
             this.button_rejestracjaWtpozyczenia.Size = new System.Drawing.Size(183, 75);
             this.button_rejestracjaWtpozyczenia.TabIndex = 4;
@@ -89,11 +90,22 @@
             this.button_rejestracjaWtpozyczenia.UseVisualStyleBackColor = true;
             this.button_rejestracjaWtpozyczenia.Click += new System.EventHandler(this.button_rejestracjaWtpozyczenia_Click);
             // 
+            // button_listaWypozyczen
+            // 
+            this.button_listaWypozyczen.Location = new System.Drawing.Point(281, 161);
+            this.button_listaWypozyczen.Name = "button_listaWypozyczen";
+            this.button_listaWypozyczen.Size = new System.Drawing.Size(148, 71);
+            this.button_listaWypozyczen.TabIndex = 5;
+            this.button_listaWypozyczen.Text = "Lista wypożyczeń";
+            this.button_listaWypozyczen.UseVisualStyleBackColor = true;
+            this.button_listaWypozyczen.Click += new System.EventHandler(this.button_listaWypozyczen_Click);
+            // 
             // ZarzadzajBiblioteka
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button_listaWypozyczen);
             this.Controls.Add(this.button_rejestracjaWtpozyczenia);
             this.Controls.Add(this.button_listaKsiazek);
             this.Controls.Add(this.button1);
@@ -113,5 +125,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button_listaKsiazek;
         private System.Windows.Forms.Button button_rejestracjaWtpozyczenia;
+        private System.Windows.Forms.Button button_listaWypozyczen;
     }
 }

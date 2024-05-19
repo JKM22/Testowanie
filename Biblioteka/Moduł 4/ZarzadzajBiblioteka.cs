@@ -51,5 +51,12 @@ namespace Biblioteka.Moduł_4
             rejestracjaWypozyczeniaKsiazki.Show();
             this.Hide();
         }
+
+        private void button_listaWypozyczen_Click(object sender, EventArgs e)
+        {
+            ListaWypozyczen listaWypozyczen = new ListaWypozyczen();
+            listaWypozyczen.Show();
+            this.Hide();
+        }
     }
 }

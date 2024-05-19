@@ -24,6 +24,8 @@ namespace Biblioteka.Moduł_4
             WyswietlListeKsiazek();
             WypelnijComboBoxStatus();
             button_edytuj.Enabled = false;
+         
+
 
 
         }
@@ -369,6 +371,7 @@ namespace Biblioteka.Moduł_4
                 MessageBox.Show("Proszę wybrać książkę do zaktualizowania.");
             }
         }
+      
 
     }
 }
