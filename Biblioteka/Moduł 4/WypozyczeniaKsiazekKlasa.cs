@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace Biblioteka.Moduł_4
 {
     public class WypozyczeniaKsiazekKlasa
     {
         private const string ConnectionString = "Server=localhost;Database=biblioteka;Uid=root;Pwd=;";
         private int selectedBookId;
-
-
+       
 
         public void DodajWypozyczenie(string imie, string nazwisko, string adres, string numerTelefonu, int ksiazkaId, DateTime dataWypozyczenia, int okresWypozyczenia)
         {
@@ -38,6 +38,7 @@ namespace Biblioteka.Moduł_4
                         commandWypozyczenia.Parameters.AddWithValue("@DataWypozyczenia", dataWypozyczenia);
                         commandWypozyczenia.Parameters.AddWithValue("@OkresWypozyczenia", okresWypozyczenia);
                         commandWypozyczenia.Parameters.AddWithValue("@DataZwrotu", dataZwrotu);
+                       
 
                         commandWypozyczenia.ExecuteNonQuery();
 
@@ -50,13 +51,15 @@ namespace Biblioteka.Moduł_4
                         }
 
                         // Zapis do tabeli biblioteka_pary_wypozyczenia
-                        string queryParyWypozyczenia = "INSERT INTO pary_wypozyczenia (id_wypozyczenia, id_ksiazki) " +
-                                "VALUES (@IdWypozyczenia, @IdKsiazki)";
+                        string queryParyWypozyczenia = "INSERT INTO pary_wypozyczenia (id_wypozyczenia, id_ksiazki, id_bibliotekarz_uzytkownik) " +
+                                "VALUES (@IdWypozyczenia, @IdKsiazki, @BibliotekarzUzytkownikId)";
 
                         using (MySqlCommand commandParyWypozyczenia = new MySqlCommand(queryParyWypozyczenia, connection))
                         {
                             commandParyWypozyczenia.Parameters.AddWithValue("@IdWypozyczenia", wypozyczenieId);
                             commandParyWypozyczenia.Parameters.AddWithValue("@IdKsiazki", ksiazkaId);
+                            commandParyWypozyczenia.Parameters.AddWithValue("@@BibliotekarzUzytkownikId", PolaczenieBazyKlasa.ZalogowanyUzytkownikId);
+
 
                             commandParyWypozyczenia.ExecuteNonQuery();
                         }
