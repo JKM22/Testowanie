@@ -61,6 +61,12 @@ namespace Biblioteka
                 MessageBox.Show("Zalogowano pomyślnie!");
                 IsAdmin = true;
                 this.Close();
+
+                // Zmień zawartość okna głównego na okno Start
+                Start start = new Start();
+                start.Show();
+                this.Hide();
+
             }
             else
             {

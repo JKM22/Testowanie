@@ -21,6 +21,9 @@ namespace Biblioteka
         public Start()
         {
             InitializeComponent();
+          
+
+
         }
 
         private void Start_Load(object sender, EventArgs e)
@@ -83,8 +86,8 @@ namespace Biblioteka
                 {
                     isUserLoggedIn = true;
                     isAdmin = login.IsAdmin;
-                    Start start = new Start();
-                    start.Show();
+                   
+
                     EnableOptions();
 
                 }
@@ -162,6 +165,8 @@ namespace Biblioteka
             uzytkownicy.Enabled = false;
             uprawnienia.Enabled = false;
             wyloguj.Enabled = false;
+            button_ZarzadzajBiblioteka.Enabled = false;
+
         }
 
         private void EnableOptions()
@@ -169,6 +174,7 @@ namespace Biblioteka
             uzytkownicy.Enabled = true;
             uprawnienia.Enabled = true;
             wyloguj.Enabled = true;
+            button_ZarzadzajBiblioteka.Enabled = true;
         }
 
         private bool HasPermission(string permission)
@@ -194,9 +200,27 @@ namespace Biblioteka
 
         private void button_ZarzadzajBiblioteka_Click(object sender, EventArgs e)
         {
-            ZarzadzajBiblioteka zarzadzajBiblioteka = new ZarzadzajBiblioteka();
-            zarzadzajBiblioteka.Show();
-            this.Hide();
+            
+            // Pobierz ID zalogowanego użytkownika
+            int id_uzytkownika = PolaczenieBazyKlasa.ZalogowanyUzytkownikId;
+             button_ZarzadzajBiblioteka.Enabled = HasPermission("Bibliotekarz") || HasPermission("Manager");
+           
+
+            if (isUserLoggedIn && (HasPermission("Bibliotekarz") || HasPermission("Manager")))
+            {
+                ZarzadzajBiblioteka zarzadzajBiblioteka = new ZarzadzajBiblioteka();
+                zarzadzajBiblioteka.Show();
+                this.Hide();
+          
+            }
+           
+            else
+            {
+                MessageBox.Show("Nie masz odpowiednich uprawnień do zarządzania biblioteką.", "Brak uprawnień",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
     }
 }
+

@@ -206,51 +206,44 @@ namespace Biblioteka.Moduł_4
 
         private void button_zarejestujksiazke_Click(object sender, EventArgs e)
         {
-            // Upewnij się, że użytkownik wybrał książkę
             if (listView1.SelectedItems.Count > 0)
             {
-                // Pobierz ID wybranej książki
                 int selectedBookId = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
 
                 try
                 {
-                    // Sprawdź, czy książka ma status "Dostępna"
                     string status = listView1.SelectedItems[0].SubItems[10].Text;
                     if (status == "Dostępna")
                     {
                         MessageBox.Show("Wybrana książka jest już zarejestrowana i ma status 'Dostępna'.", "Błąd",
                                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return; // Przerwij dalsze działanie metody
+                        return;
                     }
 
-                    // Pobierz liczbę sztuk książki
                     int liczbaSztuk = int.Parse(listView1.SelectedItems[0].SubItems[9].Text);
                     if (liczbaSztuk == 0)
                     {
                         MessageBox.Show("Nie można ustawić statusu na 'Dostępna', ponieważ liczba sztuk wynosi 0.", "Błąd",
                                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return; // Przerwij dalsze działanie metody
+                        return;
                     }
 
-                    // Zarejestruj książkę
-                    int id_uzytkownika = 1; // Przykładowe ID zalogowanego użytkownika
+                    // Pobierz ID użytkownika z klasy PolaczenieBazyKlasa
+                    int id_uzytkownika = PolaczenieBazyKlasa.ZalogowanyUzytkownikId;
+
                     KlasaListaRejestracjiKsiazek rejestracjaKsiazek = new KlasaListaRejestracjiKsiazek();
                     rejestracjaKsiazek.ZarejestrujKsiazke(selectedBookId, id_uzytkownika);
 
-                    // Zmiana statusu książki na "Dostępna"
                     WyswietlKsiazki wyswietlKsiazki = new WyswietlKsiazki();
                     wyswietlKsiazki.AktualizujStatusKsiazki(selectedBookId, "Dostępna");
 
-                    // Wyświetl komunikat o powodzeniu
                     MessageBox.Show("Status książki został pomyślnie zmieniony na 'Dostępna'.", "Sukces",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Odśwież listę książek
                     wyswietlKsiazki.WyswietlListeKsiazek(listView1);
                 }
                 catch (Exception ex)
                 {
-                    // Wyświetl komunikat o błędzie
                     MessageBox.Show($"Wystąpił błąd podczas rejestracji książki: {ex.Message}", "Błąd",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -294,44 +287,36 @@ namespace Biblioteka.Moduł_4
 
         private void button_cofnijrejestracje_Click(object sender, EventArgs e)
         {
-
-            // Upewnij się, że użytkownik wybrał książkę
             if (listView1.SelectedItems.Count > 0)
             {
-                // Pobierz ID wybranej książki
                 int selectedBookId = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
 
                 try
                 {
-
                     string status = listView1.SelectedItems[0].SubItems[10].Text;
 
-                    // Sprawdź, czy książka ma status "Dostępna"
                     if (status == "Niedostępna")
                     {
                         MessageBox.Show("Wybrana książka jest już wyrejestrowana i ma status 'Niedostępna'.", "Błąd",
                                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return; // Przerwij dalsze działanie metody
+                        return;
                     }
-                    // Zarejestruj książkę
-                    int id_uzytkownika = 1; // Przykładowe ID zalogowanego użytkownika
+
+                    // Pobierz ID użytkownika z klasy PolaczenieBazyKlasa
+                    int id_uzytkownika = PolaczenieBazyKlasa.ZalogowanyUzytkownikId;
+
                     KlasaListaRejestracjiKsiazek rejestracjaKsiazek = new KlasaListaRejestracjiKsiazek();
                     rejestracjaKsiazek.WyrejestrujKsiazke(selectedBookId, id_uzytkownika);
 
-
-                    // Zmiana statusu książki na "Dostępna"
                     wyswietlKsiazki.AktualizujStatusKsiazki(selectedBookId, "Niedostępna");
 
-                    // Wyświetl komunikat o powodzeniu
                     MessageBox.Show("Status książki został pomyślnie zmieniony na 'Niedostępna'.", "Sukces",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Odśwież listę książek
                     WyswietlListeKsiazek();
                 }
                 catch (Exception ex)
                 {
-                    // Wyświetl komunikat o błędzie
                     MessageBox.Show($"Wystąpił błąd podczas zmiany statusu książki: {ex.Message}", "Błąd",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -342,6 +327,7 @@ namespace Biblioteka.Moduł_4
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void button_edytuj_Click(object sender, EventArgs e)
         {

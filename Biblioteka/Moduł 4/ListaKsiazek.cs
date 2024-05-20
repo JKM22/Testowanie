@@ -15,14 +15,19 @@ namespace Biblioteka.Moduł_4
     public partial class ListaKsiazek : Form
     {
         private WyswietlKsiazki wyswietlKsiazki = new WyswietlKsiazki();
-     
+
+        private bool isUserLoggedIn = false;
+        private bool isAdmin = false;
+        private int userId;
+
+
 
         public ListaKsiazek()
         {
             InitializeComponent();
           
             WyswietlListeKsiazek2();
-
+            ConfigureButtonAccess();
 
             listView1.View = View.Details;
             listView1.Columns.Add("ID", 50);
@@ -45,6 +50,32 @@ namespace Biblioteka.Moduł_4
             button_filtruj.Click += button_filtruj_Click;
 
 
+
+
+        }
+        private bool HasPermission(string permission)
+        {
+            if (isAdmin) // Jeśli użytkownik jest administratorem, ma dostęp do wszystkich uprawnień
+            {
+                return true;
+            }
+
+            // Pobierz uprawnienia użytkownika z bazy danych
+            PolaczenieBazyKlasa polaczenie = new PolaczenieBazyKlasa();
+            List<string> userPermissions = polaczenie.GetPermissionsForUser(userId);
+
+            // Sprawdź, czy użytkownik ma żądane uprawnienie
+            return userPermissions.Contains(permission);
+        }
+
+        private void ConfigureButtonAccess()
+        {
+            // Pobierz ID zalogowanego użytkownika
+            userId = PolaczenieBazyKlasa.ZalogowanyUzytkownikId;
+            isUserLoggedIn = PolaczenieBazyKlasa.Zalogowany;
+
+            // Sprawdź, czy użytkownik ma odpowiednie uprawnienia do poszczególnych przycisków
+            button_podglad.Enabled = HasPermission("Bibliotekarz");
 
 
         }
@@ -93,17 +124,20 @@ namespace Biblioteka.Moduł_4
 
         private void button_podglad_Click(object sender, EventArgs e)
         {
-            // Sprawdzamy, czy wybrano jakąś książkę w listView
-            if (listView1.SelectedItems.Count > 0)
+            if (isUserLoggedIn && HasPermission("Bibliotekarz"))
             {
-                // Pobieramy identyfikator wybranej książki (zakładając, że identyfikator jest w pierwszej kolumnie)
-                int selectedBookId = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
+                // Sprawdzamy, czy wybrano jakąś książkę w listView
+                if (listView1.SelectedItems.Count > 0)
+                {
+                    // Pobieramy identyfikator wybranej książki (zakładając, że identyfikator jest w pierwszej kolumnie)
+                    int selectedBookId = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
 
-                // Wywołujemy metodę WyswietlPelneInformacjeOKsiazce z obiektu wyswietlKsiazki
-                string pelneInformacje = wyswietlKsiazki.WyswietlPelneInformacjeOKsiazce(selectedBookId);
+                    // Wywołujemy metodę WyswietlPelneInformacjeOKsiazce z obiektu wyswietlKsiazki
+                    string pelneInformacje = wyswietlKsiazki.WyswietlPelneInformacjeOKsiazce(selectedBookId);
 
-                // Wyświetlamy pełne informacje o wybranej książce w komunikacie MessageBox
-                MessageBox.Show(pelneInformacje);
+                    // Wyświetlamy pełne informacje o wybranej książce w komunikacie MessageBox
+                    MessageBox.Show(pelneInformacje);
+                }
             }
             else
             {

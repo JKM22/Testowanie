@@ -14,18 +14,24 @@ namespace Biblioteka.Moduł_4
     public partial class ListaWypozyczen : Form
     {
         private WypozyczeniaKsiazekKlasa wypozyczeniaKsiazekKlasa = new WypozyczeniaKsiazekKlasa();
+
+        private bool isUserLoggedIn = false;
+        private bool isAdmin = false;
+        private int userId;
         public ListaWypozyczen()
         {
             InitializeComponent();
+            ConfigureButtonAccess();
 
             listView2.View = View.Details;
             listView2.Columns.Add("ID", 50);
-            listView2.Columns.Add("Imie", 70);
-            listView2.Columns.Add("Nazwisko", 70);
+            listView2.Columns.Add("Wypożyczający", 70);
+            listView2.Columns.Add("Bibliotekarz", 100);
             listView2.Columns.Add("Adres", 70);
             listView2.Columns.Add("Telefon", 70);
             listView2.Columns.Add("Autor", 100);
             listView2.Columns.Add("Tytuł", 100);
+           
             listView2.Columns.Add("Data wypożyczenia", 70);
             listView2.Columns.Add("Okres wypożyczenia", 70);
             listView2.Columns.Add("Data zwrotu", 70);
@@ -42,7 +48,33 @@ namespace Biblioteka.Moduł_4
             PokazWypozyczenia();
 
         }
+        private bool HasPermission(string permission)
+        {
+            if (isAdmin) // Jeśli użytkownik jest administratorem, ma dostęp do wszystkich uprawnień
+            {
+                return true;
+            }
 
+            // Pobierz uprawnienia użytkownika z bazy danych
+            PolaczenieBazyKlasa polaczenie = new PolaczenieBazyKlasa();
+            List<string> userPermissions = polaczenie.GetPermissionsForUser(userId);
+
+            // Sprawdź, czy użytkownik ma żądane uprawnienie
+            return userPermissions.Contains(permission);
+        }
+
+        private void ConfigureButtonAccess()
+        {
+            // Pobierz ID zalogowanego użytkownika
+            userId = PolaczenieBazyKlasa.ZalogowanyUzytkownikId;
+            isUserLoggedIn = PolaczenieBazyKlasa.Zalogowany;
+
+            // Sprawdź, czy użytkownik ma odpowiednie uprawnienia do poszczególnych przycisków
+            button_Przedluz.Enabled = HasPermission("Bibliotekarz");
+            button_Zwroc.Enabled = HasPermission("Bibliotekarz");
+
+
+        }
         public void PokazWypozyczenia()
         {
             WypozyczeniaKsiazekKlasa wypozyczeniaKSiazekKlasa = new WypozyczeniaKsiazekKlasa();
@@ -130,7 +162,18 @@ namespace Biblioteka.Moduł_4
 
         private void button_Filtruj_Click(object sender, EventArgs e)
         {
-         
+            wypozyczeniaKsiazekKlasa.FiltrujDane2(comboBox_Wypozyczajacy, comboBox_Bibliotekarz, comboBox_okresWypozyczenia, comboBox_statusWypozyczenia, listView2);
+        }
+
+        private void button_Odswiez_Click(object sender, EventArgs e)
+        {
+            wypozyczeniaKsiazekKlasa.PokazWypozyczenia(listView2);
+
+            comboBox_Wypozyczajacy.Text = "";
+            comboBox_Bibliotekarz.Text = "";
+            comboBox_okresWypozyczenia.Text = "";
+            comboBox_statusWypozyczenia.Text = "";
+
         }
     }
     }

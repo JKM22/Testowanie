@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -156,7 +158,27 @@ namespace Biblioteka.Moduł_4
                     connection.Open();
 
                     // Tworzymy zapytanie SQL
-                    string query = "SELECT w.id_wypozyczenia, w.w_imie, w.w_nazwisko, w.w_adres, w.w_telefon, w.w_dataWypozyczenia, w.w_okresWypozyczenia, w.w_dataZwrotu, w.w_statusWypozyczenia, k.autor, k.tytul FROM wypozyczenia w JOIN pary_wypozyczenia pw ON w.id_wypozyczenia = pw.id_wypozyczenia JOIN ksiazka k ON pw.id_ksiazki = k.id_ksiazka";
+                    string query = @"
+                SELECT 
+                    w.id_wypozyczenia, 
+                    CONCAT(w.w_imie, ' ', w.w_nazwisko) AS Wypożyczający, 
+                    CONCAT(u.u_imie, ' ', u.u_nazwisko) AS Bibliotekarz,
+                    w.w_adres, 
+                    w.w_telefon, 
+                    w.w_dataWypozyczenia, 
+                    w.w_okresWypozyczenia, 
+                    w.w_dataZwrotu, 
+                    w.w_statusWypozyczenia, 
+                    k.autor, 
+                    k.tytul 
+                FROM 
+                    wypozyczenia w 
+                JOIN 
+                    pary_wypozyczenia pw ON w.id_wypozyczenia = pw.id_wypozyczenia 
+                JOIN 
+                    ksiazka k ON pw.id_ksiazki = k.id_ksiazka
+                LEFT JOIN 
+                    uzytkownik u ON pw.id_bibliotekarz_uzytkownik = u.id_uzytkownik";
 
                     // Tworzymy obiekt MySqlCommand
                     MySqlCommand command = new MySqlCommand(query, connection);
@@ -168,8 +190,8 @@ namespace Biblioteka.Moduł_4
                         while (reader.Read())
                         {
                             int id = reader.GetInt32("id_wypozyczenia");
-                            string w_imie = reader.GetString("w_imie");
-                            string w_nazwisko = reader.GetString("w_nazwisko");
+                            string wypożyczający = reader.GetString("Wypożyczający");
+                            string bibliotekarz = reader.IsDBNull(reader.GetOrdinal("Bibliotekarz")) ? "" : reader.GetString("Bibliotekarz");
                             string w_adres = reader.GetString("w_adres");
                             int w_telefon = reader.GetInt32("w_telefon");
                             string autor = reader.GetString("autor");
@@ -180,7 +202,7 @@ namespace Biblioteka.Moduł_4
                             string w_statusWypozyczenia = reader.GetString("w_statusWypozyczenia");
 
                             // Tworzymy nowy element ListViewItem z danymi wypożyczenia
-                            ListViewItem item = new ListViewItem(new string[] { id.ToString(), w_imie, w_nazwisko, w_adres, w_telefon.ToString(), autor, tytul, w_dataWypozyczenia.ToString(), w_okresWypozyczenia.ToString(), w_dataZwrotu.ToString(), w_statusWypozyczenia });
+                            ListViewItem item = new ListViewItem(new string[] { id.ToString(), wypożyczający, bibliotekarz, w_adres, w_telefon.ToString(), autor, tytul, w_dataWypozyczenia.ToString(), w_okresWypozyczenia.ToString(), w_dataZwrotu.ToString(), w_statusWypozyczenia });
 
                             listView.Items.Add(item);
                         }
@@ -192,6 +214,7 @@ namespace Biblioteka.Moduł_4
                 }
             }
         }
+
 
         public void PrzedluzWypozyczenie(int idWypozyczenia, int liczbaDni)
         {
@@ -367,15 +390,112 @@ namespace Biblioteka.Moduł_4
         }
 
 
-        public void FiltrujListe2(ListView listView, ComboBox comboBox_Wypozyczajacy, ComboBox comboBox_Bibliotekarz, ComboBox comboBox_okresWypozyczenia, ComboBox comboBox_statusWypozyczenia)
+        public void FiltrujDane2(ComboBox comboBox_Wypozyczajacy, ComboBox comboBox_Bibliotekarz, ComboBox comboBox_okresWypozyczenia, ComboBox comboBox_statusWypozyczenia, ListView listView2)
         {
-            listView.Items.Clear();
-
+            listView2.Items.Clear();
+            // Tworzymy połączenie z bazą danych
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
+                try
+                {
+                    // Otwieramy połączenie
+                    connection.Open();
+
+                    // Tworzymy zapytanie SQL
+                    string query = @"
+                SELECT 
+                    w.id_wypozyczenia, 
+                    CONCAT(w.w_imie, ' ', w.w_nazwisko) AS Wypożyczający, 
+                    CONCAT(u.u_imie, ' ', u.u_nazwisko) AS Bibliotekarz,
+                    w.w_adres, 
+                    w.w_telefon, 
+                    w.w_dataWypozyczenia, 
+                    w.w_okresWypozyczenia, 
+                    w.w_dataZwrotu, 
+                    w.w_statusWypozyczenia, 
+                    k.autor, 
+                    k.tytul 
+                FROM 
+                    wypozyczenia w 
+                JOIN 
+                    pary_wypozyczenia pw ON w.id_wypozyczenia = pw.id_wypozyczenia 
+                JOIN 
+                    ksiazka k ON pw.id_ksiazki = k.id_ksiazka
+                LEFT JOIN 
+                    uzytkownik u ON pw.id_bibliotekarz_uzytkownik = u.id_uzytkownik
+                WHERE 1=1";
+
+                    // Dodajemy warunki filtrowania, jeśli ComboBox'y nie są puste
+                    if (comboBox_Wypozyczajacy.SelectedItem != null)
+                    {
+                        string wypozyczajacy = comboBox_Wypozyczajacy.SelectedItem.ToString();
+                        query += $" AND CONCAT(w.w_imie, ' ', w.w_nazwisko) = '{wypozyczajacy}'";
+                    }
+
+                    if (comboBox_Bibliotekarz.SelectedItem != null)
+                    {
+                        string bibliotekarz = comboBox_Bibliotekarz.SelectedItem.ToString();
+                        query += $" AND CONCAT(u.u_imie, ' ', u.u_nazwisko) = '{bibliotekarz}'";
+                    }
+
+                    if (comboBox_okresWypozyczenia.SelectedItem != null)
+                    {
+                        int okresWypozyczenia = Convert.ToInt32(comboBox_okresWypozyczenia.SelectedItem);
+                        query += $" AND w.w_okresWypozyczenia = {okresWypozyczenia}";
+                    }
+
+                    if (comboBox_statusWypozyczenia.SelectedItem != null)
+                    {
+                        string statusWypozyczenia = comboBox_statusWypozyczenia.SelectedItem.ToString();
+                        query += $" AND w.w_statusWypozyczenia = '{statusWypozyczenia}'";
+                    }
+
+                    // Tworzymy obiekt MySqlCommand
+                    MySqlCommand command = new MySqlCommand(query, connection);
+
+                    // Tworzymy obiekt MySqlDataReader do odczytu wyników zapytania
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        // Dodajemy wypożyczenia do listView
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32("id_wypozyczenia");
+                            string wypożyczający = reader.GetString("Wypożyczający");
+                            string bibliotekarz = reader.IsDBNull(reader.GetOrdinal("Bibliotekarz")) ? "" : reader.GetString("Bibliotekarz");
+                            string w_adres = reader.GetString("w_adres");
+                            int w_telefon = reader.GetInt32("w_telefon");
+                            string autor = reader.GetString("autor");
+                            string tytul = reader.GetString("tytul");
+                            DateTime w_dataWypozyczenia = reader.GetDateTime("w_dataWypozyczenia");
+                            int w_okresWypozyczenia = reader.GetInt32("w_okresWypozyczenia");
+                            DateTime w_dataZwrotu = reader.GetDateTime("w_dataZwrotu");
+                            string w_statusWypozyczenia = reader.GetString("w_statusWypozyczenia");
+
+                            // Tworzymy nowy element ListViewItem z danymi wypożyczenia
+                            ListViewItem item = new ListViewItem(new string[] {
+                        id.ToString(),
+                        wypożyczający,
+                        bibliotekarz,
+                        w_adres,
+                        w_telefon.ToString(),
+                        autor,
+                        tytul,
+                        w_dataWypozyczenia.ToString(),
+                        w_okresWypozyczenia.ToString(),
+                        w_dataZwrotu.ToString(),
+                        w_statusWypozyczenia
+                    });
+
+                            listView2.Items.Add(item);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Wystąpił błąd podczas pobierania danych: " + ex.Message);
+                }
             }
         }
-
     }
 }
 

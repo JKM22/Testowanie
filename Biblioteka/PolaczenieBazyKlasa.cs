@@ -179,6 +179,8 @@ namespace Biblioteka
                 loginAttempts.Add(login, (1, DateTime.Now));
             }
 
+
+
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
                 try
@@ -197,8 +199,8 @@ namespace Biblioteka
                         if (result != null)
                         {
                             int id = Convert.ToInt32(result);
-                            UstawZalogowanegoUzytkownika(id, login, haslo);
-                            // Zresetuj liczbę prób po poprawnym zalogowaniu
+                            UstawZalogowanegoUzytkownika(id, login, haslo); // Przekazanie identyfikatora użytkownika
+                                                                            // Zresetuj liczbę prób po poprawnym zalogowaniu
                             loginAttempts[login] = (0, DateTime.Now);
 
                             // Sprawdź, czy użytkownik użył wygenerowanego hasła
@@ -209,6 +211,7 @@ namespace Biblioteka
                                 NoweHaslo noweHasloForm = new NoweHaslo();
                                 noweHasloForm.Show();
                             }
+                           
 
                             return true;
                         }
@@ -227,6 +230,7 @@ namespace Biblioteka
                 }
             }
         }
+
 
 
         private bool IsGeneratedPasswordUsed(string login, string haslo)
@@ -312,9 +316,10 @@ namespace Biblioteka
                             int id = Convert.ToInt32(result);
                             UstawZalogowanegoUzytkownika(id, login, haslo);
 
-                            // Sprawdzamy uprawnienia użytkownika
                             bool isAdmin = CzyUzytkownikMaUprawnienie(id, "Administrator");
                             bool isLoggedUser = CzyUzytkownikMaUprawnienie(id, "Użytkownik zalogowany");
+                            bool isLibrarian = CzyUzytkownikMaUprawnienie(id, "Bibliotekarz");
+                            bool isManager = CzyUzytkownikMaUprawnienie(id, "Manager");
 
                             return (true, isAdmin);
                         }
