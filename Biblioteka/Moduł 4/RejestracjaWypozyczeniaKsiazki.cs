@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Biblioteka.Moduł_4
 {
@@ -21,12 +22,79 @@ namespace Biblioteka.Moduł_4
 
             listView1.View = View.Details;
             listView1.Columns.Add("ID", 50);
-            listView1.Columns.Add("Autor", 70);
-            listView1.Columns.Add("Tytul", 70);
-            listView1.Columns.Add("Status", 70);
+            listView1.Columns.Add("Autor", 85);
+            listView1.Columns.Add("Tytul", 85);
+            listView1.Columns.Add("Status", 85);
             WybierzKsiazke();
 
+            this.textBox_imieWypozyczenie.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_imieWypozyczenie_KeyPress);
+            this.textBox_nazwiskoWypozyczenie.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_nazwiskoWypozyczenie_KeyPress);
+            this.textBox_adresZamieszkaniaWypozyczenie.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_adresZamieszkaniaWypozyczenie_KeyPress);
+            this.textBox_numerTelefonu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_numerTelefonu_KeyPress);
+            this.textBox_okresWypozyczenia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_okresWypozyczenia_KeyPress);
+
+
+            dateTimePicker_Wypozyczenie.MinDate = DateTime.Today;
         }
+
+        private void textBox_imieWypozyczenie_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest literą, przecinkiem lub kropką, lub jest to klawisz Backspace
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_nazwiskoWypozyczenie_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest literą, przecinkiem lub kropką, lub jest to klawisz Backspace
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_adresZamieszkaniaWypozyczenie_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest literą, cyfrą, spacją, przecinkiem, kropką lub klawiszem Backspace
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_numerTelefonu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest cyfrą lub klawiszem Backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+
+            // Sprawdź, czy liczba cyfr nie przekracza 9
+            if (textBox_numerTelefonu.Text.Length >= 9 && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli przekracza, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+
+
+        private void textBox_okresWypozyczenia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest cyfrą, przecinkiem lub kropką, lub jest to klawisz Backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+
 
         public void WybierzKsiazke()
         {
@@ -48,6 +116,11 @@ namespace Biblioteka.Moduł_4
                     string numerTelefonu = textBox_numerTelefonu.Text;
                     DateTime dataWypozyczenia = dateTimePicker_Wypozyczenie.Value;
                     int okresWypozyczenia = Convert.ToInt32(textBox_okresWypozyczenia.Text);
+                    if (numerTelefonu.Length != 9)
+                    {
+                        MessageBox.Show("Numer telefonu musi składać się z dokładnie 9 cyfr.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return; // Zakończ metodę, jeśli numer telefonu nie ma dokładnie 9 cyfr
+                    }
 
                     // Pobierz wybraną książkę
                     ListViewItem selectedItem = listView1.SelectedItems[0];
@@ -100,9 +173,9 @@ namespace Biblioteka.Moduł_4
         }
 
 
-    
 
-    private bool CzyWszystkiePolaWypelnione()
+
+        private bool CzyWszystkiePolaWypelnione()
         {
             // Sprawdź, czy wszystkie pola tekstowe nie są puste
             return !string.IsNullOrWhiteSpace(textBox_imieWypozyczenie.Text) &&
@@ -119,7 +192,19 @@ namespace Biblioteka.Moduł_4
             this.Hide();
         }
 
-        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            wypozyczeniaKsiazekKlasa.WybierzKsiazke(listView1);
+
+            textBox_imieWypozyczenie.Text = "";
+            textBox_nazwiskoWypozyczenie.Text = "";
+            textBox_adresZamieszkaniaWypozyczenie.Text = "";
+            textBox_numerTelefonu.Text = "";
+
+            dateTimePicker_Wypozyczenie.Text = "";
+            dateTimePicker2.Text = "";
+            textBox_okresWypozyczenia.Text = "14";
+        }
     }
 }
 

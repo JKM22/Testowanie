@@ -37,9 +37,54 @@ namespace Biblioteka.Moduł_4
             klasaListaRejestracjiKsiazek.WypelnijComboBoxWydawnictwo(comboBox_wydawnictwo);
             klasaListaRejestracjiKsiazek.WypelnijComboBoxOsobaRejestrujaca(comboBox_osoba);
 
+            this.comboBox_tytul.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_tytul_KeyPress);
+            this.comboBox_wydawnictwo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_wydawnictwo_KeyPress);
+            this.comboBox_gatunek.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_gatunek_KeyPress);
+            this.comboBox_osoba.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_osoba_KeyPress);
         }
 
-      
+
+        private void comboBox_tytul_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest literą, przecinkiem lub kropką, lub jest to klawisz Backspace
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+
+        private void comboBox_gatunek_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest literą, przecinkiem lub kropką, lub jest to klawisz Backspace
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+
+        private void comboBox_wydawnictwo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest literą, przecinkiem lub kropką, lub jest to klawisz Backspace
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+        private void comboBox_osoba_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest literą, przecinkiem lub kropką, lub jest to klawisz Backspace
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+
+
+
 
 
         private void ListaRejestracjiKsiazek_Load(object sender, EventArgs e)

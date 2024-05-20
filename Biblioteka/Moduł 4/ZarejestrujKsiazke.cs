@@ -24,11 +24,24 @@ namespace Biblioteka.Moduł_4
             WyswietlListeKsiazek();
             WypelnijComboBoxStatus();
             button_edytuj.Enabled = false;
-         
 
+            this.comboBox_status.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_status_KeyPress);
 
+          
 
+            // Wyłącz przycisk edytuj na starcie
+            button_edytuj.Enabled = false;
         }
+        private void comboBox_status_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak nie jest literą ani nie jest to klawisz Backspace
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do ComboBoxa
+                e.Handled = true;
+            }
+        }
+
 
 
         public void WyswietlListeKsiazek()
@@ -198,13 +211,48 @@ namespace Biblioteka.Moduł_4
 
             // Wyświetl listę książek
             WyswietlListeKsiazek();
+
+             this.textBox_Tytul.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Tytul_KeyPress);
+            this.textBox_Gatunek.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Gatunek_KeyPress);
+            this.textBox_Wydawnictwo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Wydawnictwo_KeyPress);
         }
 
 
 
+        private void textBox_Tytul_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest literą, przecinkiem lub kropką, lub jest to klawisz Backspace
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
 
 
-        private void button_zarejestujksiazke_Click(object sender, EventArgs e)
+
+        private void textBox_Gatunek_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest cyfrą
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+        private void textBox_Wydawnictwo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest cyfrą
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+
+   
+
+private void button_zarejestujksiazke_Click(object sender, EventArgs e)
         {
             if (listView1.SelectedItems.Count > 0)
             {

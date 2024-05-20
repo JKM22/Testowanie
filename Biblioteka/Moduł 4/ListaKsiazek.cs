@@ -52,6 +52,51 @@ namespace Biblioteka.Moduł_4
 
 
 
+
+            this.comboBox_tytul.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_tytul_KeyPress);
+            this.comboBox_wydawnictwo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_wydawnictwo_KeyPress);
+            this.comboBox_gatunek.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_gatunek_KeyPress);
+            this.comboBox_status.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_status_KeyPress);
+        }
+
+
+        private void comboBox_tytul_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest literą, przecinkiem lub kropką, lub jest to klawisz Backspace
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+
+        private void comboBox_gatunek_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest literą, przecinkiem lub kropką, lub jest to klawisz Backspace
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+
+        private void comboBox_wydawnictwo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest literą, przecinkiem lub kropką, lub jest to klawisz Backspace
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+        private void comboBox_status_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest literą, przecinkiem lub kropką, lub jest to klawisz Backspace
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
         }
         private bool HasPermission(string permission)
         {

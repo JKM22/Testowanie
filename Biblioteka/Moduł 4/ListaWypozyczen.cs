@@ -47,7 +47,56 @@ namespace Biblioteka.Moduł_4
            
             PokazWypozyczenia();
 
+            this.comboBox_Wypozyczajacy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_Wypozyczajacy_KeyPress);
+            this.comboBox_Bibliotekarz.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_Bibliotekarz_KeyPress);
+            this.comboBox_okresWypozyczenia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_okresWypozyczenia_KeyPress);
+            this.comboBox_statusWypozyczenia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_statusWypozyczenia_KeyPress);
         }
+
+        
+
+        private void comboBox_Wypozyczajacy_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest literą, przecinkiem lub kropką, lub jest to klawisz Backspace
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+
+        private void comboBox_Bibliotekarz_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest literą, przecinkiem lub kropką, lub jest to klawisz Backspace
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+
+
+        private void comboBox_okresWypozyczenia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest cyfrą
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do ComboBoxa
+                e.Handled = true;
+            }
+        }
+
+        private void comboBox_statusWypozyczenia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sprawdź, czy wprowadzony znak jest cyfrą
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
+            {
+                // Jeśli nie jest, zablokuj jego dodanie do textboxa
+                e.Handled = true;
+            }
+        }
+
+
         private bool HasPermission(string permission)
         {
             if (isAdmin) // Jeśli użytkownik jest administratorem, ma dostęp do wszystkich uprawnień
