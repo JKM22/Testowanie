@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Maj 19, 2024 at 11:38 AM
+-- Generation Time: Maj 20, 2024 at 05:19 PM
 -- Wersja serwera: 10.4.32-MariaDB
--- Wersja PHP: 8.0.30
+-- Wersja PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -91,12 +91,12 @@ CREATE TABLE `ksiazka` (
 
 INSERT INTO `ksiazka` (`id_ksiazka`, `tytul`, `autor`, `gatunek`, `opis`, `liczba_stron`, `wydawnictwo`, `rok_wydania`, `cena`, `liczba_sztuk`, `status`) VALUES
 (1, 'Szeptucha', 'Anna Kozłowska', 'Fantasy', 'Wciągająca opowieść o młodej dziewczynie posiadającej nadnaturalne moce, która staje w obronie swojej wioski przed złowrogimi siłami.', 420, 'Fabryka Słów', 2023, 50, 0, 'Niedostępna'),
-(2, 'Pole grawitacyjne', 'Jacek Dukaj', 'Science fiction', 'Niezwykła podróż po alternatywnej historii Polski, gdzie technologia zmienia oblicze społeczeństwa.', 736, 'Wydawnictwo Literackie', 2022, 60, 2, 'Dostępna'),
+(2, 'Pole grawitacyjne', 'Jacek Dukaj', 'Science fiction', 'Niezwykła podróż po alternatywnej historii Polski, gdzie technologia zmienia oblicze społeczeństwa.', 736, 'Wydawnictwo Literackie', 2022, 60, 2, 'Niedostępna'),
 (3, 'Słodki dom', 'Wojciech Chmielarz', 'Kryminał', 'Trzymający w napięciu thriller o zbrodni popełnionej w z pozoru spokojnej okolicy, której śledztwo odkrywa mroczne sekrety mieszkańców.', 360, 'Wydawnictwo Literackie', 2024, 40, 0, 'Niedostępna'),
 (4, 'Zaginiona księga', 'Dan Brown', 'Thriller', 'Robert Langdon powraca, by rozwikłać zagadkę zniknięcia starożytnej księgi, która może zmienić bieg historii.', 512, 'C&T', 2023, 45, 70, 'Dostępna'),
 (5, 'Nocna muzyka', 'Jojo Moyes', 'Literatura obyczajowa', 'Wzruszająca opowieść o miłości, marzeniach i przeznaczeniu, które prowadzi bohaterów przez życie pełne wyzwań i nieoczekiwanych zwrotów.', 480, 'Znak', 2023, 35, 120, 'Dostępna'),
 (6, 'Ostatnia przysięga', 'Karolina Ramqvist', 'Literatura kobieca', 'Historia odkrywania siły, odwagi i determinacji przez kobietę, która zostaje samotną matką po śmierci męża.', 320, 'Wydawnictwo Literackie', 2024, 30, 60, 'Dostępna'),
-(7, 'Synowie chaosu', 'Brandon Sanderson', 'Fantasy', 'Pierwszy tom nowej epickiej sagi fantasy, która przenosi czytelnika do świata pełnego magii, intryg i niebezpieczeństwa.', 800, 'Nasza Księgarnia', 2022, 65, 85, 'Niedostępna'),
+(7, 'Synowie chaosu', 'Brandon Sanderson', 'Fantasy', 'Pierwszy tom nowej epickiej sagi fantasy, która przenosi czytelnika do świata pełnego magii, intryg i niebezpieczeństwa.', 800, 'Nasza Księgarnia', 2022, 65, 85, 'Dostępna'),
 (8, 'Władca Mroków', 'Andrzej Sapkowski', 'Fantasy', 'Kontynuacja sagi o Wiedźminie, która ponownie zabiera czytelnika do świata zamieszkałego przez potwory, magię i polityczne intrygi.', 560, 'SuperNowa', 2023, 55, 10, 'Dostępna'),
 (9, 'Lament w przeciwgwieźdnej nocy', 'Liu Cixin', 'Science fiction', 'Niezwykła podróż przez kosmos, gdzie ludzkość staje w obliczu zagrożenia ze strony obcych cywilizacji i musi znaleźć sposób na przetrwanie.', 672, 'Wydawnictwo SQN', 2024, 60, 80, 'Niedostępna'),
 (10, 'Wiatr zimy', 'Hannah Richell', 'Literatura obyczajowa', 'Poruszająca historia dwóch kobiet, których losy splatają się na tle zapierającego dech pejzażu Islandii.', 400, 'Czarna Owca', 2023, 43, 110, 'Dostępna'),
@@ -124,10 +124,7 @@ CREATE TABLE `lista_rejestracji_ksiazek` (
 --
 
 INSERT INTO `lista_rejestracji_ksiazek` (`id_rejestracji`, `id_r_ksiazki`, `data_rejestracji`, `id_r_uzytkownika`, `status_rejestracji`) VALUES
-(1, 1, '2024-05-13 17:11:05', 1, 'Książka dostępna'),
-(2, 2, '2024-05-13 17:11:13', 1, 'Książka dostępna'),
-(3, 5, '2024-05-13 17:12:00', 1, 'Książka dostępna'),
-(23, 15, '2024-05-19 09:35:20', 1, 'Książka niedostępna');
+(31, 4, '2024-05-20 15:15:28', 9, 'Książka dostępna');
 
 -- --------------------------------------------------------
 
@@ -149,10 +146,10 @@ INSERT INTO `pary_uprawnienia` (`id_pary`, `id_uprawnienia`, `id_uzytkownik`) VA
 (85, 1, 1),
 (86, 3, 2),
 (87, 4, 3),
-(88, 5, 9),
-(89, 6, 10),
-(90, 7, 10),
-(91, 7, 9);
+(88, 2, 9),
+(89, 4, 10),
+(90, 10, 10),
+(91, 9, 9);
 
 -- --------------------------------------------------------
 
@@ -163,16 +160,17 @@ INSERT INTO `pary_uprawnienia` (`id_pary`, `id_uprawnienia`, `id_uzytkownik`) VA
 CREATE TABLE `pary_wypozyczenia` (
   `id_w_pary` int(11) NOT NULL,
   `id_wypozyczenia` int(11) NOT NULL,
-  `id_ksiazki` int(11) NOT NULL
+  `id_ksiazki` int(11) NOT NULL,
+  `id_bibliotekarz_uzytkownik` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pary_wypozyczenia`
 --
 
-INSERT INTO `pary_wypozyczenia` (`id_w_pary`, `id_wypozyczenia`, `id_ksiazki`) VALUES
-(16, 18, 6),
-(17, 19, 2);
+INSERT INTO `pary_wypozyczenia` (`id_w_pary`, `id_wypozyczenia`, `id_ksiazki`, `id_bibliotekarz_uzytkownik`) VALUES
+(16, 18, 6, 9),
+(17, 19, 2, 9);
 
 -- --------------------------------------------------------
 
@@ -194,10 +192,8 @@ INSERT INTO `uprawnienia` (`id_uprawnienia`, `uprawnienia`) VALUES
 (2, 'Użytkownik zalogowany'),
 (3, 'Zmień uprawnienia'),
 (4, 'Modyfikacja użytkownika'),
-(5, 'Rejestracja książek'),
-(6, 'Lista rejestracji książek'),
-(7, 'Lista książek'),
-(8, 'Rejestracja wypożyczeń');
+(9, 'Bibliotekarz'),
+(10, 'Manager');
 
 -- --------------------------------------------------------
 
@@ -260,7 +256,7 @@ CREATE TABLE `wypozyczenia` (
 
 INSERT INTO `wypozyczenia` (`id_wypozyczenia`, `w_imie`, `w_nazwisko`, `w_adres`, `w_telefon`, `w_dataWypozyczenia`, `w_okresWypozyczenia`, `w_dataZwrotu`, `w_statusWypozyczenia`) VALUES
 (18, 'Jan', 'Kolo', 'warszawa', 3, '2024-05-13 22:37:45', 14, '2024-05-27 22:37:45', 'Nowe'),
-(19, 'Janina', 'Kowalska', 'lodz ', 123456789, '2024-05-13 22:46:53', 14, '2024-05-27 22:46:53', 'Nowe');
+(19, 'Janina', 'Kowalska', 'lodz ', 123456789, '2024-05-13 22:46:53', 28, '2024-06-10 22:46:53', 'Przedłużone');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -301,7 +297,8 @@ ALTER TABLE `pary_uprawnienia`
 ALTER TABLE `pary_wypozyczenia`
   ADD PRIMARY KEY (`id_w_pary`),
   ADD KEY `fk_pw_wypozyczenia` (`id_wypozyczenia`),
-  ADD KEY `fk_pw_ksiazka` (`id_ksiazki`);
+  ADD KEY `fk_pw_ksiazka` (`id_ksiazki`),
+  ADD KEY `fk_pw_bibliotekarz` (`id_bibliotekarz_uzytkownik`);
 
 --
 -- Indeksy dla tabeli `uprawnienia`
@@ -341,7 +338,7 @@ ALTER TABLE `ksiazka`
 -- AUTO_INCREMENT for table `lista_rejestracji_ksiazek`
 --
 ALTER TABLE `lista_rejestracji_ksiazek`
-  MODIFY `id_rejestracji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_rejestracji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `pary_uprawnienia`
@@ -354,6 +351,12 @@ ALTER TABLE `pary_uprawnienia`
 --
 ALTER TABLE `pary_wypozyczenia`
   MODIFY `id_w_pary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `uprawnienia`
+--
+ALTER TABLE `uprawnienia`
+  MODIFY `id_uprawnienia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `uzytkownik`
@@ -395,6 +398,7 @@ ALTER TABLE `pary_uprawnienia`
 -- Constraints for table `pary_wypozyczenia`
 --
 ALTER TABLE `pary_wypozyczenia`
+  ADD CONSTRAINT `fk_pw_bibliotekarz` FOREIGN KEY (`id_bibliotekarz_uzytkownik`) REFERENCES `uzytkownik` (`id_uzytkownik`),
   ADD CONSTRAINT `fk_pw_ksiazka` FOREIGN KEY (`id_ksiazki`) REFERENCES `ksiazka` (`id_ksiazka`),
   ADD CONSTRAINT `fk_pw_wypozyczenia` FOREIGN KEY (`id_wypozyczenia`) REFERENCES `wypozyczenia` (`id_wypozyczenia`);
 COMMIT;
