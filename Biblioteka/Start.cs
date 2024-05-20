@@ -203,10 +203,10 @@ namespace Biblioteka
             
             // Pobierz ID zalogowanego użytkownika
             int id_uzytkownika = PolaczenieBazyKlasa.ZalogowanyUzytkownikId;
-             button_ZarzadzajBiblioteka.Enabled = HasPermission("Bibliotekarz") || HasPermission("Manager");
-           
+            if (isUserLoggedIn && (HasPermission("Bibliotekarz") || HasPermission("Manager")) && !HasPermission("Administrator"))
 
-            if (isUserLoggedIn && (HasPermission("Bibliotekarz") || HasPermission("Manager")))
+
+                if (isUserLoggedIn && (HasPermission("Bibliotekarz") || HasPermission("Manager")))
             {
                 ZarzadzajBiblioteka zarzadzajBiblioteka = new ZarzadzajBiblioteka();
                 zarzadzajBiblioteka.Show();

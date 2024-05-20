@@ -246,20 +246,46 @@ namespace Biblioteka.Moduł_4
                 try
                 {
                     connection.Open();
-                    string updateWypozyczeniaQuery = "UPDATE wypozyczenia SET w_dataZwrotu = CURRENT_TIMESTAMP(), w_statusWypozyczenia = 'Zakończone' WHERE id_wypozyczenia = @IdWypozyczenia";
-                    MySqlCommand updateWypozyczeniaCommand = new MySqlCommand(updateWypozyczeniaQuery, connection);
-                    updateWypozyczeniaCommand.Parameters.AddWithValue("@IdWypozyczenia", idWypozyczenia);
-                    updateWypozyczeniaCommand.ExecuteNonQuery();
 
-                    // Aktualizacja liczby sztuk w tabeli ksiazka
-                    string updateLiczbaSztukQuery = "UPDATE ksiazka SET liczba_sztuk = liczba_sztuk + 1 WHERE id_ksiazka = (SELECT id_ksiazka FROM wypozyczenia WHERE id_wypozyczenia = @IdWypozyczenia)";
-                    MySqlCommand updateLiczbaSztukCommand = new MySqlCommand(updateLiczbaSztukQuery, connection);
-                    updateLiczbaSztukCommand.Parameters.AddWithValue("@IdWypozyczenia", idWypozyczenia);
-                    updateLiczbaSztukCommand.ExecuteNonQuery();
+                    // Zwróć wypożyczenie
+                    string updateWypozyczenieQuery = "UPDATE wypozyczenia SET w_statusWypozyczenia = 'Zakończone' WHERE id_wypozyczenia = @IdWypozyczenia";
+                    MySqlCommand updateWypozyczenieCommand = new MySqlCommand(updateWypozyczenieQuery, connection);
+                    updateWypozyczenieCommand.Parameters.AddWithValue("@IdWypozyczenia", idWypozyczenia);
+                    updateWypozyczenieCommand.ExecuteNonQuery();
+
+                    // Pobierz ID książki z zwracanego wypożyczenia
+                    int ksiazkaId;
+                    string getBookIdQuery = "SELECT id_ksiazki FROM pary_wypozyczenia WHERE id_wypozyczenia = @IdWypozyczenia";
+                    MySqlCommand getBookIdCommand = new MySqlCommand(getBookIdQuery, connection);
+                    getBookIdCommand.Parameters.AddWithValue("@IdWypozyczenia", idWypozyczenia);
+                    ksiazkaId = Convert.ToInt32(getBookIdCommand.ExecuteScalar());
+
+                    // Zwiększ liczbę sztuk książki o 1
+                    string increaseBookQuantityQuery = "UPDATE ksiazka SET liczba_sztuk = liczba_sztuk + 1 WHERE id_ksiazka = @BookId";
+                    MySqlCommand increaseBookQuantityCommand = new MySqlCommand(increaseBookQuantityQuery, connection);
+                    increaseBookQuantityCommand.Parameters.AddWithValue("@BookId", ksiazkaId);
+                    increaseBookQuantityCommand.ExecuteNonQuery();
+
+                    // Sprawdź, czy liczba sztuk książki wynosi teraz 1
+                    string checkBookQuantityQuery = "SELECT liczba_sztuk FROM ksiazka WHERE id_ksiazka = @BookId";
+                    MySqlCommand checkBookQuantityCommand = new MySqlCommand(checkBookQuantityQuery, connection);
+                    checkBookQuantityCommand.Parameters.AddWithValue("@BookId", ksiazkaId);
+                    int liczbaSztuk = Convert.ToInt32(checkBookQuantityCommand.ExecuteScalar());
+
+                    // Jeśli liczba sztuk wynosi 1, zmień status książki na "Dostępna"
+                    if (liczbaSztuk == 1)
+                    {
+                        string updateBookStatusQuery = "UPDATE ksiazka SET status = 'Dostępna' WHERE id_ksiazka = @BookId";
+                        MySqlCommand updateBookStatusCommand = new MySqlCommand(updateBookStatusQuery, connection);
+                        updateBookStatusCommand.Parameters.AddWithValue("@BookId", ksiazkaId);
+                        updateBookStatusCommand.ExecuteNonQuery();
+                    }
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Błąd podczas zwracania wypożyczenia: " + ex.Message);
+                    // Obsługa błędu
+                    Console.WriteLine("Błąd podczas zwracania wypożyczenia: " + ex.Message);
+                    throw;
                 }
             }
         }
