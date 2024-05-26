@@ -27,7 +27,7 @@ namespace Biblioteka.Moduł_4
 
                     string query = @"SELECT 
                                     lrk.data_rejestracji, 
-                                    lrk.status_rejestracji, 
+                                    lrk.liczba_dodanych_sztuk, 
                                     k.autor, 
                                     k.gatunek, 
                                     k.wydawnictwo,
@@ -54,7 +54,7 @@ namespace Biblioteka.Moduł_4
                             string imie = reader.GetString("u_imie");
                             string nazwisko = reader.GetString("u_nazwisko");
                             string osobaRejestrujaca = $"{imie} {nazwisko}"; // Połączenie imienia i nazwiska w jedną kolumnę
-                            int statusRejestracji = reader.GetInt32(reader.GetOrdinal("status_rejestracji"));
+                            int statusRejestracji = reader.GetInt32(reader.GetOrdinal("liczba_dodanych_sztuk"));
 
                             ListViewItem item = new ListViewItem(new string[] { autor, gatunek, tytul, wydawnictwo, dataRejestracji.ToString(), osobaRejestrujaca, statusRejestracji.ToString() });
                             listView.Items.Add(item);
@@ -78,13 +78,13 @@ namespace Biblioteka.Moduł_4
                 using (MySqlConnection connection = new MySqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = @"INSERT INTO lista_rejestracji_ksiazek (id_r_ksiazki, data_rejestracji, id_r_uzytkownika, status_rejestracji) 
-                                     VALUES (@id_r_ksiazki, @data_rejestracji, @id_r_uzytkownika, @status_rejestracji)";
+                    string query = @"INSERT INTO lista_rejestracji_ksiazek (id_r_ksiazki, data_rejestracji, id_r_uzytkownika, liczba_dodanych_sztuk) 
+                                     VALUES (@id_r_ksiazki, @data_rejestracji, @id_r_uzytkownika, @liczba_dodanych_sztuk)";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     command.Parameters.AddWithValue("@id_r_ksiazki", selectedBookId);
                     command.Parameters.AddWithValue("@data_rejestracji", DateTime.Now);
                     command.Parameters.AddWithValue("@id_r_uzytkownika", id_uzytkownika);
-                    command.Parameters.AddWithValue("@status_rejestracji", liczbaDodawanychSztuk);
+                    command.Parameters.AddWithValue("@liczba_dodanych_sztuk", liczbaDodawanychSztuk);
                     command.ExecuteNonQuery();
                 }
 
@@ -577,7 +577,7 @@ namespace Biblioteka.Moduł_4
                     connection.Open();
 
                     StringBuilder queryBuilder = new StringBuilder();
-                    queryBuilder.Append("SELECT lrk.data_rejestracji, lrk.status_rejestracji, ");
+                    queryBuilder.Append("SELECT lrk.data_rejestracji, lrk.liczba_dodanych_sztuk, ");
                     queryBuilder.Append("k.autor, k.gatunek, k.tytul, k.wydawnictwo, ");
                     queryBuilder.Append("u.u_imie, u.u_nazwisko ");
                     queryBuilder.Append("FROM lista_rejestracji_ksiazek lrk ");
@@ -627,7 +627,7 @@ namespace Biblioteka.Moduł_4
                             string imie = reader.GetString("u_imie");
                             string nazwisko = reader.GetString("u_nazwisko");
                             string osobaRejestrujaca = $"{imie} {nazwisko}"; // Połączenie imienia i nazwiska w jedną kolumnę
-                            string statusRejestracji = reader.GetString("status_rejestracji");
+                            string statusRejestracji = reader.GetString("liczba_dodanych_sztuk");
 
                             ListViewItem item = new ListViewItem(new string[] { autor, gatunek, tytul, wydawnictwo, dataRejestracji.ToString(), osobaRejestrujaca, statusRejestracji });
 
