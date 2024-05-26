@@ -364,9 +364,6 @@ namespace Biblioteka.Moduł_4
                     // Pobierz ID użytkownika z klasy PolaczenieBazyKlasa
                     int id_uzytkownika = PolaczenieBazyKlasa.ZalogowanyUzytkownikId;
 
-                    KlasaListaRejestracjiKsiazek rejestracjaKsiazek = new KlasaListaRejestracjiKsiazek();
-                    rejestracjaKsiazek.WyrejestrujKsiazke(selectedBookId, id_uzytkownika);
-
                     wyswietlKsiazki.AktualizujStatusKsiazki(selectedBookId, "Niedostępna");
 
                     MessageBox.Show("Status książki został pomyślnie zmieniony na 'Niedostępna'.", "Sukces",
