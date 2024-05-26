@@ -656,12 +656,12 @@ namespace Biblioteka.Moduł_4
                             // Tworzymy nowy element ListViewItem z danymi książki
                             ListViewItem item = new ListViewItem(new string[]
                             {
-                        reader.GetInt32("id_ksiazka").ToString(),
-                        reader.GetString("tytul"),
-                        reader.GetString("autor"),
-                        reader.GetString("gatunek"),
-                        reader.GetString("wydawnictwo"),
-                        reader.GetString("status")
+                                reader.GetInt32("id_ksiazka").ToString(),
+                                reader.GetString("tytul"),
+                                reader.GetString("autor"),
+                                reader.GetString("gatunek"),
+                                reader.GetString("wydawnictwo"),
+                                reader.GetString("status")
                             });
 
 

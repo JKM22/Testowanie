@@ -627,20 +627,9 @@ namespace Biblioteka.Moduł_4
                             string imie = reader.GetString("u_imie");
                             string nazwisko = reader.GetString("u_nazwisko");
                             string osobaRejestrujaca = $"{imie} {nazwisko}"; // Połączenie imienia i nazwiska w jedną kolumnę
-                            string statusRejestracji = reader.GetString("liczba_dodanych_sztuk");
+                            int statusRejestracji = reader.GetInt32(reader.GetOrdinal("liczba_dodanych_sztuk"));
 
-                            ListViewItem item = new ListViewItem(new string[] { autor, gatunek, tytul, wydawnictwo, dataRejestracji.ToString(), osobaRejestrujaca, statusRejestracji });
-
-                            // Ustawiamy kolor tła wiersza w zależności od statusu książki
-                            if (statusRejestracji == "Książka dostępna")
-                            {
-                                item.BackColor = Color.LightGreen; // Ustaw kolor zielony dla dostępnej książki
-                            }
-                            else if (statusRejestracji == "Książka niedostępna")
-                            {
-                                item.BackColor = Color.LightCoral; // Ustaw kolor czerwony dla niedostępnej książki
-                            }
-
+                            ListViewItem item = new ListViewItem(new string[] { autor, gatunek, tytul, wydawnictwo, dataRejestracji.ToString(), osobaRejestrujaca, statusRejestracji.ToString() });
                             listView.Items.Add(item);
                         }
                     }
