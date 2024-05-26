@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
-
+using ComponentFactory.Krypton.Toolkit;
 namespace Biblioteka.Moduł_4
 {
-    public partial class ListaRejestracjiKsiazek : Form
+    public partial class ListaRejestracjiKsiazek : KryptonForm
     {
         
         private KlasaListaRejestracjiKsiazek klasaListaRejestracjiKsiazek = new KlasaListaRejestracjiKsiazek();

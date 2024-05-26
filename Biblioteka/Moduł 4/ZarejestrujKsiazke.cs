@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
+using ComponentFactory.Krypton.Toolkit;
 
 namespace Biblioteka.Moduł_4
 {
-    public partial class ZarejestrujKsiazke : Form
+    public partial class ZarejestrujKsiazke : KryptonForm
     {
         private const string ConnectionString = "Server=localhost;Database=biblioteka;Uid=root;Pwd=;";
         private int selectedBookId; // Deklaracja zmiennej selectedBookId

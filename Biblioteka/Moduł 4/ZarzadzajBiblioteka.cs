@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using ComponentFactory.Krypton.Toolkit;
 namespace Biblioteka.Moduł_4
 {
-    public partial class ZarzadzajBiblioteka : Form
+    public partial class ZarzadzajBiblioteka : KryptonForm
     {
         private bool isUserLoggedIn = false;
         private bool isAdmin = false;

@@ -37,7 +37,7 @@
             this.uprawnienia = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.zamknij = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.wyloguj = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.button_ZarzadzajBiblioteka = new System.Windows.Forms.Button();
+            this.button_ZarzadzajBiblioteka = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.SuspendLayout();
             // 
             // label1
@@ -150,14 +150,14 @@
             // 
             // button_ZarzadzajBiblioteka
             // 
-            this.button_ZarzadzajBiblioteka.Location = new System.Drawing.Point(41, 157);
-            this.button_ZarzadzajBiblioteka.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_ZarzadzajBiblioteka.Location = new System.Drawing.Point(663, 300);
             this.button_ZarzadzajBiblioteka.Name = "button_ZarzadzajBiblioteka";
-            this.button_ZarzadzajBiblioteka.Size = new System.Drawing.Size(159, 46);
-            this.button_ZarzadzajBiblioteka.TabIndex = 11;
-            this.button_ZarzadzajBiblioteka.Text = "Zarządzaj biblioteką";
-            this.button_ZarzadzajBiblioteka.UseVisualStyleBackColor = true;
-            this.button_ZarzadzajBiblioteka.Click += new System.EventHandler(this.button_ZarzadzajBiblioteka_Click);
+            this.button_ZarzadzajBiblioteka.Palette = this.kryptonPalette1;
+            this.button_ZarzadzajBiblioteka.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.button_ZarzadzajBiblioteka.Size = new System.Drawing.Size(159, 48);
+            this.button_ZarzadzajBiblioteka.TabIndex = 12;
+            this.button_ZarzadzajBiblioteka.Values.Text = "ZARZĄDZAJ BIBLIOTEKĄ";
+            this.button_ZarzadzajBiblioteka.Click += new System.EventHandler(this.button_ZarzadzajBiblioteka_Click_1);
             // 
             // Start
             // 
@@ -193,7 +193,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton uprawnienia;
         private ComponentFactory.Krypton.Toolkit.KryptonButton zamknij;
         private ComponentFactory.Krypton.Toolkit.KryptonButton wyloguj;
-        private System.Windows.Forms.Button button_ZarzadzajBiblioteka;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton button_ZarzadzajBiblioteka;
     }
 }
 

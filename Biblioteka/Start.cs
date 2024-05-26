@@ -200,27 +200,31 @@ namespace Biblioteka
 
         private void button_ZarzadzajBiblioteka_Click(object sender, EventArgs e)
         {
-            
+           
+        }
+
+        private void button_ZarzadzajBiblioteka_Click_1(object sender, EventArgs e)
+        {
+
             // Pobierz ID zalogowanego użytkownika
             int id_uzytkownika = PolaczenieBazyKlasa.ZalogowanyUzytkownikId;
             if (isUserLoggedIn && (HasPermission("Bibliotekarz") || HasPermission("Manager")) && !HasPermission("Administrator"))
 
 
                 if (isUserLoggedIn && (HasPermission("Bibliotekarz") || HasPermission("Manager")))
-            {
-                ZarzadzajBiblioteka zarzadzajBiblioteka = new ZarzadzajBiblioteka();
-                zarzadzajBiblioteka.Show();
-                this.Hide();
-          
-            }
-           
-            else
-            {
-                MessageBox.Show("Nie masz odpowiednich uprawnień do zarządzania biblioteką.", "Brak uprawnień",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+                {
+                    ZarzadzajBiblioteka zarzadzajBiblioteka = new ZarzadzajBiblioteka();
+                    zarzadzajBiblioteka.Show();
+                    this.Hide();
 
+                }
+
+                else
+                {
+                    MessageBox.Show("Nie masz odpowiednich uprawnień do zarządzania biblioteką.", "Brak uprawnień",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+        }
     }
 }
 

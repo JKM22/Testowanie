@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
+using ComponentFactory.Krypton.Toolkit;
 namespace Biblioteka.Moduł_4
 {
-    public partial class ListaKsiazek : Form
+    public partial class ListaKsiazek : KryptonForm
     {
         private WyswietlKsiazki wyswietlKsiazki = new WyswietlKsiazki();
 

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ZarejestrujKsiazke));
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_Autor = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,6 +62,7 @@
             this.button_odswiezstatus = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.button_edytuj = new System.Windows.Forms.Button();
+            this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_LiczbaStron)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Cena)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_LiczbaSztuk)).BeginInit();
@@ -79,7 +82,7 @@
             // textBox_Autor
             // 
             this.textBox_Autor.Location = new System.Drawing.Point(880, 63);
-            this.textBox_Autor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Autor.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Autor.Name = "textBox_Autor";
             this.textBox_Autor.Size = new System.Drawing.Size(68, 20);
             this.textBox_Autor.TabIndex = 2;
@@ -168,7 +171,7 @@
             // textBox_Tytul
             // 
             this.textBox_Tytul.Location = new System.Drawing.Point(880, 89);
-            this.textBox_Tytul.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Tytul.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Tytul.Name = "textBox_Tytul";
             this.textBox_Tytul.Size = new System.Drawing.Size(68, 20);
             this.textBox_Tytul.TabIndex = 11;
@@ -176,7 +179,7 @@
             // textBox_Gatunek
             // 
             this.textBox_Gatunek.Location = new System.Drawing.Point(880, 122);
-            this.textBox_Gatunek.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Gatunek.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Gatunek.Name = "textBox_Gatunek";
             this.textBox_Gatunek.Size = new System.Drawing.Size(68, 20);
             this.textBox_Gatunek.TabIndex = 12;
@@ -184,7 +187,7 @@
             // numericUpDown_LiczbaStron
             // 
             this.numericUpDown_LiczbaStron.Location = new System.Drawing.Point(880, 185);
-            this.numericUpDown_LiczbaStron.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDown_LiczbaStron.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown_LiczbaStron.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -197,7 +200,7 @@
             // textBox_Wydawnictwo
             // 
             this.textBox_Wydawnictwo.Location = new System.Drawing.Point(880, 154);
-            this.textBox_Wydawnictwo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Wydawnictwo.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Wydawnictwo.Name = "textBox_Wydawnictwo";
             this.textBox_Wydawnictwo.Size = new System.Drawing.Size(68, 20);
             this.textBox_Wydawnictwo.TabIndex = 14;
@@ -205,7 +208,7 @@
             // textBox_Opis
             // 
             this.textBox_Opis.Location = new System.Drawing.Point(730, 314);
-            this.textBox_Opis.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Opis.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Opis.Multiline = true;
             this.textBox_Opis.Name = "textBox_Opis";
             this.textBox_Opis.Size = new System.Drawing.Size(218, 80);
@@ -215,7 +218,7 @@
             // 
             this.numericUpDown_Cena.DecimalPlaces = 2;
             this.numericUpDown_Cena.Location = new System.Drawing.Point(880, 247);
-            this.numericUpDown_Cena.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDown_Cena.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown_Cena.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -238,7 +241,7 @@
             // numericUpDown_LiczbaSztuk
             // 
             this.numericUpDown_LiczbaSztuk.Location = new System.Drawing.Point(880, 275);
-            this.numericUpDown_LiczbaSztuk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDown_LiczbaSztuk.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown_LiczbaSztuk.Maximum = new decimal(new int[] {
             200,
             0,
@@ -251,7 +254,7 @@
             // numericUpDown_RokWydania
             // 
             this.numericUpDown_RokWydania.Location = new System.Drawing.Point(880, 215);
-            this.numericUpDown_RokWydania.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDown_RokWydania.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown_RokWydania.Maximum = new decimal(new int[] {
             2024,
             0,
@@ -275,7 +278,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(730, 397);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(218, 28);
             this.button1.TabIndex = 20;
@@ -286,7 +289,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(880, 466);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(73, 25);
             this.button2.TabIndex = 21;
@@ -298,7 +301,7 @@
             // 
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(14, 114);
-            this.listView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listView1.Margin = new System.Windows.Forms.Padding(2);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(656, 363);
             this.listView1.TabIndex = 22;
@@ -309,7 +312,7 @@
             // button_zarejestujksiazke
             // 
             this.button_zarejestujksiazke.Location = new System.Drawing.Point(202, 67);
-            this.button_zarejestujksiazke.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_zarejestujksiazke.Margin = new System.Windows.Forms.Padding(2);
             this.button_zarejestujksiazke.Name = "button_zarejestujksiazke";
             this.button_zarejestujksiazke.Size = new System.Drawing.Size(103, 19);
             this.button_zarejestujksiazke.TabIndex = 23;
@@ -352,7 +355,7 @@
             // 
             this.comboBox_status.FormattingEnabled = true;
             this.comboBox_status.Location = new System.Drawing.Point(500, 88);
-            this.comboBox_status.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox_status.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_status.Name = "comboBox_status";
             this.comboBox_status.Size = new System.Drawing.Size(92, 21);
             this.comboBox_status.TabIndex = 27;
@@ -360,7 +363,7 @@
             // button_wyszukajstatus
             // 
             this.button_wyszukajstatus.Location = new System.Drawing.Point(595, 67);
-            this.button_wyszukajstatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_wyszukajstatus.Margin = new System.Windows.Forms.Padding(2);
             this.button_wyszukajstatus.Name = "button_wyszukajstatus";
             this.button_wyszukajstatus.Size = new System.Drawing.Size(74, 19);
             this.button_wyszukajstatus.TabIndex = 28;
@@ -371,7 +374,7 @@
             // button_cofnijrejestracje
             // 
             this.button_cofnijrejestracje.Location = new System.Drawing.Point(202, 93);
-            this.button_cofnijrejestracje.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_cofnijrejestracje.Margin = new System.Windows.Forms.Padding(2);
             this.button_cofnijrejestracje.Name = "button_cofnijrejestracje";
             this.button_cofnijrejestracje.Size = new System.Drawing.Size(103, 19);
             this.button_cofnijrejestracje.TabIndex = 29;
@@ -382,7 +385,7 @@
             // button_odswiezstatus
             // 
             this.button_odswiezstatus.Location = new System.Drawing.Point(595, 89);
-            this.button_odswiezstatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_odswiezstatus.Margin = new System.Windows.Forms.Padding(2);
             this.button_odswiezstatus.Name = "button_odswiezstatus";
             this.button_odswiezstatus.Size = new System.Drawing.Size(74, 19);
             this.button_odswiezstatus.TabIndex = 30;
@@ -404,7 +407,7 @@
             // button_edytuj
             // 
             this.button_edytuj.Location = new System.Drawing.Point(730, 430);
-            this.button_edytuj.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_edytuj.Margin = new System.Windows.Forms.Padding(2);
             this.button_edytuj.Name = "button_edytuj";
             this.button_edytuj.Size = new System.Drawing.Size(218, 32);
             this.button_edytuj.TabIndex = 32;
@@ -412,10 +415,53 @@
             this.button_edytuj.UseVisualStyleBackColor = true;
             this.button_edytuj.Click += new System.EventHandler(this.button_edytuj_Click);
             // 
+            // kryptonPalette1
+            // 
+            this.kryptonPalette1.ButtonSpecs.FormClose.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormClose.Image")));
+            this.kryptonPalette1.ButtonSpecs.FormMax.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormMax.Image")));
+            this.kryptonPalette1.ButtonSpecs.FormMin.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormMin.Image")));
+            this.kryptonPalette1.ButtonSpecs.FormRestore.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormRestore.Image")));
+            this.kryptonPalette1.ButtonStyles.ButtonCommand.StateCommon.Back.Color1 = System.Drawing.Color.Gray;
+            this.kryptonPalette1.ButtonStyles.ButtonCommand.StateCommon.Back.Color2 = System.Drawing.Color.Silver;
+            this.kryptonPalette1.ButtonStyles.ButtonCommon.StateCommon.Back.Color1 = System.Drawing.Color.Silver;
+            this.kryptonPalette1.ButtonStyles.ButtonCommon.StateCommon.Back.Color2 = System.Drawing.Color.Silver;
+            this.kryptonPalette1.ButtonStyles.ButtonCommon.StateCommon.Back.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.None;
+            this.kryptonPalette1.ButtonStyles.ButtonCommon.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.Black;
+            this.kryptonPalette1.ButtonStyles.ButtonCommon.StateCommon.Content.ShortText.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Border.Width = 0;
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Border.Width = 0;
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Border.Width = 0;
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.Rounding = 12;
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.ButtonEdgeInset = 10;
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
+            // 
             // ZarejestrujKsiazke
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(962, 500);
             this.Controls.Add(this.button_edytuj);
             this.Controls.Add(this.label14);
@@ -449,8 +495,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox_Autor);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ZarejestrujKsiazke";
+            this.Palette = this.kryptonPalette1;
+            this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
             this.Text = "ZarejestrujKsiazke";
             this.Load += new System.EventHandler(this.ZarejestrujKsiazke_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_LiczbaStron)).EndInit();
@@ -496,5 +544,6 @@
         private System.Windows.Forms.Button button_odswiezstatus;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button_edytuj;
+        private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
     }
 }
