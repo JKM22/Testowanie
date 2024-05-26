@@ -281,7 +281,7 @@ namespace Biblioteka.Moduł_4
                     int id_uzytkownika = PolaczenieBazyKlasa.ZalogowanyUzytkownikId;
 
                     KlasaListaRejestracjiKsiazek rejestracjaKsiazek = new KlasaListaRejestracjiKsiazek();
-                    rejestracjaKsiazek.ZarejestrujKsiazke(selectedBookId, id_uzytkownika, liczbaDodawanychSztuk);
+                    rejestracjaKsiazek.ZarejestrujKsiazke(selectedBookId, id_uzytkownika);
 
                     WyswietlKsiazki wyswietlKsiazki = new WyswietlKsiazki();
                     wyswietlKsiazki.AktualizujStatusKsiazki(selectedBookId, "Dostępna");
