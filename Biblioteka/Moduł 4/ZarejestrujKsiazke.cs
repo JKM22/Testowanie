@@ -211,14 +211,15 @@ namespace Biblioteka.Moduł_4
 
             // Wyświetl listę książek
             WyswietlListeKsiazek();
-
-             this.textBox_Tytul.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Tytul_KeyPress);
+            /*
+            this.textBox_Tytul.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Tytul_KeyPress);
             this.textBox_Gatunek.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Gatunek_KeyPress);
             this.textBox_Wydawnictwo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Wydawnictwo_KeyPress);
+            */
         }
 
 
-
+        /*
         private void textBox_Tytul_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Sprawdź, czy wprowadzony znak jest literą, przecinkiem lub kropką, lub jest to klawisz Backspace
@@ -249,7 +250,7 @@ namespace Biblioteka.Moduł_4
                 e.Handled = true;
             }
         }
-
+        */
    
 
         private void button_zarejestujksiazke_Click(object sender, EventArgs e)
@@ -257,7 +258,7 @@ namespace Biblioteka.Moduł_4
             if (listView1.SelectedItems.Count > 0)
             {
                 int selectedBookId = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
-
+                int liczbaDodawanychSztuk = (int)numericUpDown_LiczbaSztuk.Value;
                 try
                 {
                     string status = listView1.SelectedItems[0].SubItems[10].Text;
@@ -280,7 +281,7 @@ namespace Biblioteka.Moduł_4
                     int id_uzytkownika = PolaczenieBazyKlasa.ZalogowanyUzytkownikId;
 
                     KlasaListaRejestracjiKsiazek rejestracjaKsiazek = new KlasaListaRejestracjiKsiazek();
-                    rejestracjaKsiazek.ZarejestrujKsiazke(selectedBookId, id_uzytkownika);
+                    rejestracjaKsiazek.ZarejestrujKsiazke(selectedBookId, id_uzytkownika, liczbaDodawanychSztuk);
 
                     WyswietlKsiazki wyswietlKsiazki = new WyswietlKsiazki();
                     wyswietlKsiazki.AktualizujStatusKsiazki(selectedBookId, "Dostępna");
