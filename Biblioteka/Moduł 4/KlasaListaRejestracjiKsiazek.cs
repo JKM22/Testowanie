@@ -99,35 +99,6 @@ namespace Biblioteka.Moduł_4
         }
 
 
-        public void WyrejestrujKsiazke(int selectedBookId, int id_uzytkownika)
-        {
-            try
-            {
-                // Utwórz nowy wpis w tabeli lista_rejestracji_ksiazek
-                using (MySqlConnection connection = new MySqlConnection(ConnectionString))
-                {
-                    connection.Open();
-                    string query = @"INSERT INTO lista_rejestracji_ksiazek (id_r_ksiazki, data_rejestracji, id_r_uzytkownika, status_rejestracji) 
-                                     VALUES (@id_r_ksiazki, @data_rejestracji, @id_r_uzytkownika, @status_rejestracji)";
-                    MySqlCommand command = new MySqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@id_r_ksiazki", selectedBookId);
-                    command.Parameters.AddWithValue("@data_rejestracji", DateTime.Now);
-                    command.Parameters.AddWithValue("@id_r_uzytkownika", id_uzytkownika);
-                    command.Parameters.AddWithValue("@status_rejestracji", "Książka niedostępna");
-                    command.ExecuteNonQuery();
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                // Wyświetl komunikat o błędzie
-                MessageBox.Show($"Wystąpił błąd podczas cofniecia rejestracji książki: {ex.Message}", "Błąd",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
         public void WypelnijComboBoxAutor(System.Windows.Forms.ComboBox comboBoxAutor)
         {
             comboBoxAutor.Items.Clear(); // Wyczyść elementy w comboboxie autorów

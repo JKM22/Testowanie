@@ -27,7 +27,7 @@ namespace Biblioteka.Moduł_4
             listView1.Columns.Add("Wydawnictwo", 150);
             listView1.Columns.Add("Data rejestracji", 120);
             listView1.Columns.Add("Osoba rejestrująca", 100);
-            listView1.Columns.Add("Status rejestracji", 150);
+            listView1.Columns.Add("Liczba dodanych sztuk", 150);
 
 
             WyswietlListeRejestracji();
