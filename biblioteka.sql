@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Maj 20, 2024 at 05:19 PM
--- Wersja serwera: 10.4.32-MariaDB
--- Wersja PHP: 8.2.12
+-- Generation Time: May 26, 2024 at 11:14 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `hasla`
+-- Table structure for table `hasla`
 --
 
 CREATE TABLE `hasla` (
@@ -68,7 +68,7 @@ INSERT INTO `hasla` (`id_hasla`, `id_uzytkownik`, `haslo`, `czy_generowane`) VAL
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `ksiazka`
+-- Table structure for table `ksiazka`
 --
 
 CREATE TABLE `ksiazka` (
@@ -90,7 +90,7 @@ CREATE TABLE `ksiazka` (
 --
 
 INSERT INTO `ksiazka` (`id_ksiazka`, `tytul`, `autor`, `gatunek`, `opis`, `liczba_stron`, `wydawnictwo`, `rok_wydania`, `cena`, `liczba_sztuk`, `status`) VALUES
-(1, 'Szeptucha', 'Anna Kozłowska', 'Fantasy', 'Wciągająca opowieść o młodej dziewczynie posiadającej nadnaturalne moce, która staje w obronie swojej wioski przed złowrogimi siłami.', 420, 'Fabryka Słów', 2023, 50, 0, 'Niedostępna'),
+(1, 'Szeptucha', 'Anna Kozłowska', 'Fantasy', 'Wciągająca opowieść o młodej dziewczynie posiadającej nadnaturalne moce, która staje w obronie swojej wioski przed złowrogimi siłami.', 420, 'Fabryka Słów', 2023, 55, 1, 'Niedostępna'),
 (2, 'Pole grawitacyjne', 'Jacek Dukaj', 'Science fiction', 'Niezwykła podróż po alternatywnej historii Polski, gdzie technologia zmienia oblicze społeczeństwa.', 736, 'Wydawnictwo Literackie', 2022, 60, 2, 'Niedostępna'),
 (3, 'Słodki dom', 'Wojciech Chmielarz', 'Kryminał', 'Trzymający w napięciu thriller o zbrodni popełnionej w z pozoru spokojnej okolicy, której śledztwo odkrywa mroczne sekrety mieszkańców.', 360, 'Wydawnictwo Literackie', 2024, 40, 0, 'Niedostępna'),
 (4, 'Zaginiona księga', 'Dan Brown', 'Thriller', 'Robert Langdon powraca, by rozwikłać zagadkę zniknięcia starożytnej księgi, która może zmienić bieg historii.', 512, 'C&T', 2023, 45, 70, 'Dostępna'),
@@ -103,12 +103,19 @@ INSERT INTO `ksiazka` (`id_ksiazka`, `tytul`, `autor`, `gatunek`, `opis`, `liczb
 (12, 'i nie', 'christie', 'kryminal', 'f', 4, 'greg', 1900, 2, 0, 'Niedostępna'),
 (13, 'Zaginiona księga', 'Dan Brown', 'Thriller', 'Robert Langdon powraca, by rozwikłać zagadkę zniknięcia starożytnej księgi, która może zmienić bieg historii.', 512, 'C&T', 2023, 45, 70, 'Dostępna'),
 (14, 'Tego lata stałam się piękna', 'Jenny Han', 'dramat', 'dfssdfsd', 315, 'sowa', 2018, 35, 1, 'Niedostępna'),
-(15, 'Bez ciebie nie ma lata', 'Jenny Han', 'dramat', 'dsfd', 315, 'sowa', 2019, 35, 1, 'Niedostępna');
+(15, 'Bez ciebie nie ma lata', 'Jenny Han', 'dramat', 'dsfd', 315, 'sowa', 2019, 35, 1, 'Niedostępna'),
+(16, 'Ferdydurke', 'Witold Gombrowicz', 'Powieść', 'Książka', 100, 'IPN', 1937, 30, 25, 'Dostępna'),
+(17, 'Harry Potter i Kamień Filozoficzny', 'J. K. Rowling', 'Fantasy', 'Pierwsza część serii o młodym czarodzieju Harrym Potterze.', 309, 'MediaRodzina', 1997, 40, 10, 'Dostępna'),
+(18, 'Jak zostałem Bogiem', 'Karol Kraska', 'Dramat', 'Wielka księgo o wielkim człowieku', 750, 'Nowa Era', 2002, 40, 35, 'Dostępna'),
+(23, 'sfdgsdfg', 'Suzą', 'sdfgfsdg', 'asgassfga', 45, 'sdfgsdfg', 1904, 30, 241, 'Dostępna'),
+(24, 'Mega śmierć', 'Kurza Stopa', 'Poezja', 'wielka ksiega', 30, 'Dawid Inc.', 1938, 40, 200, 'Niedostępna'),
+(25, 'Liga Legend: Powieść o niczym', 'Dawidman426', 'Komedia', 'Super księga o nie-super grze', 300, 'Zuzia Tum.', 1978, 55, 33, 'Niedostępna'),
+(26, 'asdasd', 'asdasd', 'asd', 'sdadsd', 2, 'dsda', 1902, 44, 22, 'Niedostępna');
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `lista_rejestracji_ksiazek`
+-- Table structure for table `lista_rejestracji_ksiazek`
 --
 
 CREATE TABLE `lista_rejestracji_ksiazek` (
@@ -116,20 +123,38 @@ CREATE TABLE `lista_rejestracji_ksiazek` (
   `id_r_ksiazki` int(11) DEFAULT NULL,
   `data_rejestracji` timestamp NOT NULL DEFAULT current_timestamp(),
   `id_r_uzytkownika` int(11) DEFAULT NULL,
-  `status_rejestracji` varchar(50) NOT NULL
+  `liczba_dodanych_sztuk` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `lista_rejestracji_ksiazek`
 --
 
-INSERT INTO `lista_rejestracji_ksiazek` (`id_rejestracji`, `id_r_ksiazki`, `data_rejestracji`, `id_r_uzytkownika`, `status_rejestracji`) VALUES
-(31, 4, '2024-05-20 15:15:28', 9, 'Książka dostępna');
+INSERT INTO `lista_rejestracji_ksiazek` (`id_rejestracji`, `id_r_ksiazki`, `data_rejestracji`, `id_r_uzytkownika`, `liczba_dodanych_sztuk`) VALUES
+(31, 4, '2024-05-20 15:15:28', 9, 0),
+(32, 16, '2024-05-21 14:04:00', 9, 0),
+(33, 13, '2024-05-21 14:07:42', 9, 0),
+(34, 17, '2024-05-21 15:32:14', 9, 0),
+(43, 23, '2024-05-26 20:03:57', 9, 20),
+(44, 23, '2024-05-26 20:04:15', 9, 30),
+(45, 23, '2024-05-26 20:04:55', 9, 0),
+(46, 23, '2024-05-26 20:15:53', 9, 60),
+(47, 23, '2024-05-26 20:16:08', 9, 0),
+(48, 23, '2024-05-26 20:16:34', 9, 0),
+(49, 23, '2024-05-26 20:17:20', 9, 0),
+(50, 23, '2024-05-26 20:17:39', 9, 121),
+(51, 24, '2024-05-26 20:19:29', 9, 200),
+(52, 25, '2024-05-26 20:33:26', 9, 25),
+(53, 25, '2024-05-26 20:35:55', 9, 5),
+(54, 25, '2024-05-26 20:36:28', 9, 0),
+(55, 25, '2024-05-26 20:47:16', 9, 3),
+(56, 26, '2024-05-26 20:48:14', 9, 22),
+(57, 26, '2024-05-26 21:09:17', 9, 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `pary_uprawnienia`
+-- Table structure for table `pary_uprawnienia`
 --
 
 CREATE TABLE `pary_uprawnienia` (
@@ -154,7 +179,7 @@ INSERT INTO `pary_uprawnienia` (`id_pary`, `id_uprawnienia`, `id_uzytkownik`) VA
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `pary_wypozyczenia`
+-- Table structure for table `pary_wypozyczenia`
 --
 
 CREATE TABLE `pary_wypozyczenia` (
@@ -170,12 +195,13 @@ CREATE TABLE `pary_wypozyczenia` (
 
 INSERT INTO `pary_wypozyczenia` (`id_w_pary`, `id_wypozyczenia`, `id_ksiazki`, `id_bibliotekarz_uzytkownik`) VALUES
 (16, 18, 6, 9),
-(17, 19, 2, 9);
+(17, 19, 2, 9),
+(18, 20, 5, 9);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `uprawnienia`
+-- Table structure for table `uprawnienia`
 --
 
 CREATE TABLE `uprawnienia` (
@@ -198,7 +224,7 @@ INSERT INTO `uprawnienia` (`id_uprawnienia`, `uprawnienia`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `uzytkownik`
+-- Table structure for table `uzytkownik`
 --
 
 CREATE TABLE `uzytkownik` (
@@ -235,7 +261,7 @@ INSERT INTO `uzytkownik` (`id_uzytkownik`, `u_imie`, `u_nazwisko`, `u_email`, `u
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `wypozyczenia`
+-- Table structure for table `wypozyczenia`
 --
 
 CREATE TABLE `wypozyczenia` (
@@ -256,27 +282,28 @@ CREATE TABLE `wypozyczenia` (
 
 INSERT INTO `wypozyczenia` (`id_wypozyczenia`, `w_imie`, `w_nazwisko`, `w_adres`, `w_telefon`, `w_dataWypozyczenia`, `w_okresWypozyczenia`, `w_dataZwrotu`, `w_statusWypozyczenia`) VALUES
 (18, 'Jan', 'Kolo', 'warszawa', 3, '2024-05-13 22:37:45', 14, '2024-05-27 22:37:45', 'Nowe'),
-(19, 'Janina', 'Kowalska', 'lodz ', 123456789, '2024-05-13 22:46:53', 28, '2024-06-10 22:46:53', 'Przedłużone');
+(19, 'Janina', 'Kowalska', 'lodz ', 123456789, '2024-05-13 22:46:53', 28, '2024-06-10 22:46:53', 'Przedłużone'),
+(20, 'Dawid', 'Testowy', 'Łódź ul. Piotrkowska 21', 123456789, '2024-05-21 14:20:51', 28, '2024-06-18 14:20:51', 'Zakończone');
 
 --
--- Indeksy dla zrzutów tabel
+-- Indexes for dumped tables
 --
 
 --
--- Indeksy dla tabeli `hasla`
+-- Indexes for table `hasla`
 --
 ALTER TABLE `hasla`
   ADD PRIMARY KEY (`id_hasla`),
   ADD KEY `id_uzytkownik` (`id_uzytkownik`);
 
 --
--- Indeksy dla tabeli `ksiazka`
+-- Indexes for table `ksiazka`
 --
 ALTER TABLE `ksiazka`
   ADD PRIMARY KEY (`id_ksiazka`);
 
 --
--- Indeksy dla tabeli `lista_rejestracji_ksiazek`
+-- Indexes for table `lista_rejestracji_ksiazek`
 --
 ALTER TABLE `lista_rejestracji_ksiazek`
   ADD PRIMARY KEY (`id_rejestracji`),
@@ -284,7 +311,7 @@ ALTER TABLE `lista_rejestracji_ksiazek`
   ADD KEY `id_r_uzytkownika` (`id_r_uzytkownika`);
 
 --
--- Indeksy dla tabeli `pary_uprawnienia`
+-- Indexes for table `pary_uprawnienia`
 --
 ALTER TABLE `pary_uprawnienia`
   ADD PRIMARY KEY (`id_pary`),
@@ -292,7 +319,7 @@ ALTER TABLE `pary_uprawnienia`
   ADD KEY `id_uzytkownik` (`id_uzytkownik`);
 
 --
--- Indeksy dla tabeli `pary_wypozyczenia`
+-- Indexes for table `pary_wypozyczenia`
 --
 ALTER TABLE `pary_wypozyczenia`
   ADD PRIMARY KEY (`id_w_pary`),
@@ -301,19 +328,19 @@ ALTER TABLE `pary_wypozyczenia`
   ADD KEY `fk_pw_bibliotekarz` (`id_bibliotekarz_uzytkownik`);
 
 --
--- Indeksy dla tabeli `uprawnienia`
+-- Indexes for table `uprawnienia`
 --
 ALTER TABLE `uprawnienia`
   ADD PRIMARY KEY (`id_uprawnienia`);
 
 --
--- Indeksy dla tabeli `uzytkownik`
+-- Indexes for table `uzytkownik`
 --
 ALTER TABLE `uzytkownik`
   ADD PRIMARY KEY (`id_uzytkownik`);
 
 --
--- Indeksy dla tabeli `wypozyczenia`
+-- Indexes for table `wypozyczenia`
 --
 ALTER TABLE `wypozyczenia`
   ADD PRIMARY KEY (`id_wypozyczenia`);
@@ -332,13 +359,13 @@ ALTER TABLE `hasla`
 -- AUTO_INCREMENT for table `ksiazka`
 --
 ALTER TABLE `ksiazka`
-  MODIFY `id_ksiazka` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_ksiazka` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `lista_rejestracji_ksiazek`
 --
 ALTER TABLE `lista_rejestracji_ksiazek`
-  MODIFY `id_rejestracji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_rejestracji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `pary_uprawnienia`
@@ -350,7 +377,7 @@ ALTER TABLE `pary_uprawnienia`
 -- AUTO_INCREMENT for table `pary_wypozyczenia`
 --
 ALTER TABLE `pary_wypozyczenia`
-  MODIFY `id_w_pary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_w_pary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `uprawnienia`
@@ -368,7 +395,7 @@ ALTER TABLE `uzytkownik`
 -- AUTO_INCREMENT for table `wypozyczenia`
 --
 ALTER TABLE `wypozyczenia`
-  MODIFY `id_wypozyczenia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_wypozyczenia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables
