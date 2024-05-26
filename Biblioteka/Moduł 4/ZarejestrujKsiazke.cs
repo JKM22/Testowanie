@@ -252,7 +252,7 @@ namespace Biblioteka.Moduł_4
 
    
 
-private void button_zarejestujksiazke_Click(object sender, EventArgs e)
+        private void button_zarejestujksiazke_Click(object sender, EventArgs e)
         {
             if (listView1.SelectedItems.Count > 0)
             {
@@ -405,7 +405,10 @@ private void button_zarejestujksiazke_Click(object sender, EventArgs e)
                 MessageBox.Show("Proszę wybrać książkę do zaktualizowania.");
             }
         }
-      
 
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
