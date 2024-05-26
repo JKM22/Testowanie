@@ -54,8 +54,7 @@ namespace Biblioteka.Moduł_4
             }
         }
 
-        public void EdytujKsiazke(int id, string tytul, string autor, string gatunek, string opis,
-     int liczbaStron, string wydawnictwo, int rokWydania, decimal cena, int liczbaSztuk)
+        public void EdytujKsiazke(int id, string tytul, string autor, string gatunek, string opis, int liczbaStron, string wydawnictwo, int rokWydania, decimal cena, int liczbaSztuk)
         {
             try
             {

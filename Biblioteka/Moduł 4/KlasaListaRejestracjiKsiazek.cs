@@ -54,23 +54,9 @@ namespace Biblioteka.Moduł_4
                             string imie = reader.GetString("u_imie");
                             string nazwisko = reader.GetString("u_nazwisko");
                             string osobaRejestrujaca = $"{imie} {nazwisko}"; // Połączenie imienia i nazwiska w jedną kolumnę
-                            string statusRejestracji = reader.GetString("status_rejestracji");
+                            int statusRejestracji = reader.GetInt32(reader.GetOrdinal("status_rejestracji"));
 
-                            ListViewItem item = new ListViewItem(new string[] { autor, gatunek, tytul, wydawnictwo, dataRejestracji.ToString(), osobaRejestrujaca, statusRejestracji });
-
-
-                            // Ustawiamy kolor tła wiersza w zależności od statusu książki
-                            if (statusRejestracji == "Książka dostępna")
-                            {
-                                item.BackColor = Color.LightGreen; // Ustaw kolor zielony dla dostępnej książki
-                            }
-                            else if (statusRejestracji == "Książka niedostępna")
-                            {
-                                item.BackColor = Color.LightCoral; // Ustaw kolor czerwony dla niedostępnej książki
-                            }
-
-
-
+                            ListViewItem item = new ListViewItem(new string[] { autor, gatunek, tytul, wydawnictwo, dataRejestracji.ToString(), osobaRejestrujaca, statusRejestracji.ToString() });
                             listView.Items.Add(item);
                         }
                     }
@@ -84,7 +70,7 @@ namespace Biblioteka.Moduł_4
         }
 
 
-        public void ZarejestrujKsiazke(int selectedBookId, int id_uzytkownika)
+        public void ZarejestrujKsiazke(int selectedBookId, int id_uzytkownika, int liczbaDodawanychSztuk)
         {
             try
             {
@@ -98,7 +84,7 @@ namespace Biblioteka.Moduł_4
                     command.Parameters.AddWithValue("@id_r_ksiazki", selectedBookId);
                     command.Parameters.AddWithValue("@data_rejestracji", DateTime.Now);
                     command.Parameters.AddWithValue("@id_r_uzytkownika", id_uzytkownika);
-                    command.Parameters.AddWithValue("@status_rejestracji", "Książka dostępna");
+                    command.Parameters.AddWithValue("@status_rejestracji", liczbaDodawanychSztuk);
                     command.ExecuteNonQuery();
                 }
 

@@ -97,6 +97,11 @@ namespace Biblioteka.Moduł_4
                 // Jeśli dane są poprawne, dodaj książkę
                 ZarzadzajBibliotekaKlasa zarzadzajBibliotekaKlasa = new ZarzadzajBibliotekaKlasa();
                 zarzadzajBibliotekaKlasa.DodajKsiazke(tytul, autor, gatunek, opis, liczbaStron, wydawnictwo, rokWydania, cena, liczbaSztuk);
+                int selectedBookId = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
+                int id_uzytkownika = PolaczenieBazyKlasa.ZalogowanyUzytkownikId;
+                int liczbaDodawanychSztuk = (int)numericUpDown_LiczbaSztuk.Value;
+                KlasaListaRejestracjiKsiazek rejestracjaKsiazek = new KlasaListaRejestracjiKsiazek();
+                rejestracjaKsiazek.ZarejestrujKsiazke(selectedBookId, id_uzytkownika, liczbaDodawanychSztuk);
 
                 // Wyświetl komunikat o powodzeniu
                 MessageBox.Show("Książka została pomyślnie dodana do bazy danych.", "Sukces",
@@ -257,8 +262,6 @@ namespace Biblioteka.Moduł_4
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                int selectedBookId = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
-                int liczbaDodawanychSztuk = (int)numericUpDown_LiczbaSztuk.Value;
                 try
                 {
                     string status = listView1.SelectedItems[0].SubItems[10].Text;
@@ -278,10 +281,7 @@ namespace Biblioteka.Moduł_4
                     }
 
                     // Pobierz ID użytkownika z klasy PolaczenieBazyKlasa
-                    int id_uzytkownika = PolaczenieBazyKlasa.ZalogowanyUzytkownikId;
-
-                    KlasaListaRejestracjiKsiazek rejestracjaKsiazek = new KlasaListaRejestracjiKsiazek();
-                    rejestracjaKsiazek.ZarejestrujKsiazke(selectedBookId, id_uzytkownika);
+                    int selectedBookId = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
 
                     WyswietlKsiazki wyswietlKsiazki = new WyswietlKsiazki();
                     wyswietlKsiazki.AktualizujStatusKsiazki(selectedBookId, "Dostępna");
@@ -382,11 +382,17 @@ namespace Biblioteka.Moduł_4
         {
             if (selectedBookId != 0)
             {
+                int selectedBookId = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
+                int id_uzytkownika = PolaczenieBazyKlasa.ZalogowanyUzytkownikId;
+                int liczbaDodawanychSztuk = (int)numericUpDown_LiczbaSztuk.Value;
+                KlasaListaRejestracjiKsiazek rejestracjaKsiazek = new KlasaListaRejestracjiKsiazek();
+                rejestracjaKsiazek.ZarejestrujKsiazke(selectedBookId, id_uzytkownika, liczbaDodawanychSztuk);
                 ZarzadzajBibliotekaKlasa zarzadzajBiblioteka = new ZarzadzajBibliotekaKlasa();
                 zarzadzajBiblioteka.EdytujKsiazke(selectedBookId, textBox_Tytul.Text, textBox_Autor.Text, textBox_Gatunek.Text,
                     textBox_Opis.Text, (int)numericUpDown_LiczbaStron.Value, textBox_Wydawnictwo.Text, (int)numericUpDown_RokWydania.Value,
                     numericUpDown_Cena.Value, (int)numericUpDown_LiczbaSztuk.Value);
                 WyswietlListeKsiazek(); // Dodano odświeżenie listy książek po edycji
+                
 
                 // Wyczyść wartości textboxów po edycji
                 textBox_Tytul.Text = "";
@@ -400,6 +406,7 @@ namespace Biblioteka.Moduł_4
                 numericUpDown_LiczbaSztuk.Value = 0;
 
                 MessageBox.Show("Książka została pomyślnie zaktualizowana.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             else
             {
