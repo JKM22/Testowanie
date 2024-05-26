@@ -14,6 +14,7 @@ namespace Biblioteka.Moduł_4
 {
     public partial class ZarejestrujKsiazke : Form
     {
+        private const string ConnectionString = "Server=localhost;Database=biblioteka;Uid=root;Pwd=;";
         private int selectedBookId; // Deklaracja zmiennej selectedBookId
         private WyswietlKsiazki wyswietlKsiazki = new WyswietlKsiazki();
 
@@ -97,7 +98,16 @@ namespace Biblioteka.Moduł_4
                 // Jeśli dane są poprawne, dodaj książkę
                 ZarzadzajBibliotekaKlasa zarzadzajBibliotekaKlasa = new ZarzadzajBibliotekaKlasa();
                 zarzadzajBibliotekaKlasa.DodajKsiazke(tytul, autor, gatunek, opis, liczbaStron, wydawnictwo, rokWydania, cena, liczbaSztuk);
-                int selectedBookId = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
+                int selectedBookId;
+                using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT MAX(id_ksiazka) FROM ksiazka";
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        selectedBookId = Convert.ToInt32(command.ExecuteScalar());
+                    }
+                }
                 int id_uzytkownika = PolaczenieBazyKlasa.ZalogowanyUzytkownikId;
                 int liczbaDodawanychSztuk = (int)numericUpDown_LiczbaSztuk.Value;
                 KlasaListaRejestracjiKsiazek rejestracjaKsiazek = new KlasaListaRejestracjiKsiazek();
