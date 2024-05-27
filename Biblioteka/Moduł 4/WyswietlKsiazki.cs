@@ -296,7 +296,7 @@ namespace Biblioteka.Moduł_4
                     comboBoxAutor.Items.AddRange(matchedItems.ToArray());
                     comboBoxAutor.SelectionStart = comboBoxAutor.Text.Length;
                     comboBoxAutor.SelectionLength = 0;
-                    comboBoxAutor.DroppedDown = true; // Pozostaw listę rozwiniętą
+                    comboBoxAutor.DroppedDown = false; // Pozostaw listę rozwiniętą
                 }
             };
 
@@ -385,7 +385,7 @@ namespace Biblioteka.Moduł_4
                     comboBoxTytul.Items.AddRange(matchedItems.ToArray());
                     comboBoxTytul.SelectionStart = comboBoxTytul.Text.Length;
                     comboBoxTytul.SelectionLength = 0;
-                    comboBoxTytul.DroppedDown = true; // Pozostaw listę rozwiniętą
+                    comboBoxTytul.DroppedDown = false; // Pozostaw listę rozwiniętą
                 }
             };
 
@@ -474,7 +474,7 @@ namespace Biblioteka.Moduł_4
                     comboBoxGatunek.Items.AddRange(matchedItems.ToArray());
                     comboBoxGatunek.SelectionStart = comboBoxGatunek.Text.Length;
                     comboBoxGatunek.SelectionLength = 0;
-                    comboBoxGatunek.DroppedDown = true; // Pozostaw listę rozwiniętą
+                    comboBoxGatunek.DroppedDown = false; // Pozostaw listę rozwiniętą
                 }
             };
 
@@ -563,7 +563,7 @@ namespace Biblioteka.Moduł_4
                     comboBoxWydawnictwo.Items.AddRange(matchedItems.ToArray());
                     comboBoxWydawnictwo.SelectionStart = comboBoxWydawnictwo.Text.Length;
                     comboBoxWydawnictwo.SelectionLength = 0;
-                    comboBoxWydawnictwo.DroppedDown = true; // Pozostaw listę rozwiniętą
+                    comboBoxWydawnictwo.DroppedDown = false; // Pozostaw listę rozwiniętą
                 }
             };
 

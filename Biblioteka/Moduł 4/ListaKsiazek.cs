@@ -126,6 +126,8 @@ namespace Biblioteka.Moduł_4
         }
         private void WyswietlListeKsiazek2()
         {
+            WyswietlKsiazki  wyswietlKsiazki = new WyswietlKsiazki();
+
             // Wywołaj metodę WyswietlListeKsiazek z obiektu wyswietlKsiazki,
             // przekazując listView1 jako argument
             wyswietlKsiazki.WyswietlListeKsiazek2(listView1);
