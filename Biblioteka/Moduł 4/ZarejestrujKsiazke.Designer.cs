@@ -243,7 +243,7 @@
             this.numericUpDown_LiczbaSztuk.Location = new System.Drawing.Point(880, 275);
             this.numericUpDown_LiczbaSztuk.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown_LiczbaSztuk.Maximum = new decimal(new int[] {
-            200,
+            2000,
             0,
             0,
             0});
@@ -344,7 +344,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(390, 93);
+            this.label13.Location = new System.Drawing.Point(373, 157);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(95, 13);
@@ -354,7 +354,7 @@
             // comboBox_status
             // 
             this.comboBox_status.FormattingEnabled = true;
-            this.comboBox_status.Location = new System.Drawing.Point(500, 88);
+            this.comboBox_status.Location = new System.Drawing.Point(482, 127);
             this.comboBox_status.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_status.Name = "comboBox_status";
             this.comboBox_status.Size = new System.Drawing.Size(92, 21);
@@ -362,7 +362,7 @@
             // 
             // button_wyszukajstatus
             // 
-            this.button_wyszukajstatus.Location = new System.Drawing.Point(595, 67);
+            this.button_wyszukajstatus.Location = new System.Drawing.Point(500, 168);
             this.button_wyszukajstatus.Margin = new System.Windows.Forms.Padding(2);
             this.button_wyszukajstatus.Name = "button_wyszukajstatus";
             this.button_wyszukajstatus.Size = new System.Drawing.Size(74, 19);
@@ -384,7 +384,7 @@
             // 
             // button_odswiezstatus
             // 
-            this.button_odswiezstatus.Location = new System.Drawing.Point(595, 89);
+            this.button_odswiezstatus.Location = new System.Drawing.Point(500, 216);
             this.button_odswiezstatus.Margin = new System.Windows.Forms.Padding(2);
             this.button_odswiezstatus.Name = "button_odswiezstatus";
             this.button_odswiezstatus.Size = new System.Drawing.Size(74, 19);
@@ -465,11 +465,7 @@
             this.ClientSize = new System.Drawing.Size(962, 500);
             this.Controls.Add(this.button_edytuj);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.button_odswiezstatus);
             this.Controls.Add(this.button_cofnijrejestracje);
-            this.Controls.Add(this.button_wyszukajstatus);
-            this.Controls.Add(this.comboBox_status);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.button_zarejestujksiazke);
@@ -495,6 +491,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox_Autor);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.comboBox_status);
+            this.Controls.Add(this.button_wyszukajstatus);
+            this.Controls.Add(this.button_odswiezstatus);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ZarejestrujKsiazke";
             this.Palette = this.kryptonPalette1;
