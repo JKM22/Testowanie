@@ -141,7 +141,7 @@
             this.textBox_imieWypozyczenie.Location = new System.Drawing.Point(247, 87);
             this.textBox_imieWypozyczenie.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_imieWypozyczenie.Name = "textBox_imieWypozyczenie";
-            this.textBox_imieWypozyczenie.Size = new System.Drawing.Size(68, 20);
+            this.textBox_imieWypozyczenie.Size = new System.Drawing.Size(135, 20);
             this.textBox_imieWypozyczenie.TabIndex = 8;
             // 
             // textBox_nazwiskoWypozyczenie
@@ -149,7 +149,7 @@
             this.textBox_nazwiskoWypozyczenie.Location = new System.Drawing.Point(247, 110);
             this.textBox_nazwiskoWypozyczenie.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_nazwiskoWypozyczenie.Name = "textBox_nazwiskoWypozyczenie";
-            this.textBox_nazwiskoWypozyczenie.Size = new System.Drawing.Size(68, 20);
+            this.textBox_nazwiskoWypozyczenie.Size = new System.Drawing.Size(135, 20);
             this.textBox_nazwiskoWypozyczenie.TabIndex = 9;
             // 
             // dateTimePicker_Wypozyczenie
@@ -164,17 +164,18 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(41, 138);
+            this.label8.Location = new System.Drawing.Point(41, 136);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(187, 13);
+            this.label8.Size = new System.Drawing.Size(187, 26);
             this.label8.TabIndex = 11;
-            this.label8.Text = "Adres zamieszkania wypożyczającego";
+            this.label8.Text = "Adres zamieszkania wypożyczającego\r\n(kod pocztowy bez myślnika)";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(41, 164);
+            this.label9.Location = new System.Drawing.Point(41, 168);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(166, 13);
@@ -186,15 +187,15 @@
             this.textBox_adresZamieszkaniaWypozyczenie.Location = new System.Drawing.Point(247, 136);
             this.textBox_adresZamieszkaniaWypozyczenie.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_adresZamieszkaniaWypozyczenie.Name = "textBox_adresZamieszkaniaWypozyczenie";
-            this.textBox_adresZamieszkaniaWypozyczenie.Size = new System.Drawing.Size(68, 20);
+            this.textBox_adresZamieszkaniaWypozyczenie.Size = new System.Drawing.Size(135, 20);
             this.textBox_adresZamieszkaniaWypozyczenie.TabIndex = 13;
             // 
             // textBox_numerTelefonu
             // 
-            this.textBox_numerTelefonu.Location = new System.Drawing.Point(247, 161);
+            this.textBox_numerTelefonu.Location = new System.Drawing.Point(247, 165);
             this.textBox_numerTelefonu.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_numerTelefonu.Name = "textBox_numerTelefonu";
-            this.textBox_numerTelefonu.Size = new System.Drawing.Size(68, 20);
+            this.textBox_numerTelefonu.Size = new System.Drawing.Size(135, 20);
             this.textBox_numerTelefonu.TabIndex = 14;
             // 
             // textBox_okresWypozyczenia
@@ -217,6 +218,7 @@
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.Enabled = false;
             this.dateTimePicker2.Location = new System.Drawing.Point(247, 245);
             this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker2.Name = "dateTimePicker2";

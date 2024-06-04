@@ -205,6 +205,11 @@ namespace Biblioteka.Moduł_4
             dateTimePicker2.Text = "";
             textBox_okresWypozyczenia.Text = "14";
         }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
